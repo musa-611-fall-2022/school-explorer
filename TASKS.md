@@ -1,9 +1,9 @@
-- [ ] Create an _index.html_ with a basic HTML page structure
-- [ ] Create an empty CSS file for the project
-- [ ] Create an empty JavaScrip file for the project
+- [X] Create an _index.html_ with a basic HTML page structure
+- [X] Create an empty CSS file for the project
+- [ ] Create an empty JavaScript file for the project
 - [ ] Link to the empty CSS file from the bottom of the `head` of your HTML file
 - [ ] Link to the empty JavaScript file from the bottom of the `body` of your HTML file
-- [ ] Add a level-1 heading (`h1`) to the body with the app title, just so there's something to see on the page
+- [X] Add a level-1 heading (`h1`) to the body with the app title, just so there's something to see on the page
 
 Check the app in the browser.
 
