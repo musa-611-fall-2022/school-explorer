@@ -1,3 +1,5 @@
 function makeSchoolFeature(){
     
 }
+
+export{makeSchoolFeature}
