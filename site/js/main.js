@@ -13,9 +13,6 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap',
 }).addTo(schoolMap);
 
-//create geoJSON layer to put school data into
-let schoolLayer = L.geoJSON().addTo(schoolMap);
-
 // function to turn school element into a geoJSON-like object
 function makeSchoolFeature(school) {
     let schoolGeo = {
@@ -34,19 +31,15 @@ function makeSchoolFeature(school) {
 // expose function to window
 window.makeSchoolFeature = makeSchoolFeature;
 
-// add all schools to schoolLayer
-// for (let i = 0; i < schools.length; i++) {
-//     let school = makeSchoolFeature(schools[i]);
-//     schoolLayer.addData(school);
-// }
+//create geoJSON layer to put school data into
+let schoolLayer = L.geoJSON().addTo(schoolMap);
 
 // function to add an array of schools to the map
-function displaySchoolArray(schoolArray) {
-    let schoolArrayLayer = L.geoJSON().addTo(schoolMap);
+function displaySchoolArray(schoolArray, schoolLayer) {
     for (let i = 0; i < schoolArray.length; i++) {
         let school = makeSchoolFeature(schoolArray[i]);
-        schoolArrayLayer.addData(school);
+        schoolLayer.addData(school);
     }
 }
-displaySchoolArray(schools);
+displaySchoolArray(schools, schoolLayer);
 
