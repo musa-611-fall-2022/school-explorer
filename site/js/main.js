@@ -42,4 +42,3 @@ function displaySchoolArray(schoolArray, schoolLayer) {
     }
 }
 displaySchoolArray(schools, schoolLayer);
-
