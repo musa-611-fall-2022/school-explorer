@@ -13,24 +13,24 @@ function initializeSchoolMap() {
 function makeSchoolFeature(school) {
     return {
         "type": "Feature",
-        "sdp_id": school['sdp_id'], // geoJSONs have id fields which are good to fill if you have an existing id field to work with
+        "sdp_id": school["sdp_id"], // geoJSONs have id fields which are good to fill if you have an existing id field to work with
         "properties": {
-            "name": school['name'],
-            "Zip Code": school['Zip Code'],
-            "sdp_id": school['sdp_id'],
+            "name": school["name"],
+            "Zip Code": school["Zip Code"],
+            "sdp_id": school["sdp_id"],
         },
-        "geometry": school['geom'], // or school.geom (they are the same thing, using [] just matches JSON use aesthetically)
+        "geometry": school["geom"], // or school.geom (they are the same thing, using [] just matches JSON use aesthetically)
     };
-}
+} 
 
 // function to put schools on map
 function showSchoolsOnMap(schoolsToShow, schoolMap) {
     // create feature collection using makeSchoolFeature
-    let schoolFeatureCollection = {
+    const schoolFeatureCollection = {
         "type": "FeatureCollection",
         "features": schoolsToShow.map(makeSchoolFeature),
     };
-
+    window.schoolFeatureCollection = schoolFeatureCollection;
     // add schools to map and style
     L.geoJSON(schoolFeatureCollection, {
         pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
