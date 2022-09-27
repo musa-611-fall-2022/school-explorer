@@ -1,29 +1,20 @@
 import schools from '../data/schools.js'
+import { initializeSchoolMap, showSchoolsOnMap, showSchoolNames,} from './schools-map.js'
 
-let schoolMap = L.map('school-map').setView([39.95, -75.2], 10);
+let schoolMap = initializeSchoolMap();
+showSchoolsOnMap(schools, schoolMap);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap'
-}).addTo(schoolMap);
+//let schoolCheckboxes = document.querySelectorAll('.route-checkbox');
 
-//Expose variables to the global scope
+/*for (const cb of routeCheckboxes) {
+    cb.addEventListener('change', (evt) => {
+        console.log('you clicked on a checkbox');
+        console.log(evt.target);
+    })
+}*/
+
+showSchoolNames(schools, "console2");
+
 window.schools = schools;
-
-
-function makeSchoolFeature(d) {
-    let thisSchool = schools[d];
-    thisSchool.geom.coordinates = L.GeoJson.coordsToLatLngs(thisSchool.geom.coordinates)
-    console.log(thisSchool.geom.coordinates)
-    return thisSchool
-}
-
-/**for (let i = 0; i < schools.length; i++){
-   
-    let focus = makeSchoolFeature(i)
-    let circle = L.circle(thisSchool.geom.coordinates)
-
-    
-}**/
-makeSchoolFeature(1);
+window.route
 
