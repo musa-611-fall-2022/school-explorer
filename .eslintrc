@@ -7,6 +7,7 @@
   },
   "globals": {
     "console": "readonly",
+    "document": "readonly",
     "fetch": "readonly",
     "L": "readonly",
     "mapboxgl": "readonly",
