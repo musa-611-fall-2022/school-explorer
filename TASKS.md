@@ -14,3 +14,11 @@ Check the app in the browser.
 - [ ] Create a function called `makeSchoolFeature` to transform one of the school elements into a GeoJSON-like feature. **This function should be made available globally (on the window object)**.
 - [ ] Use the function to display all the `schools` data on the map.
 - [ ] Create a function to show an array of schools on the map.
+
+----------
+
+- [ ] Create a list element (unordered -- `ul`) in the HTML give it an id of `school-list`
+- [ ] Write a function that fills in the list with list item (`li`) elements for each school in an array
+- [ ] Add a checkbox for each grade K-12 to the page.
+- [ ] Add a text box to filter schools that contain a given string. The text box should have an id of `school-name-filter`.
+- [ ] Write a predicate function called `shouldShowSchool` that will return `true` if a given school should be shown according to the currently selected filters, and will return `false` if a given school should not be shown. For now, ignore the filters and always return `true`.
