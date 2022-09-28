@@ -7,10 +7,10 @@
 
 Check the app in the browser.
 
-- [ ] Add a Leaflet map for displaying the list of schools to the page
+- [x] Add a Leaflet map for displaying the list of schools to the page
   * **Tip:** Usually when I'm starting with a new leaflet map, I just Google "leaflet quickstart" and copy a few things from that page. Other times I may use a CDN like 
   * **Recommendation:** Give your map a meaningful ID -- something like `school-map`, and then name the corresponding JavaScript variable something similar, e.g. `schoolMap`.
-- [ ] Import the data from _site/data/schools.js_ into your JavaScript file.
+- [x] Import the data from _site/data/schools.js_ into your JavaScript file.
 - [ ] Create a function called `makeSchoolFeature` to transform one of the school elements into a GeoJSON-like feature. **This function should be made available globally (on the window object)**.
 - [ ] Use the function to display all the `schools` data on the map.
 - [ ] Create a function to show an array of schools on the map.

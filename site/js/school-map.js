@@ -1,24 +1,24 @@
-import universitycity from '../data/universitycity.js';
+import schools from '../data/schools.js';
 
-function initializeStopMap() {
-  let stopMap = L.map('stop-map').setView([39.95522712709254, -75.19864425285742], 13);
+function initializeSchoolMap() {
+  let schoolMap = L.map('schoolMap').setView([39.99873171497979, -75.1321119604354], 09);
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19,
-      attribution: '© OpenStreetMap',
-  }).addTo(stopMap);
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+}).addTo(schoolMap);
 
-  L.geoJSON(universitycity, {
+  L.geoJSON(schools, {
     style: { fill: null, color: '#000' },
-  }).addTo(stopMap);
+  }).addTo(schoolMap);
 
-  return stopMap;
+  return schoolMap;
 }
 
-function makeStopFeature(stop) {
+function makeSchoolFeature(school) {
   return {
     "type": "Feature",
-    "id": stop['stop_id'],
+    "id": school['stop_id'],
     "properties": {
       "stop_name": stop['stop_name'],
       "routes_ids": stop['routes_ids'],
