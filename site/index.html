@@ -6,7 +6,7 @@
 
 <html>
     <head>
-        <title>School Explorer</title>
+        <title> Philadelphia School Explorer</title>
 
         <!-- Leaflet's Default Styles -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
@@ -16,25 +16,64 @@
     </head>
     <body>
         <div>
-            <h1> School Explorer</h1>
+            <h1> Philadelphia School Explorer</h1>
         </div>
+
+        <!-- <div>
+            <table><thead>
+                <tr>
+                    <th>School Name</th>
+                    <th>Address</th>
+                    <th>Grades</th>
+                </tr>
+                </thead><tbody>
+                <tr id="projection-l-projection-lonlat">
+                    <td><code><b>L.Projection.LonLat</b></code><a data-anchor="projection-l-projection-lonlat"></a></td>
+                    <td>Equirectangular, or Plate Carree projection — the most simple projection,
+            mostly used by GIS enthusiasts. Directly maps <code>x</code> as longitude, and <code>y</code> as
+            latitude. Also suitable for flat worlds, e.g. game maps. Used by the
+            <code>EPSG:4326</code> and <code>Simple</code> CRS.</td>
+                </tr>
+                <tr id="projection-l-projection-mercator">
+                    <td><code><b>L.Projection.Mercator</b></code><a data-anchor="projection-l-projection-mercator"></a></td>
+                    <td>Elliptical Mercator projection — more complex than Spherical Mercator. Assumes that Earth is an ellipsoid. Used by the EPSG:3395 CRS.</td>
+                </tr>
+                <tr id="projection-l-projection-sphericalmercator">
+                    <td><code><b>L.Projection.SphericalMercator</b></code><a data-anchor="projection-l-projection-sphericalmercator"></a></td>
+                    <td>Spherical Mercator projection — the most common projection for online maps,
+            used by almost all free and commercial tile providers. Assumes that Earth is
+            a sphere. Used by the <code>EPSG:3857</code> CRS.</td>
+                </tr>
+            </tbody></table>
+        </div> -->
 
         <div class="content-container">
             <div class="map-container">
                 <div id="school-map"></div>
             </div>
             <div class="list-container">
-                <label><input type="checkbox" class="school-checkbox" value="Elementary"> Elementary School</label>
-                <label><input type="checkbox" class="school-checkbox" value="Elementary-Middle"> Elementary-Middle School</label>
-                <label><input type="checkbox" class="school-checkbox" value="Elementary-High"> Elementary-High School</label>
-                <label><input type="checkbox" class="school-checkbox" value="Elementary-Middle-High"> Elementary-Middle-High School</label>
-                <label><input type="checkbox" class="school-checkbox" value="Middle"> Middle School</label>
-                <label><input type="checkbox" class="school-checkbox" value="Middle-High"> Middle-High School</label>
-                <label><input type="checkbox" class="school-checkbox" value="High"> High School</label>
-                <label><input type="checkbox" class="school-checkbox" value="Transition/Overage"> Transition/Overage School</label>
-                <input type="text" id="school-name-input" placeholder="Enter school name">
-                
+                <h3> Select Filters </h2>
+                <label><input type="checkbox" class="school-checkbox" value="Grade K"> Grade K </label>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 1"> Grade 1 </label>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 2"> Grade 2 </label>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 3"> Grade 3 </label>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 4"> Grade 4 </label>
+                <br></br>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 5"> Grade 5 </label>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 6"> Grade 6 </label>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 7"> Grade 7 </label>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 8"> Grade 8 </label>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 9"> Grade 9 </label>
+                <br></br>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 10"> Grade 10 </label>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 11"> Grade 11 </label>
+                <label><input type="checkbox" class="school-checkbox" value="Grade 12"> Grade 12 </label>
+                <input type="text" id="school-name-filter" placeholder="Enter school name">
+                <br></br>
+                   
+                <h3> School Options </h3>
                 <ul id="school-list"></ul>
+            </div>
             </div>
         </div>
 
