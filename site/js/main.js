@@ -5,11 +5,6 @@
 // Import school data
 import schools from '../data/schools.js';
 
-//-----------------------------------------------//
-// SORT SCHOOLS
-//-----------------------------------------------//
-schools.sort(a => a['name'])
-
 // Import functions related to showing the school map
 import {
     initializeSchoolMap,
@@ -67,11 +62,19 @@ showSchoolsInList(schools, schoolList);
 // CHANGE WHAT'S SHOWING ACCORDING TO EVENT LISTENER
 //-----------------------------------------------//
 
-// A function to filter stop everytime the text box gets input or when the checkboxes get checked
-function getFilteredSchools() {
-    let filteredSchools = schools;
+// Filter schools by name
+function schoolNameFilter(schoolsList) {
+    let filteredSchools = schoolsList;
+    const inputText = schoolNameInput.value.toLowerCase();
+    filteredSchools = filteredSchools.filter(school => 
+       school["name"].toLowerCase().includes(inputText)
+    );
+    return filteredSchools;
+}
 
-    // First, filter based on grade selection
+// Filter schools by grade
+function schoolGradeFilters(schoolsList) {
+    let filteredSchools = schoolsList;
     for (const checkbox of gradeCheckboxes) {
         if (checkbox.checked) {
             filteredSchools = filteredSchools.filter(school =>
@@ -79,13 +82,6 @@ function getFilteredSchools() {
             );
         }
     }
-
-    // Then, filter based on textbox input
-    const inputText = schoolNameInput.value.toLowerCase();
-    filteredSchools = filteredSchools.filter(school => 
-       school["name"].toLowerCase().includes(inputText)
-    )
-
     return filteredSchools;
 }
 
@@ -95,7 +91,7 @@ let gradeCheckboxes = document.querySelectorAll(".grade-checkbox");
 // On each one of them, add an event listener
 for(const checkbox of gradeCheckboxes){
     checkbox.addEventListener('change', ( ) => {
-        const filteredSchools = getFilteredSchools();
+        const filteredSchools = schoolGradeFilters(schoolNameFilter(schools));
         showSchoolsOnMap(filteredSchools, schoolMap);
         showSchoolsInList(filteredSchools, schoolList);
     })
@@ -105,7 +101,7 @@ for(const checkbox of gradeCheckboxes){
 let schoolNameInput = document.querySelector("#school-name-input")
 // Add event listener to the input box
 schoolNameInput.addEventListener('input', ( ) => {
-    const filteredSchools = getFilteredSchools();
+    const filteredSchools = schoolGradeFilters(schoolNameFilter(schools));
     showSchoolsOnMap(filteredSchools, schoolMap);
     showSchoolsInList(filteredSchools, schoolList);
 })
@@ -113,3 +109,5 @@ schoolNameInput.addEventListener('input', ( ) => {
 window.schools = schools
 window.makeSchoolFeature = makeSchoolFeature
 window.gradeArr = gradeArr;
+window.schoolNameFilter = schoolNameFilter;
+window.schoolGradeFilters = schoolGradeFilters;
