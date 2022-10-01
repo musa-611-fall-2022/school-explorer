@@ -57,5 +57,4 @@ schoolNameFilter.addEventListener('input', () => {
 
 window.schools = schools;
 window.schoolMap = schoolMap;
-window.schoolCheckboxes = schoolCheckboxes;
-window.schoolNameFilter
+window.schoolList = schoolList;
