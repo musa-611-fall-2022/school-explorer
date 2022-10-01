@@ -5,11 +5,18 @@
 // Import school data
 import schools from '../data/schools.js';
 
+//-----------------------------------------------//
+// SORT SCHOOLS
+//-----------------------------------------------//
+schools.sort(a => a['name'])
+
 // Import functions related to showing the school map
 import {
     initializeSchoolMap,
     showSchoolsOnMap,
 } from './school-map.js';
+
+import { showSchoolsInList } from './school-list.js';
 
 // Import useful functions from template-tools
 import { htmlToElement } from "./template-tools.js";
@@ -50,6 +57,13 @@ for(const grade of gradeArr) {
 }
 
 //-----------------------------------------------//
+// MAKING A LIST OF SCHOOLS
+//-----------------------------------------------//
+
+let schoolList = document.querySelector('#school-list');
+showSchoolsInList(schools, schoolList);
+
+//-----------------------------------------------//
 // CHANGE WHAT'S SHOWING ACCORDING TO EVENT LISTENER
 //-----------------------------------------------//
 
@@ -60,12 +74,17 @@ function getFilteredSchools() {
     // First, filter based on grade selection
     for (const checkbox of gradeCheckboxes) {
         if (checkbox.checked) {
-            filteredSchools = filteredSchools.filter(school => {
-                const grade = checkbox.value;
-                if (school[grade] == '0'){ return true} else {return false};
-            });
+            filteredSchools = filteredSchools.filter(school =>
+                school[checkbox.value] == '0'
+            );
         }
     }
+
+    // Then, filter based on textbox input
+    const inputText = schoolNameInput.value.toLowerCase();
+    filteredSchools = filteredSchools.filter(school => 
+       school["name"].toLowerCase().includes(inputText)
+    )
 
     return filteredSchools;
 }
@@ -78,8 +97,18 @@ for(const checkbox of gradeCheckboxes){
     checkbox.addEventListener('change', ( ) => {
         const filteredSchools = getFilteredSchools();
         showSchoolsOnMap(filteredSchools, schoolMap);
+        showSchoolsInList(filteredSchools, schoolList);
     })
 }
+
+// Get what's inputted in the Filter By Name input box
+let schoolNameInput = document.querySelector("#school-name-input")
+// Add event listener to the input box
+schoolNameInput.addEventListener('input', ( ) => {
+    const filteredSchools = getFilteredSchools();
+    showSchoolsOnMap(filteredSchools, schoolMap);
+    showSchoolsInList(filteredSchools, schoolList);
+})
 
 window.schools = schools
 window.makeSchoolFeature = makeSchoolFeature

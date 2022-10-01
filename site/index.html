@@ -11,12 +11,12 @@
         <!-- Leaflet's default styles -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
         
-        <!-- General styles and responsive design -->
+        <!-- Responsive design framework -->
         <link rel="stylesheet" href="css/framework.css">
+        <!-- General styles -->
         <link rel="stylesheet" href="css/styles.css">
-        <!-- School map -->
-        <link rel="stylesheet" href="css/school_map.css">
-
+        <!-- Scroll list -->
+        <link rel="stylesheet" href="css/scroll-list.css">
     </head>
 
     <body>                     
@@ -36,15 +36,31 @@
             <!-- Map and selections -->
             <div class="row">
                 <!-- Map-->
-                <div class="col-sm-12 col-l-9 col-xl-9">
-                    <div class="map-container">
-                        <div id="school-map"></div>
+                <div class="col-sm-12 col-l-6 col-xl-6">
+                    <div class="viewport-70 padding-top-15 padding-right-big-screen">
+                        <div id="school-map" class="entire-width-height"></div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-l-3 col-xl-3">
-                    <h2>Select by Grade</h2>
-                    <!-- A set of checkboxes; this is added in main.js -->
-                    <div id="grade-select-set"></div>
+                    <div class="viewport-70">
+                        <h2>Select by Grade</h2>
+                        <!-- A set of checkboxes; this is added in main.js -->
+                        <div id="grade-select-set"></div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-l-3 col-xl-3">
+                    <div class="viewport-70">
+                        <div class="entire-width-height">
+                            <h2>Filter by Name</h2>
+                            <!-- First, we add a text input box -->
+                            <div class="input-box">
+                                <input type="text" class="text-input" id="school-name-input" placeholder="Enter Name">
+                            </div>
+                            <div class="list-container">
+                                <ul id="school-list" class="listbox"></ul>
+                            </div>
+                        </div>
+
                 </div>
             </div>
         </div>
