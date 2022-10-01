@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    position: relative;  
+}
+
+html {
+    font-family: Roboto, sans-serif;
+}
+
+/*----------------------------------------------*/
+/* General settings for main blocks*/
+/*----------------------------------------------*/
+
+.map-container {
+    height: 68vh;
+    width: auto;
+    padding-top: 1.5em;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.grade-checkbox-text, .grade-checkbox{
+    font-size: 13px;
+    margin-top: 0.1em;
+    margin-bottom: 0.1em;
+}
+
