@@ -75,7 +75,7 @@ function getFilteredSchools() {
     for (const checkbox of gradeCheckboxes) {
         if (checkbox.checked) {
             filteredSchools = filteredSchools.filter(school =>
-                school[checkbox.value] == '0'
+                school[checkbox.value] == '1'
             );
         }
     }
