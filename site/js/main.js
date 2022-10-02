@@ -39,8 +39,6 @@ const schoolFeatureCollection = {
 L.geoJSON(schoolFeatureCollection).addTo(schoolMap);
 
 
-
-
 // Expose variables to the global scope
 window.makeSchoolFeature = makeSchoolFeature;
 window.schools = schools;
