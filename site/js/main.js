@@ -1,4 +1,4 @@
-import schools from "../data/schools.js"
+import schools from '../data/schools.js';
 import catchment from '../data/catchments.js';
 
 let schoolMap = L.map('school-map').setView([40.0, -75.11], 13);
