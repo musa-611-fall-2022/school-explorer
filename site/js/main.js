@@ -1,5 +1,5 @@
 import schools from '../data/schools.js';
-import catchment from '../data/catchments.js';
+import catchments from '../data/catchments.js';
 
 let schoolMap = L.map('school-map').setView([40.0, -75.11], 13);
 
@@ -8,6 +8,10 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap',
  }).addTo(schoolMap);
  
+ //Add catchments as a geojson layer
+ L.geoJSON(catchments, {
+    style: {fill: null, color: 'black'}
+ }).addTo(schoolMap);
 
 // Function to pull geomtery
 // function pulls select features from each school
@@ -24,6 +28,22 @@ function makeSchoolFeature(school){
         },
         "geometry":stop["geom"]
     }
+}
+
+// Function should map all the points we just pulled
+function showSchoolsOnMap(schoolsToShow) {
+    const schoolFeatureCollection = {
+        "type": "FeatureCollection",
+        "features": schools.map(makeSchoolFeature),
+    };
+        L.geoJSON(schoolFeatureCollection, {
+            pointToLayer: (geoJsonPoing, latlng) => L.circleMarker(latlng),
+            style:{
+                stroke:null,
+                fillOpacity: 0.9,
+                radius:3,
+            },
+        }).addTo(schoolMap)
 }
 
 // Expose variables to the global scope
