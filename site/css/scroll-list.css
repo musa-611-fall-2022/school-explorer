@@ -1,0 +1,24 @@
+/*----------------------------------------------*/
+/* Styles for the scroll list area*/
+/*----------------------------------------------*/
+
+.list-container {
+    margin: 1em 0 0;
+    display: flex;
+    max-height: 45vh;
+    border: 0.6px solid #aaa;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.listbox {
+    padding: 0em 0.5em 0 0.5em;
+    
+}
+ 
+[role="option"] {
+    display: block;
+    line-height: 1em;
+    padding: 0.2em;
+    font-size: 13px;
+}
