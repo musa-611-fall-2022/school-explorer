@@ -87,7 +87,6 @@ function schoolGradeFilters(schoolsList) {
 
 // Get all the grade-related checkboxes
 let gradeCheckboxes = document.querySelectorAll(".grade-checkbox");
-
 // On each one of them, add an event listener
 for(const checkbox of gradeCheckboxes){
     checkbox.addEventListener('change', ( ) => {
@@ -96,7 +95,6 @@ for(const checkbox of gradeCheckboxes){
         showSchoolsInList(filteredSchools, schoolList);
     })
 }
-
 // Get what's inputted in the Filter By Name input box
 let schoolNameInput = document.querySelector("#school-name-input")
 // Add event listener to the input box
