@@ -1,7 +1,7 @@
 import schools from '../data/schools.js';
 
 function initializeSchoolMap() {
-  let schoolMap = L.map('schoolMap').setView([39.99873171497979, -75.1321119604354], 09);
+  let schoolMap = L.map('schoolMap').setView([39.99873171497979, -75.1321119604354], 11);
 
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -18,34 +18,41 @@ function initializeSchoolMap() {
 function makeSchoolFeature(school) {
   return {
     "type": "Feature",
-    "id": school['stop_id'],
+    "id": school['sdp_id'],
     "properties": {
-      "stop_name": stop['stop_name'],
-      "routes_ids": stop['routes_ids'],
-      "stop_id": stop['stop_id'],
-      "wheelchair_boarding": stop['wheelchair_boarding'],
+      "school_name": school['name'],
+      "school_type": school['School Level'],
+      "school_id": school['sdp_id']
     },
-    "geometry": stop['geom'],
+    "geometry": school['geom'],
   };
 }
 
-function showStopsOnMap(stopsToShow, stopMap) {
+function showSchoolsOnMap(schoolsToShow, schoolMap) {
+  if (schoolMap.stopLayers !== undefined){
+    schoolMap.removeLayer(schoolMap.stopLayers);
+  }
+  
   const stopFeatureCollection = {
     "type": "FeatureCollection",
-    "features": stopsToShow.map(makeStopFeature),
+    "features": schoolsToShow.map(makeSchoolFeature),
   };
 
-  L.geoJSON(stopFeatureCollection, {
+  schoolMap.stopLayers = L.geoJSON(stopFeatureCollection, {
     pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
     style: {
       stroke: null,
       fillOpacity: 0.9,
       radius: 3,
     },
-  }).addTo(stopMap);
+  })
+  .bindTooltip(layer => {return layer.feature.properties['school_name']})
+  .addTo(schoolMap);
 }
 
+
+
 export {
-  initializeStopMap,
-  showStopsOnMap,
+  initializeSchoolMap,
+  showSchoolsOnMap,
 };
