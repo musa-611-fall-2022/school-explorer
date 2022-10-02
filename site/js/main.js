@@ -15,7 +15,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Function to pull geomtery
 // function pulls select features from each school
-function makeSchoolFeature(school){
+function makeSchoolFeature(school) {
     return{
         'type': 'Feature',
         'id': school["sdp_id"],
@@ -26,27 +26,22 @@ function makeSchoolFeature(school){
             "Admission type": school["Admission Type"],
             "Grades Served": school["Current Grade Span Served"],
         },
-        "geometry":stop["geom"]
-    }
+        "geometry": school["geom"],
+    };
 }
 
 // Function should map all the points we just pulled
-function showSchoolsOnMap(schoolsToShow) {
-    const schoolFeatureCollection = {
-        "type": "FeatureCollection",
-        "features": schools.map(makeSchoolFeature),
-    };
-        L.geoJSON(schoolFeatureCollection, {
-            pointToLayer: (geoJsonPoing, latlng) => L.circleMarker(latlng),
-            style:{
-                stroke:null,
-                fillOpacity: 0.9,
-                radius:3,
-            },
-        }).addTo(schoolMap)
-}
+const schoolFeatureCollection = {
+    "type": "FeatureCollection",
+    "features": schools.map(makeSchoolFeature),
+};
+
+L.geoJSON(schoolFeatureCollection).addTo(schoolMap);
+
+
+
 
 // Expose variables to the global scope
 window.makeSchoolFeature = makeSchoolFeature;
 window.schools = schools;
-window.catchment = catchment;
+window.catchments = catchments;
