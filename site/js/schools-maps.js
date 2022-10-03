@@ -1,6 +1,20 @@
-import schools from '../data/schools.js';
+import catchments from '../data/catchments.js';
 
-let schoolMap = L.map('school-map').setView([40.0, -75.11], 13);
+function initializeSchoolMap(){
+    let schoolMap = L.map('school-map').setView([40.0, -75.11], 13);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { 
+        maxZoom: 19, 
+        attribution: '© OpenStreetMap',
+    }).addTo(schoolMap);
+ 
+ //Add catchments as a geojson layer
+    L.geoJSON(catchments, {
+       style: {fill: null, color: 'black'}
+    }).addTo(schoolMap);
+
+    return schoolMap;
+}
 
 // Function to pull geomtery
 // function pulls select features from each school
@@ -20,22 +34,26 @@ function makeSchoolFeature(school) {
 }
 
 // Function should map all the points we just pulled
-const schoolFeatureCollection = {
-    "type": "FeatureCollection",
-    "features": schools.map(makeSchoolFeature),
-};
+function showSchoolsOnMap(SchoolsToShow, schoolMap) {
+    const schoolFeatureCollection = {
+        "type": "FeatureCollection",
+        "features": SchoolsToShow.map(makeSchoolFeature),
+    };
 
-//CIRCLE MARKER IS NOT WORKING
-L.geoJSON(schoolFeatureCollection, {
-    pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
-    style:{
-        stroke: null,
-        fillOpacity: 0.9,
-        radius: 3,
-        
-    },
-}).addTo(schoolMap);
+    L.geoJSON(schoolFeatureCollection, {
+        pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
+        style:{
+            stroke: null,
+            fillOpacity: 0.9,
+            radius: 3, 
+        },
+    })
+    .bindTooltip('This is a tooltip')
+    .addTo(schoolMap);
+}
 
-// Expose variables to the global scope
-window.makeSchoolFeature = makeSchoolFeature;
-window.schools = schools;
+export {
+    initializeSchoolMap,
+    showSchoolsOnMap,
+  };
+

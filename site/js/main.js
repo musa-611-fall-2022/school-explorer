@@ -1,7 +1,8 @@
 import schools from '../data/schools.js';
-import catchments from '../data/catchments.js';
+import { initializeSchoolMap, showSchoolsOnMap} from './schools-maps.js';
 
-let schoolMap = L.map('school-map').setView([40.0, -75.11], 13);
+let schoolMap = initializeSchoolMap();
+showSchoolsOnMap(schools, schoolMap)
 
 let schoolCheckboxes = document.querySelectorAll('.grade-checkbox');
 
@@ -12,59 +13,10 @@ for (const cb of schoolCheckboxes) {
     });
 }
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { 
-    maxZoom: 19, 
-    attribution: '© OpenStreetMap',
- }).addTo(schoolMap);
- 
- //Add catchments as a geojson layer
- L.geoJSON(catchments, {
-    style: {fill: null, color: 'black'}
- }).addTo(schoolMap);
 
-// Function to pull geomtery
-// function pulls select features from each school
-function makeSchoolFeature(school) {
-    return{
-        'type': 'Feature',
-        'id': school["sdp_id"],
-        'properties':{
-            "school_name": school["name"],
-            "Email": school["FACE Liason Email"],
-            "Phone Number": school["FACE Liasion Phone Number"],
-            "Admission type": school["Admission Type"],
-            "Grades Served": school["Current Grade Span Served"],
-        },
-        "geometry": school["geom"],
-    };
-}
-
-// Function should map all the points we just pulled
-function showSchoolsOnMap(SchoolsToShow, schoolMap) {
-    const schoolFeatureCollection = {
-        "type": "FeatureCollection",
-        "features": SchoolsToShow.map(makeSchoolFeature),
-    };
-
-    L.geoJSON(schoolFeatureCollection, {
-        pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
-        style:{
-            stroke: null,
-            fillOpacity: 0.9,
-            radius: 3, 
-        },
-    })
-    .bindTooltip('This is a tooltip')
-    .addTo(schoolMap);
-}
-
-
-//CIRCLE MARKER IS NOT WORKING
 
 
 
 // Expose variables to the global scope
-window.makeSchoolFeature = makeSchoolFeature;
 window.schools = schools;
-window.catchments = catchments;
-window.schoolCheckboxes = schoolCheckboxes
+window.schoolCheckboxes = schoolCheckboxes;
