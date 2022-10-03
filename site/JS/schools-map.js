@@ -30,12 +30,16 @@ function makeSchoolFeature(school) {
 }
 
 function showSchoolsOnMap(schoolsToShow, schoolsMap) {
+    if (schoolsMap.schoolLayer !== undefined){
+        schoolsMap.removeLayer(schoolsMap.schoolLayer);
+    };
+
     const stopFeatureCollection = {
         "type": "FeatureCollection",
         "features": schoolsToShow.map(makeSchoolFeature)
     };
 
-    L.geoJSON(stopFeatureCollection, {
+    schoolsMap.schoolLayer = L.geoJSON(stopFeatureCollection, {
         pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
         style:{
             stroke: null,
