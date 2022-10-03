@@ -52,3 +52,8 @@ input[type=text] {
     width: 100%;
     font-size: 13px;
 }
+
+.grade-list {
+    font-size: 11px;
+    color: #aaa;
+}
