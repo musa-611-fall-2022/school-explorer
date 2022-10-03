@@ -36,7 +36,16 @@ const schoolFeatureCollection = {
     "features": schools.map(makeSchoolFeature),
 };
 
-L.geoJSON(schoolFeatureCollection).addTo(schoolMap);
+//CIRCLE MARKER IS NOT WORKING
+L.geoJSON(schoolFeatureCollection, {
+    pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
+    style:{
+        stroke: null,
+        fillOpacity: 0.9,
+        radius: 3,
+        
+    },
+}).addTo(schoolMap);
 
 
 // Expose variables to the global scope
