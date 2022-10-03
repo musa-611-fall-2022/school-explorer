@@ -3,15 +3,6 @@ import catchments from '../data/catchments.js';
 
 let schoolMap = L.map('school-map').setView([40.0, -75.11], 13);
 
-let gradeCheckboxes = document.querySelectorAll(".grade-checkbox");
-
-for (const cb of gradeCheckboxes) {
-    cb.addEventListener('change', (evt) => {
-        console.log("You clicked a checkbox");
-        console.log(evt.target);
-    });
-}
-
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { 
     maxZoom: 19, 
     attribution: '© OpenStreetMap',
@@ -61,4 +52,3 @@ L.geoJSON(schoolFeatureCollection, {
 window.makeSchoolFeature = makeSchoolFeature;
 window.schools = schools;
 window.catchments = catchments;
-window.gradeCheckboxes = gradeCheckboxes;
