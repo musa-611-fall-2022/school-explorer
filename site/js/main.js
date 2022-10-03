@@ -17,16 +17,17 @@ for (const cb of schoolCheckboxes) {
     });
 }
 
-//For when a change is made
-schoolNameInput.addEventListener('change',() => {
-    console.log('text changed: ' + schoolNameInput.value);
-});
-
-//For when content is inputted
 schoolNameInput.addEventListener('input',() => {
-    console.log('text changed: ' + schoolNameInput.value);
+    const text = schoolNameInput.value;
+    const filteredSchools = schools.filter(function (schools) {
+        const name = schools["name"].toLowerCase();
+        const hasText = name.includes(text);
+        return hasText;
+    });
+        showSchoolsOnMap(filteredSchools, schoolMap);
 });
 
 // Expose variables to the global scope
 window.schools = schools;
 window.schoolCheckboxes = schoolCheckboxes;
+window.schoolMap = schoolMap;

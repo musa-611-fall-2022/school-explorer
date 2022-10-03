@@ -35,12 +35,17 @@ function makeSchoolFeature(school) {
 
 // Function should map all the points we just pulled
 function showSchoolsOnMap(SchoolsToShow, schoolMap) {
+    if (schoolMap.schoolLayers !== undefined) {
+        schoolMap.removeLayer(schoolMap.schoolLayers);
+    }
+    
+
     const schoolFeatureCollection = {
         "type": "FeatureCollection",
         "features": SchoolsToShow.map(makeSchoolFeature),
     };
 
-    L.geoJSON(schoolFeatureCollection, {
+    schoolMap.schoolLayers = L.geoJSON(schoolFeatureCollection, {
         pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
         style:{
             stroke: null,
