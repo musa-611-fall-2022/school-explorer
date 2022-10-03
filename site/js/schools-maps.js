@@ -48,7 +48,7 @@ function showSchoolsOnMap(SchoolsToShow, schoolMap) {
             radius: 3, 
         },
     })
-    .bindTooltip('This is a tooltip')
+    .bindTooltip(layer => layer.feature.properties['school_name'])
     .addTo(schoolMap);
 }
 
