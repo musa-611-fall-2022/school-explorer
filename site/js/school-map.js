@@ -1,5 +1,3 @@
-import { gradeArr } from './main.js';
-
 // Schoolmap-related funcs
 
 // Function 1: initialize base map
@@ -36,7 +34,7 @@ function showSchoolsOnMap(schoolsToShow, baseMap) {
     // First, make the individual school features into a feature collection
     const schoolFeatureCollection = {
         "type": "FeatureCollection",
-        "features": schoolsToShow.map(makeSchoolFeature)
+        "features": schoolsToShow.map(makeSchoolFeature),
     };
     // Then, add features onto the map
 
