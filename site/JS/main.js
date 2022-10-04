@@ -5,7 +5,7 @@ import { listSchoolCheckBoxes, shouldShowSchool, getFilteredSchools, listSchools
 
 //Initial Variables
 let schoolMap = initializeSchoolMap(); //Add map to page, reference with School Map
-let schoolNameInput = document.querySelector('#school-name-filter'); //Add reference variable for the text input
+let schoolNameFilter = document.querySelector('#school-name-filter'); //Add reference variable for the text input
 const grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]; //For listSchoolCheckboxes function
 
 //Initial functions
@@ -18,7 +18,7 @@ let schoolGradeFilters = document.querySelectorAll('.school-checkbox');
 let schoolList = document.querySelectorAll('.school-list-item');
 
 //Add event listeners to school name text boxfilter
-schoolNameInput.addEventListener('input', () => {
+schoolNameFilter.addEventListener('input', () => {
     const filteredSchools = getFilteredSchools();
     listSchools(filteredSchools, "school-list");
     showSchoolsOnMap(filteredSchools, schoolMap);
@@ -42,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //Global variables
 window.schools = schools;
-window.route;
-window.schoolNameInput = schoolNameInput;
+window.schoolNameFilter = schoolNameFilter;
 window.schoolGradeFilters = schoolGradeFilters;
 window.schoolList = schoolList;

@@ -20,7 +20,7 @@ function listSchoolCheckBoxes(schoolsToList, locationID) {
 }
 
 function shouldShowSchool(name) {
-    let text = schoolNameInput.value.toLowerCase();
+    let text = schoolNameFilter.value.toLowerCase();
     let show = true;
     for (const checkbox of schoolGradeFilters) {
         if (checkbox.checked) {
@@ -51,13 +51,6 @@ function listSchools(schoolsToShow, whereToList){
         list.append(li);
     }
 }
-
-/*
-function showSchoolNames(schoolsToShow, locationId) {
-    const schoolNames = schoolsToShow.map(x => x.name + "<br>");
-    document.getElementById(locationId).innerHTML = schoolNames.join("");
-}
-*/
 
 
 export {
