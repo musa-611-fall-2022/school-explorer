@@ -11,14 +11,21 @@
         <link rel="stylesheet" href="css/stylesheet.css">
    </head>
    <body>
-          <h1> School Explorer</h1>
+          <h1>School Explorer</h1>
 
           <div id="school-map"></div>
           <div id="console2"></div>
-          <ul id="school-list"></ul>
-          <input type="text" id="school-name-filter" placeholder="Enter School Name"></input>
           <div id="checkboxList" class="console3">
+               <h2>Filter schools by grade</h2>
           </div>
+
+          <div class="console3">
+          <h2>Filter schools by name</h2>
+
+               <ul id="school-list"></ul>
+               <input type="text" id="school-name-filter" placeholder="Enter School Name"></input>
+          </div>
+
 
         <!-- Leflet JS-->
         <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"

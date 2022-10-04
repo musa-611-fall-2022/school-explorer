@@ -13,7 +13,7 @@ import { htmlToElement } from './template-tools.js'
 function listSchoolCheckBoxes(schoolsToList, locationID) {
     const list = document.getElementById(locationID);
     for (let names of schoolsToList) {
-        const html = `<label class="checkbox-label"><br><input type="checkbox" class="school-checkbox" value = "${names['name']}">${names['name']}</label>`;
+        const html = `<label class="checkbox-label"><input type="checkbox" class="school-checkbox" value = "${names}">${names}</label>`;
         const li = htmlToElement(html);
         list.append(li);
     }
@@ -21,25 +21,24 @@ function listSchoolCheckBoxes(schoolsToList, locationID) {
 
 function shouldShowSchool(name) {
     let text = schoolNameInput.value.toLowerCase();
-    let show = false;
-    if (name.toLowerCase().includes(text)) {  
-        show = true;
-    } else {
-        for (const checkbox of schoolCheckboxes) {
-            if (checkbox.checked) {
-                const thisName = checkbox.value.toLowerCase();
-                if (name.toLowerCase().includes(thisName)) {
-                    show = true;
-                }
+    let show = true;
+    for (const checkbox of schoolCheckboxes) {
+        if (checkbox.checked) {
+            const grades = name[`Grade ${checkbox.value}`];
+            if (grades != 1) {
+                show = false;
             }
-         } 
-    };
+        }
+     }
+    if (!name['name'].toLowerCase().includes(text)) {  
+        show = false;
+    } 
     return show;
 } 
 
 function getFilteredSchools() {
     let filteredSchools = schools;
-    filteredSchools = schools.filter(x => shouldShowSchool(x['name']));
+    filteredSchools = schools.filter(x => shouldShowSchool(x));
     return filteredSchools;
 }
 
