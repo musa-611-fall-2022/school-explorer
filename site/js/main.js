@@ -37,7 +37,7 @@ L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.pn
     attribution: '© OpenStreetMap',
 }).addTo(baseMap);
 
-window.schoolMap = schoolMap;
+window.schoolMap = baseMap;
 
 // Then add school content:
 // This is only the initial showing of the school points
