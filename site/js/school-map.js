@@ -1,11 +1,11 @@
-import catchments from '../data/catchments.js';
+// import catchments from '../data/catchments.js';
 import philly from '../data/philly.js';
-import schools from '../data/schools.js';
-import {schoolHighlight} from './school-list.js'; // might not need this
+// import schools from '../data/schools.js';
+// import {schoolHighlight} from './school-list.js'; // might not need this
 
 
 function initializeSchoolMap() {
-    let schoolMap = L.map("school-map").setView([40.00658887714428, -75.1300204468765],11);
+    let schoolMap = L.map("school-map").setView([40.00658887714428, -75.1300204468765], 11);
 
     L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
         maxZoom: 19,
@@ -13,17 +13,17 @@ function initializeSchoolMap() {
     }).addTo(schoolMap);
 
     // ATTEMPT AT STRETCH 1 TASK
-    // L.geoJSON(catchments).addTo(schoolMap); 
+    // L.geoJSON(catchments).addTo(schoolMap)
 
     L.geoJSON(philly, {
         style: {
             fill: null,
             color: "#023047",
-            fillOpacity: 0.8 
-        }
+            fillOpacity: 0.8,
+        },
     }).addTo(schoolMap);
 
-    return schoolMap
+    return schoolMap;
     }
 
 function makeSchoolFeature(schools) {
@@ -38,8 +38,8 @@ function makeSchoolFeature(schools) {
             "id": schools['sdp_id'],
         },
     "geometry": schools['geom'],
-    } 
-    return schoolInfo
+    };
+    return schoolInfo;
 }
 
 
@@ -57,19 +57,18 @@ schoolMap.schoolLayers = L.geoJSON(schoolFeatureCollection, {
     style: {
         stroke: null,
         color: "#023047",
-        fillOpacity: 0.7, 
-        radius: 5,
-    }
+        fillOpacity: 0.7, radius: 5,
+    },
 })
 
 
 .bindPopup(layer => layer.feature.properties['schoolName']).openPopup()
 
 // ATTEMPT AT STRETCH 1 TASK
-// .on("click", () => { 
-//     schoolHighlight(schools) 
-//     console.log(schools['name']) 
-// }) 
+// .on("click", () => {
+//     schoolHighlight(schools)
+//     console.log(schools['name'])
+// })
 
 
 .addTo(schoolMap);
@@ -82,5 +81,5 @@ export {
 };
 
 window.makeSchoolFeature=makeSchoolFeature;
-console.log(makeSchoolFeature)
+console.log(makeSchoolFeature);
 

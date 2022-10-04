@@ -1,6 +1,6 @@
 import schools from '../data/schools.js';
-import {initializeSchoolMap, showSchoolsOnMap} from './school-map.js';
-import {showSchoolsInList} from './school-list.js';
+import { initializeSchoolMap, showSchoolsOnMap } from './school-map.js';
+import { showSchoolsInList }  from './school-list.js';
 
 let schoolMap = initializeSchoolMap();
 showSchoolsOnMap(schools, schoolMap);
@@ -8,8 +8,8 @@ showSchoolsOnMap(schools, schoolMap);
 let schoolList = document.querySelector('#school-list');
 showSchoolsInList(schools, schoolList);
 
-let schoolGradeFilters = document.querySelectorAll('.school-checkbox')
-let schoolNameFilter = document.querySelector('#school-name-filter')
+let schoolGradeFilters = document.querySelectorAll('.school-checkbox');
+let schoolNameFilter = document.querySelector('#school-name-filter');
 
 function shouldShowSchool () {
     let filteredSchools = schools;
@@ -26,11 +26,11 @@ function shouldShowSchool () {
     for (const checkbox of schoolGradeFilters) {
         if (checkbox.checked) {
             filteredSchools = filteredSchools.filter(function (school) {
-                const school_type = checkbox.value;
-                if (school[school_type] === "1") {
-                    return true
+                const schoolType = checkbox.value;
+                if (school[schoolType] === "1") {
+                    return true;
                 } else {
-                    return false
+                    return false;
                 }
 
             });
