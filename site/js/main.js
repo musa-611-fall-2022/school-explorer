@@ -12,8 +12,15 @@ let schoolNameInput = document.querySelector('#school-name-input');
 
 for (const cb of schoolCheckboxes) {
     cb.addEventListener('change', (evt) => {
-        console.log('You clicked a checkbox');
-        console.log(evt.target);
+        const checkbox = evt.target;
+        const level = checkbox.value;
+        const filteredSchools = schools.filter(function (schools) {
+            const levels = schools["School Level"].toLowerCase();
+            const hasLevels = levels.includes(level);
+            return hasLevels;
+        });
+        showSchoolsOnMap(filteredSchools, schoolMap);
+        console.log('why do you hate me?')
     });
 }
 
