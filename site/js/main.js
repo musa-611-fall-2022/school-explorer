@@ -14,7 +14,6 @@ let schoolNameFilter = document.querySelector('#school-name-filter');
 function shouldShowSchool () {
     let filteredSchools = schools;
 
-// Filter based on school name
     const text = schoolNameFilter.value;
     filteredSchools = filteredSchools.filter(function(school) {
         const name = school['name'].toLowerCase();
@@ -22,7 +21,6 @@ function shouldShowSchool () {
         return hasText;
     });
 
-//  Filter based on school checkboxes
     for (const checkbox of schoolGradeFilters) {
         if (checkbox.checked) {
             filteredSchools = filteredSchools.filter(function (school) {
@@ -52,8 +50,6 @@ schoolNameFilter.addEventListener('input', () => {
     showSchoolsOnMap(filteredSchools, schoolMap);
     showSchoolsInList(filteredSchools, schoolList);
 });
-
-
 
 window.schools = schools;
 window.schoolMap = schoolMap;
