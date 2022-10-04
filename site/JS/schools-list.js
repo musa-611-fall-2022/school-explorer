@@ -1,5 +1,4 @@
 import schools from '../data/schools.js';
-import {schoolGradeFilters, schoolNameFilter} from './main.js';
 import { htmlToElement } from './template-tools.js';
 
 /*function listSchoolCheckBoxes(schoolsToShow, checkboxList){

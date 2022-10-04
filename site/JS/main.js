@@ -35,7 +35,7 @@ for (let cb of schoolGradeFilters) {
 }
 
 //Clearing input on load
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoadeds", function() {
     document.getElementById("school-name-filter").value= "";
   });
 
