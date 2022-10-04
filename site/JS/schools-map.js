@@ -1,15 +1,15 @@
-import schools from '../data/schools.js'
+import schools from '../data/schools.js';
 
 function initializeSchoolMap() {
     let schoolMap = L.map('school-map').setView([39.955, -75.15], 12);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '© OpenStreetMap'
+        attribution: '© OpenStreetMap',
     }).addTo(schoolMap);
 
     L.geoJSON(schools, {
-        style: {fill: null, color: '#000'}
+        style: { fill: null, color: '#000' },
     }).addTo(schoolMap);
 
     return schoolMap;
@@ -32,11 +32,11 @@ function makeSchoolFeature(school) {
 function showSchoolsOnMap(schoolsToShow, schoolsMap) {
     if (schoolsMap.schoolLayer !== undefined){
         schoolsMap.removeLayer(schoolsMap.schoolLayer);
-    };
+    }
 
     const stopFeatureCollection = {
         "type": "FeatureCollection",
-        "features": schoolsToShow.map(makeSchoolFeature)
+        "features": schoolsToShow.map(makeSchoolFeature),
     };
 
     schoolsMap.schoolLayer = L.geoJSON(stopFeatureCollection, {
@@ -58,4 +58,4 @@ export {
     initializeSchoolMap,
     showSchoolsOnMap,
     showSchoolNames,
-}
+};

@@ -1,4 +1,6 @@
-import { htmlToElement } from './template-tools.js'
+import schools from '../data/schools.js';
+import {schoolGradeFilters, schoolNameFilter} from './main.js';
+import { htmlToElement } from './template-tools.js';
 
 /*function listSchoolCheckBoxes(schoolsToShow, checkboxList){
     element = document.getElementById
@@ -29,12 +31,12 @@ function shouldShowSchool(name) {
                 show = false;
             }
         }
-     }
-    if (!name['name'].toLowerCase().includes(text)) {  
+    }
+    if (!name['name'].toLowerCase().includes(text)) {
         show = false;
-    } 
+    }
     return show;
-} 
+}
 
 function getFilteredSchools() {
     let filteredSchools = schools;
@@ -47,7 +49,7 @@ function listSchools(schoolsToShow, whereToList){
     list.innerHTML = '';
     for (let school of schoolsToShow) {
         const html = `<li class="school-list-item">${school['name']} <ul class="school-list-detail"><li class="grade">Grades Served: ${school["Current Grade Span Served"]}</li></ul></li>`;
-        const li = htmlToElement(html);        
+        const li = htmlToElement(html);
         list.append(li);
     }
 }

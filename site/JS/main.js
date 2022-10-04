@@ -1,7 +1,6 @@
-import schools from '../data/schools.js'
-import { initializeSchoolMap, showSchoolsOnMap, showSchoolNames,} from './schools-map.js'
-import { htmlToElement } from './template-tools.js'
-import { listSchoolCheckBoxes, shouldShowSchool, getFilteredSchools, listSchools, } from './schools-list.js'
+import schools from '../data/schools.js';
+import { initializeSchoolMap, showSchoolsOnMap} from './schools-map.js';
+import { listSchoolCheckBoxes, getFilteredSchools, listSchools} from './schools-list.js';
 
 //Initial Variables
 let schoolMap = initializeSchoolMap(); //Add map to page, reference with School Map
@@ -33,7 +32,7 @@ for (let cb of schoolGradeFilters) {
         showSchoolsOnMap(filteredSchools, schoolMap);
         schoolList = document.getElementById('school-list');
     })
-};
+}
 
 //Clearing input on load
 document.addEventListener("DOMContentLoaded", function() {
