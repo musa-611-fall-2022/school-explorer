@@ -27,7 +27,6 @@ function makeSchoolFeature(school) {
             "management_organization": school["Management Organization"],
             "address": school["Street Address"],
         },
-        "grades": _.pick(school, gradeArr),
         "geometry": school["geom"],
     };
 }

@@ -1,59 +1,62 @@
 * {
-    box-sizing: border-box;
-    position: relative;
+  box-sizing: border-box;
+  position: relative;
 }
 
 html {
-    font-family: Roboto, sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
-/*----------------------------------------------*/
-/* General settings for main blocks*/
-/*----------------------------------------------*/
+/* ---------------------------------------------- */
+
+/* General settings for main blocks */
+
+/* ---------------------------------------------- */
 
 .padding-top-15 {
-    padding-top: 1.5em;
+  padding-top: 1.5em;
 }
 
 .viewport-70 {
-    height: 68vh;
-    width: auto;
+  height: 68vh;
+  width: auto;
 }
 
 @media only screen and (min-width: 768px) {
-    .padding-right-big-screen {
-        padding-right: 1em;
-    }
+  .padding-right-big-screen {
+    padding-right: 1em;
+  }
 }
 
-.entire-width-height{
-    width: 100%;
-    height: 100%;
+.entire-width-height {
+  width: 100%;
+  height: 100%;
 }
 
 h1 {
-    font-size: 36px;
-    font-weight: 800;
+  font-size: 36px;
+  font-weight: 800;
 }
 
 h2 {
-    font-size: 20px;
-    line-height: 1;
+  font-size: 20px;
+  line-height: 1;
 }
 
-.grade-checkbox-text, .grade-checkbox{
-    font-size: 13px;
-    margin-top: 0.1em;
-    margin-bottom: 0.1em;
+.grade-checkbox-text,
+.grade-checkbox {
+  font-size: 13px;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
 }
 
-input[type=text] {
-    display: block;
-    width: 100%;
-    font-size: 13px;
+input[type="text"] {
+  display: block;
+  width: 100%;
+  font-size: 13px;
 }
 
 .grade-list {
-    font-size: 11px;
-    color: #aaa;
+  font-size: 11px;
+  color: #aaa;
 }
