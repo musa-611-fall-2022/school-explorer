@@ -3,7 +3,7 @@ import schools from '../data/schools.js';
 function initializeSchoolMap() {
     let schoolMap = L.map('school-map').setView([39.955, -75.15], 12);
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://api.mapbox.com/styles/v1/keelbn/cl8c2nvmq003114li896sf85z/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1Ijoia2VlbGJuIiwiYSI6ImNqaWVseGZjZzA3emMzdnAxM296OTFjNG8ifQ.W2j9Y2mz4t6vGRyKJk_Nyw', {
         maxZoom: 19,
         attribution: '© OpenStreetMap',
     }).addTo(schoolMap);

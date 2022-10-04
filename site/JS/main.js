@@ -1,6 +1,6 @@
 import schools from '../data/schools.js';
-import { initializeSchoolMap, showSchoolsOnMap} from './schools-map.js';
-import { listSchoolCheckBoxes, getFilteredSchools, listSchools} from './schools-list.js';
+import { initializeSchoolMap, showSchoolsOnMap } from './schools-map.js';
+import { listSchoolCheckBoxes, getFilteredSchools, listSchools } from './schools-list.js';
 
 //Initial Variables
 let schoolMap = initializeSchoolMap(); //Add map to page, reference with School Map
@@ -22,7 +22,7 @@ schoolNameFilter.addEventListener('input', () => {
     listSchools(filteredSchools, "school-list");
     showSchoolsOnMap(filteredSchools, schoolMap);
     schoolList = document.getElementById('school-list');
-})
+});
 
 //Add event listeners to each checkbox grade filter
 for (let cb of schoolGradeFilters) {
@@ -31,7 +31,7 @@ for (let cb of schoolGradeFilters) {
         listSchools(filteredSchools, "school-list");
         showSchoolsOnMap(filteredSchools, schoolMap);
         schoolList = document.getElementById('school-list');
-    })
+    });
 }
 
 //Clearing input on load
