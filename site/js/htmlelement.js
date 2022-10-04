@@ -16,7 +16,7 @@ for more information: https://stackoverflow.com/a/35385518/123776
     template.innerHTML = trimmedHtml;
     return template.content.firstChild;
   }
-  
+
   /**
    * @param {String} HTML representing any number of sibling elements
    * @return {NodeList}
@@ -26,10 +26,10 @@ for more information: https://stackoverflow.com/a/35385518/123776
     template.innerHTML = html;
     return template.content.childNodes;
   }
-  
+
   window.htmlToElement = htmlToElement;
   window.htmlToElements = htmlToElements;
-  
+
   export {
     htmlToElement,
     htmlToElements,
