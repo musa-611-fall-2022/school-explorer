@@ -42,6 +42,7 @@ for (const cb of schoolGradeFilters) {
     cb.addEventListener('change', () => {
         const filteredSchools = shouldShowSchool();
         showSchoolsOnMap(filteredSchools, schoolMap);
+        showSchoolsInList(filteredSchools, schoolList);
     });
 }
 
