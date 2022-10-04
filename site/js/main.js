@@ -6,7 +6,7 @@
 import schools from '../data/schools.js';
 
 // Import functions related to showing the school map
-import { initializeSchoolMap, showSchoolsOnMap } from './school-map.js';
+import { showSchoolsOnMap } from './school-map.js';
 
 import { showSchoolsInList } from './school-list.js';
 
@@ -28,12 +28,21 @@ export const gradeArr = Object.keys(schools[0]).filter(key => {
 //-----------------------------------------------//
 
 // First initialize the base map
-let schoolMap = initializeSchoolMap();
+let schoolMap = document.querySelector("#school-map");
+let baseMap = L.map(schoolMap).setView([39.95, -75.15], 11.5);
+// For other map tile styles, see this website:https://leaflet-extras.github.io/leaflet-providers/preview/
+
+L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+    maxZoom: 20,
+    attribution: '© OpenStreetMap',
+}).addTo(baseMap);
+
+window.schoolMap = schoolMap;
 
 // Then add school content:
 // This is only the initial showing of the school points
 // After any selection, the showing of the schools is done from inside the eventListeners
-showSchoolsOnMap(schools, schoolMap);
+showSchoolsOnMap(schools, baseMap);
 
 //-----------------------------------------------//
 // MAKING A LIST OF CHECKBOXES OF ALL THE GRADES
@@ -92,7 +101,7 @@ function filterByGrade(schoolsList) {
 for(const checkbox of schoolGradeFilters){
     checkbox.addEventListener('change', ( ) => {
         const filteredSchools = filterByGrade(filterByName(schools));
-        showSchoolsOnMap(filteredSchools, schoolMap);
+        showSchoolsOnMap(filteredSchools, baseMap);
         showSchoolsInList(filteredSchools, schoolList);
     });
 }
@@ -100,13 +109,12 @@ for(const checkbox of schoolGradeFilters){
 // Add event listener to the input box
 schoolNameFilter.addEventListener('input', ( ) => {
     const filteredSchools = filterByGrade(filterByName(schools));
-    showSchoolsOnMap(filteredSchools, schoolMap);
+    showSchoolsOnMap(filteredSchools, baseMap);
     showSchoolsInList(filteredSchools, schoolList);
 });
 
 window.schools = schools;
 window.gradeArr = gradeArr;
-window.schoolMap = schoolMap;
 window.schoolList = schoolList;
 window.schoolNameFilter = schoolNameFilter;
 window.schoolGradeFilters = schoolGradeFilters;

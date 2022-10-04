@@ -1,16 +1,5 @@
 // Schoolmap-related funcs
 
-// Function 1: initialize base map
-function initializeSchoolMap() {
-    let baseMap = L.map('school-map').setView([39.95, -75.15], 11.5);
-    // For other map tile styles, see this website:https://leaflet-extras.github.io/leaflet-providers/preview/
-    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
-        maxZoom: 20,
-        attribution: '© OpenStreetMap',
-    }).addTo(baseMap);
-
-    return baseMap;
-}
 // Function 2: make individual school features
 
 // First, we need to get an array of all "grade" properties
@@ -69,10 +58,8 @@ function showSchoolsOnMap(schoolsToShow, baseMap) {
 }
 
 export{
-    initializeSchoolMap,
     showSchoolsOnMap,
 };
 
-window.initializeSchoolMap = initializeSchoolMap;
 window.showSchoolsOnMap = showSchoolsOnMap;
 window.makeSchoolFeature = makeSchoolFeature;

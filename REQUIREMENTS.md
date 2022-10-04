@@ -17,7 +17,7 @@
   - School name
   - Grades served
 
-  **The element represeting the list (i.e. the `ul` or `ol`) should be available on the global `window` object as a variable named `window.schoolList`.**
+  **The element representing the list (i.e. the `ul` or `ol`) should be available on the global `window` object as a variable named `window.schoolList`.**
 
 ## Stretch 1: Selecting Schools
 
