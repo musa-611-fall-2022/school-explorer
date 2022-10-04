@@ -22,7 +22,7 @@ function listSchoolCheckBoxes(schoolsToList, locationID) {
 function shouldShowSchool(name) {
     let text = schoolNameInput.value.toLowerCase();
     let show = true;
-    for (const checkbox of schoolCheckboxes) {
+    for (const checkbox of schoolGradeFilters) {
         if (checkbox.checked) {
             const grades = name[`Grade ${checkbox.value}`];
             if (grades != 1) {
@@ -42,14 +42,23 @@ function getFilteredSchools() {
     return filteredSchools;
 }
 
-function listSchools(schoolsToShow, schoolList){
-    schoolList.innerHTML = '';
+function listSchools(schoolsToShow, whereToList){
+    const list = document.getElementById(whereToList);
+    list.innerHTML = '';
     for (let school of schoolsToShow) {
-        const html = `<li class="school-list-item">${school['name']}</li>`;
-        const li = htmlToElement(html);
-        schoolList.append(li);
+        const html = `<li class="school-list-item">${school['name']} <ul class="school-list-detail"><li class="grade">Grades Served: ${school["Current Grade Span Served"]}</li></ul></li>`;
+        const li = htmlToElement(html);        
+        list.append(li);
     }
 }
+
+/*
+function showSchoolNames(schoolsToShow, locationId) {
+    const schoolNames = schoolsToShow.map(x => x.name + "<br>");
+    document.getElementById(locationId).innerHTML = schoolNames.join("");
+}
+*/
+
 
 export {
     listSchoolCheckBoxes,

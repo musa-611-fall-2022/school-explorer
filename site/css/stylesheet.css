@@ -4,12 +4,12 @@
 }
 
 #console2 {
-    width: 280px;
+    width: 400px;
     margin: 10px;
     background-color: white;
     top: 215px;
     min-height: 100px;
-    height: 30%;
+    height: 400px;
     overflow-x: hidden;
     overflow-y: scroll;
   }
@@ -22,4 +22,29 @@
     min-height: 50px;
     overflow-x: hidden;
     overflow-y: scroll;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+
+
+ul { list-style: none;
+    padding:0;
+    list-style-type: none;
+}
+
+
+.school-list-item{
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.school-list-item .grade{
+    font-size: 0.8em;
+}
+
+.school-list-detail{
+    margin: 0px;
 }

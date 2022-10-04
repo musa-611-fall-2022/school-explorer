@@ -1,7 +1,7 @@
 import schools from '../data/schools.js'
 import { initializeSchoolMap, showSchoolsOnMap, showSchoolNames,} from './schools-map.js'
 import { htmlToElement } from './template-tools.js'
-import { listSchoolCheckBoxes, shouldShowSchool, getFilteredSchools } from './schools-list.js'
+import { listSchoolCheckBoxes, shouldShowSchool, getFilteredSchools, listSchools, } from './schools-list.js'
 
 //Initial Variables
 let schoolMap = initializeSchoolMap(); //Add map to page, reference with School Map
@@ -10,25 +10,28 @@ const grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "1
 
 //Initial functions
 showSchoolsOnMap(schools, schoolMap); //Load school locations on map
-showSchoolNames(schools, "console2"); //Load school names into console2 array
+listSchools(schools, "school-list"); //Load school names into console2 array
 listSchoolCheckBoxes(grades, "checkboxList"); //Add checkboxes to page
 
-//Adding reference variable for checkboxes after they are added to the document
-let schoolCheckboxes = document.querySelectorAll('.school-checkbox');
+//Adding reference variable for checkboxes and school list after they are added to the document
+let schoolGradeFilters = document.querySelectorAll('.school-checkbox');
+let schoolList = document.querySelectorAll('.school-list-item');
 
 //Add event listeners to school name text boxfilter
 schoolNameInput.addEventListener('input', () => {
     const filteredSchools = getFilteredSchools();
-    showSchoolNames(filteredSchools, "console2");
+    listSchools(filteredSchools, "school-list");
     showSchoolsOnMap(filteredSchools, schoolMap);
+    schoolList = document.getElementById('school-list');
 })
 
 //Add event listeners to each checkbox grade filter
-for (let cb of schoolCheckboxes) {
+for (let cb of schoolGradeFilters) {
     cb.addEventListener('change', () => {
         const filteredSchools = getFilteredSchools();
-        showSchoolNames(filteredSchools, "console2");
+        listSchools(filteredSchools, "school-list");
         showSchoolsOnMap(filteredSchools, schoolMap);
+        schoolList = document.getElementById('school-list');
     })
 };
 
@@ -41,5 +44,5 @@ document.addEventListener("DOMContentLoaded", function() {
 window.schools = schools;
 window.route;
 window.schoolNameInput = schoolNameInput;
-window.schoolCheckboxes = schoolCheckboxes;
-
+window.schoolGradeFilters = schoolGradeFilters;
+window.schoolList = schoolList;
