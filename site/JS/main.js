@@ -44,3 +44,9 @@ window.schools = schools;
 window.schoolNameFilter = schoolNameFilter;
 window.schoolGradeFilters = schoolGradeFilters;
 window.schoolList = schoolList;
+
+export {
+    schoolNameFilter,
+    schoolGradeFilters,
+    schoolList,
+}
