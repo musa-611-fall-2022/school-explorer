@@ -44,8 +44,13 @@ expect.extend({
   // be a Puppeteer page object.
   async toHaveVariableInGlobalScope(received, varname) {
     const page = received;
-    const result = await page.evaluate((varname) => window[varname], varname);
-    const pass = result !== undefined;
+    const pass = await page.evaluate((varname) => window[varname] !== undefined, varname);
     return { pass, message: () => `expected variable \`${varname}\` ${pass ? 'not ' : ''}to be defined in the window global scope.` };
+  },
+
+  async toHaveSomeVariableInGlobalScope(received, varnames) {
+    const page = received;
+    const pass = await page.evaluate((varnames) => varnames.some(varname => window[varname] !== undefined), varnames);
+    return { pass, message: () => `expected ${pass ? 'none' : 'one'} of the following variables to be defined in the window global scope: ${varnames}.` };
   },
 });
