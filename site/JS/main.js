@@ -1,6 +1,8 @@
 import schools from '../data/schools.js';
 import { initializeSchoolMap, showSchoolsOnMap } from './schools-map.js';
-import { listSchoolCheckBoxes, getFilteredSchools, listSchools } from './schools-list.js';
+import { listSchools } from './schools-list.js';
+import { htmlToElement } from './template-tools.js';
+
 
 //Initial Variables
 let schoolMap = initializeSchoolMap(); //Add map to page, reference with School Map
@@ -16,14 +18,6 @@ listSchoolCheckBoxes(grades, "checkboxList"); //Add checkboxes to page
 let schoolGradeFilters = document.querySelectorAll('.school-checkbox');
 let schoolList = document.querySelectorAll('.school-list-item');
 
-//Add event listeners to school name text boxfilter
-schoolNameFilter.addEventListener('input', () => {
-    const filteredSchools = getFilteredSchools();
-    listSchools(filteredSchools, "school-list");
-    showSchoolsOnMap(filteredSchools, schoolMap);
-    schoolList = document.getElementById('school-list');
-});
-
 //Add event listeners to each checkbox grade filter
 for (let cb of schoolGradeFilters) {
     cb.addEventListener('change', () => {
@@ -34,19 +28,53 @@ for (let cb of schoolGradeFilters) {
     });
 }
 
+//Add event listeners to school name text boxfilter
+schoolNameFilter.addEventListener('input', () => {
+    const filteredSchools = getFilteredSchools();
+    listSchools(filteredSchools, "school-list");
+    showSchoolsOnMap(filteredSchools, schoolMap);
+    schoolList = document.getElementById('school-list');
+});
+
 //Clearing input on load
 document.addEventListener("DOMContentLoadeds", function() {
     document.getElementById("school-name-filter").value= "";
   });
+
+function listSchoolCheckBoxes(schoolsToList, locationID) {
+    const list = document.getElementById(locationID);
+    for (let names of schoolsToList) {
+        const html = `<label class="checkbox-label"><input type="checkbox" class="school-checkbox" value = "${names}">${names}</label>`;
+        const li = htmlToElement(html);
+        list.append(li);
+    }
+}
+
+function shouldShowSchool(name) {
+    let text = schoolNameFilter.value.toLowerCase();
+    let show = true;
+    for (const checkbox of schoolGradeFilters) {
+        if (checkbox.checked) {
+            const grades = name[`Grade ${checkbox.value}`];
+            if (grades != 1) {
+                show = false;
+            }
+        }
+    }
+    if (!name['name'].toLowerCase().includes(text)) {
+        show = false;
+    }
+    return show;
+}
+
+function getFilteredSchools() {
+    let filteredSchools = schools;
+    filteredSchools = schools.filter(x => shouldShowSchool(x));
+    return filteredSchools;
+}
 
 //Global variables
 window.schools = schools;
 window.schoolNameFilter = schoolNameFilter;
 window.schoolGradeFilters = schoolGradeFilters;
 window.schoolList = schoolList;
-
-export {
-    schoolNameFilter,
-    schoolGradeFilters,
-    schoolList,
-}

@@ -1,9 +1,19 @@
+body {
+    display: flex;
+    flex-wrap: wrap row;
+}
+
 #school-map{
-    height:500px;
-    width: 500px;
+    display: flex;
+    justify-content: flex-end;
+    order: +1;
+    height: 80vh;
+    width: 80%;
 }
 
 #console2 {
+    display: flex;
+    order: 0;
     width: 400px;
     margin: 10px;
     background-color: white;
@@ -20,8 +30,6 @@
     background-color: white;
     top: 215px;
     min-height: 50px;
-    overflow-x: hidden;
-    overflow-y: scroll;
 }
 
 h1 {
@@ -31,6 +39,11 @@ h1 {
 ul { list-style: none;
     padding:0;
     list-style-type: none;
+}
+
+#checkboxList {
+    display: flex;
+    flex-direction: row;
 }
 
 .school-list-item{

@@ -1,38 +1,4 @@
-import schools from '../data/schools.js';
-import { schoolGradeFilters, schoolNameFilter } from './main.js';
 import { htmlToElement } from './template-tools.js';
-
-function listSchoolCheckBoxes(schoolsToList, locationID) {
-    const list = document.getElementById(locationID);
-    for (let names of schoolsToList) {
-        const html = `<label class="checkbox-label"><input type="checkbox" class="school-checkbox" value = "${names}">${names}</label>`;
-        const li = htmlToElement(html);
-        list.append(li);
-    }
-}
-
-function shouldShowSchool(name) {
-    let text = schoolNameFilter.value.toLowerCase();
-    let show = true;
-    for (const checkbox of schoolGradeFilters) {
-        if (checkbox.checked) {
-            const grades = name[`Grade ${checkbox.value}`];
-            if (grades != 1) {
-                show = false;
-            }
-        }
-    }
-    if (!name['name'].toLowerCase().includes(text)) {
-        show = false;
-    }
-    return show;
-}
-
-function getFilteredSchools() {
-    let filteredSchools = schools;
-    filteredSchools = schools.filter(x => shouldShowSchool(x));
-    return filteredSchools;
-}
 
 function listSchools(schoolsToShow, whereToList){
     const list = document.getElementById(whereToList);
@@ -45,8 +11,5 @@ function listSchools(schoolsToShow, whereToList){
 }
 
 export {
-    listSchoolCheckBoxes,
     listSchools,
-    shouldShowSchool,
-    getFilteredSchools,
 };

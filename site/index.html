@@ -1,5 +1,7 @@
-<!doctype=<html>
-   <head>
+<!DOCTYPE = html>
+
+<html>
+     <head>
         <title>School Explorer</title>
 
         <!-- Leaflet's Default Styles-->
@@ -9,11 +11,14 @@
 
         <!-- My CSS files -->
         <link rel="stylesheet" href="css/stylesheet.css">
-   </head>
-   <body>
-          <h1>School Explorer</h1>
+     </head>
+     <body>
+          <div>
+               <h1>School Explorer</h1>
+          </div>
 
           <div id="school-map"></div>
+          
           <div id="console2">
                <ul id="school-list"></ul>
           </div>
@@ -23,19 +28,16 @@
           </div>
 
           <div class="console3">
-          <h2>Filter schools by name</h2>
-
-               
+               <h2>Filter schools by name</h2> 
                <input type="text" id="school-name-filter" placeholder="Enter School Name"></input>
           </div>
 
+          <!-- Leflet JS-->
+          <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+          integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+          crossorigin=""></script>
 
-        <!-- Leflet JS-->
-        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
-        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
-        crossorigin=""></script>
-
-        <!-- My project JS modules-->
-        <script type="module" src="js/main.js"></script>
+          <!-- My project JS modules-->
+          <script src="js/main.js" type="module"></script>
    </body> 
 </html>
