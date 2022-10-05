@@ -35,28 +35,28 @@ function showSchoolsOnMap(schoolsToShow, schoolsMap) {
         schoolsMap.removeLayer(schoolsMap.schoolLayer);
     }
 
-    const stopFeatureCollection = {
+    const schoolFeatureCollection = {
         "type": "FeatureCollection",
         "features": schoolsToShow.map(makeSchoolFeature),
     };
 
-    schoolsMap.schoolLayer = L.geoJSON(stopFeatureCollection, {
+    console.log(schoolFeatureCollection);
+
+    schoolsMap.schoolLayer = L.geoJSON(schoolFeatureCollection, {
         pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
         style:{
             stroke: null,
             fillOpacity: 0.9,
             radius: 3,
+            color: 'red',
         },
+        
     }).addTo(schoolsMap);
-}
 
-function showSchoolNames(schoolsToShow, locationId) {
-    const schoolNames = schoolsToShow.map(x => x.name + "<br>");
-    document.getElementById(locationId).innerHTML = schoolNames.join("");
+    //schoolsMap.selectedLayer = L.geoJSON
 }
 
 export {
     initializeSchoolMap,
     showSchoolsOnMap,
-    showSchoolNames,
 };

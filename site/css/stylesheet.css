@@ -30,14 +30,13 @@ body {
 }
 
 #console2 {
-    max-height: 300px;
+    max-height: 330px;
     margin: 10px;
     background-color: white;
     overflow-x: hidden;
     overflow-y: scroll;
     border: 1px solid rgba(0, 0, 0, 0.25);
-
-  }
+}
 
 .console3{
     margin: 10px;
@@ -69,4 +68,8 @@ ul { list-style: none;
 
 .school-list-detail {
     margin: 0px;
+}
+
+.selected {
+    background-color: green;
 }
