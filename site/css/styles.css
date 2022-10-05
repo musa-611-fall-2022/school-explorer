@@ -30,7 +30,7 @@ body {
 
 .school-contents {
   margin: 3%;
-  width: 30%;
+  width: 40%;
   position: grid;
 }
 
@@ -38,7 +38,7 @@ body {
   grid-column: 1;
   grid-row: 1;
   width: 100%;
-  height: 50%;
+  height: 30%;
   overflow-y: scroll;
 }
 
@@ -46,6 +46,6 @@ body {
   grid-column: 1;
   grid-row: 2;
   width: 100%;
-  height: 50%;
+  height: 70%;
   overflow-y: scroll;
 }
