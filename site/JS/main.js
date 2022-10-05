@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoadeds", function() {
     document.getElementById("school-name-filter").value= "";
   });
 
+//Function: Add checkboxes to page
 function listSchoolCheckBoxes(schoolsToList, locationID) {
     const list = document.getElementById(locationID);
     for (let names of schoolsToList) {
@@ -50,6 +51,7 @@ function listSchoolCheckBoxes(schoolsToList, locationID) {
     }
 }
 
+//Function: Determine whether to show a school or not based on filters
 function shouldShowSchool(name) {
     let text = schoolNameFilter.value.toLowerCase();
     let show = true;
@@ -67,6 +69,7 @@ function shouldShowSchool(name) {
     return show;
 }
 
+//Function: Get the list of filtered schools based on shouldShowSchool()
 function getFilteredSchools() {
     let filteredSchools = schools;
     filteredSchools = schools.filter(x => shouldShowSchool(x));
