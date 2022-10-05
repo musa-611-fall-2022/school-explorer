@@ -13,7 +13,7 @@ let schoolNameInput = document.querySelector('#school-name-input');
 for (const cb of schoolCheckboxes) {
     cb.addEventListener('change', (evt) => {
         const checkbox = evt.target;
-        const level = checkbox.value;
+        const level = checkbox.value.toLowerCase();
         const filteredSchools = schools.filter(function (schools) {
             const levels = schools["School Level"].toLowerCase();
             const hasLevels = levels.includes(level);
@@ -25,7 +25,7 @@ for (const cb of schoolCheckboxes) {
 }
 
 schoolNameInput.addEventListener('input',() => {
-    const text = schoolNameInput.value;
+    const text = schoolNameInput.value.toLowerCase();
     const filteredSchools = schools.filter(function (schools) {
         const name = schools["name"].toLowerCase();
         const hasText = name.includes(text);
