@@ -26,9 +26,7 @@ function shouldShowSchools (){
     const text = schoolNameFilter.value;
     filteredSchools = filteredSchools.filter(function (school) {
         const name = school['name'];
-          console.log(name)
           const hasText = name.includes(text);
-          console.log(hasText)
           return hasText;
     });
 
@@ -37,9 +35,7 @@ function shouldShowSchools (){
     for (const checkbox of schoolGradeFilters) {
         if (checkbox.checked) {
             filteredSchools = filteredSchools.filter(function (school) {
-                let gradeName = "Grade " + checkbox.value.toString();
-                console.log(school[gradeName])
-                if (school[gradeName] == '1') {
+                if (school[checkbox.value] == '1') {
                     return true;
                 } else {
                     return false;
