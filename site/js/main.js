@@ -32,9 +32,9 @@ let schoolMap = document.querySelector("#school-map");
 let baseMap = L.map(schoolMap).setView([39.95, -75.15], 11.5);
 // For other map tile styles, see this website:https://leaflet-extras.github.io/leaflet-providers/preview/
 
-L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=029695db-b34b-4602-a119-bcf44d2d87d6', {
     maxZoom: 20,
-    attribution: '© OpenStreetMap',
+    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
 }).addTo(baseMap);
 
 window.schoolMap = baseMap;
