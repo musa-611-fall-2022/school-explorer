@@ -1,4 +1,4 @@
-- [ ] Create an _index.html_ with a basic HTML page structure
+- [ x] Create an _index.html_ with a basic HTML page structure
 - [ ] Create an empty CSS file for the project
 - [ ] Create an empty JavaScrip file for the project
 - [ ] Link to the empty CSS file from the bottom of the `head` of your HTML file

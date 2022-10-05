@@ -1,0 +1,15 @@
+#school-map {
+  height: 500px;
+}
+
+html {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* grid-template: 
+    "title title" auto
+    "filter map" auto
+    "count map" auto
+    "list map" lfr / 40% 60% */
+
+    
