@@ -60,3 +60,13 @@ input[type="text"] {
   font-size: 11px;
   color: #aaa;
 }
+
+/* ---------------------------------------------- */
+
+/* Making leaflet attribution show up */
+
+/* ---------------------------------------------- */
+
+.leaflet-control-container {
+  position: static;
+}
