@@ -18,55 +18,51 @@ let schoolGradeFilters = document.querySelectorAll(".grade-checkbox");
 
 let schoolNameFilter = document.querySelector("#school-name-input");
 
+function shouldShowSchools (){
+    let filteredSchools = schools;
 
-// Filter schools by name
+    // Filter schools by name
 
-function filterByName(schoolsList) {
-      let filteredSchools = schoolsList;
-      const text = schoolNameFilter.value;
-      filteredSchools = filteredSchools.filter(function shouldShowSchool(school) {
-          const name = school['name'];
+    const text = schoolNameFilter.value;
+    filteredSchools = filteredSchools.filter(function (school) {
+        const name = school['name'];
           console.log(name)
           const hasText = name.includes(text);
           console.log(hasText)
           return hasText;
-      });
-      console.log(filteredSchools)
-      return filteredSchools;
-}
+    });
 
-// Filter schools by grade
+    // Filter schools by grade
 
-function filterByGrade(schoolsList) {
-      let filteredSchools = schoolsList;
-      for (const checkbox of schoolGradeFilters) {
-            if (checkbox.checked) {
-                  filteredSchools = filteredSchools.filter(function shouldShowSchool(school) {
-                        let gradeName = "Grade " + checkbox.value.toString();
-                        console.log(school[gradeName])
-                        if (school[gradeName] == '1') {
-                              return true;
-                        }
-                  });
-
-                  console.log(checkbox.value)
-                  console.log(filteredSchools)
-            }
+    for (const checkbox of schoolGradeFilters) {
+        if (checkbox.checked) {
+            filteredSchools = filteredSchools.filter(function (school) {
+                let gradeName = "Grade " + checkbox.value.toString();
+                console.log(school[gradeName])
+                if (school[gradeName] == '1') {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+        }
 
       }
-      return filteredSchools;
+
+    return filteredSchools;
+
 }
 
 for (const cb of schoolGradeFilters) {
   cb.addEventListener('change', () => {
-      const filteredSchools = filterByGrade(filterByName(schools));
+      const filteredSchools = shouldShowSchools();
       showSchoolsOnMap(filteredSchools, schoolMap);
       showSchoolsInList(filteredSchools, schoolList);
   });
 }
 
 schoolNameFilter.addEventListener('input', () => {
-  const filteredSchools = filterByGrade(filterByName(schools));
+  const filteredSchools = shouldShowSchools();
   showSchoolsOnMap(filteredSchools, schoolMap);
   showSchoolsInList(filteredSchools, schoolList);
 });
@@ -74,5 +70,5 @@ schoolNameFilter.addEventListener('input', () => {
 
 window.schools = schools;
 window.schoolList = schoolList;
-window.schoolNameFilter = schoolNameFilter;
-window.schoolGradeFilters = schoolGradeFilters;
+window.shouldShowSchools = shouldShowSchools;
+
