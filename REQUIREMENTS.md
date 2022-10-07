@@ -1,11 +1,11 @@
 # Requirements
 
 ## Core
-- [ ] An text box on the page that can be used to filter based on the name of a school. When the value of this text box changes, only schools that have the value as a substring of their name should be shown on the map and in the list.
+- [X] An text box on the page that can be used to filter based on the name of a school. When the value of this text box changes, only schools that have the value as a substring of their name should be shown on the map and in the list.
   
   **The `input` element should be available on the global `window` object as a variable named `window.schoolNameFilter`.**
 
-- [ ] A set of checkboxes that can be used to filter based on the grades served at a school. When a box is checked, only schools that serve the corresponding grade should be shown on the map.
+- [X] A set of checkboxes that can be used to filter based on the grades served at a school. When a box is checked, only schools that serve the corresponding grade should be shown on the map.
   
   **An array of `input` elements should be available on the global `window` object as a variable named `window.schoolGradeFilters`.**
 

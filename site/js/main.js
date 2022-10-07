@@ -5,36 +5,51 @@ let schoolMap = initializeSchoolMap();
 showSchoolsOnMap(schools, schoolMap)
 
 //All is for all the check boxes
-let schoolCheckboxes = document.querySelectorAll('.grade-checkbox');
+let schoolGradeFilters = document.querySelectorAll('.grade-checkbox');
 
 //No all because we only have one text box
-let schoolNameInput = document.querySelector('#school-name-input');
+let schoolNameFilter = document.querySelector('#school-name-input');
 
-for (const cb of schoolCheckboxes) {
-    cb.addEventListener('change', (evt) => {
-        const checkbox = evt.target;
-        const level = checkbox.value.toLowerCase();
-        const filteredSchools = schools.filter(function (schools) {
-            const levels = schools["School Level"].toLowerCase();
-            const hasLevels = levels.includes(level);
-            return hasLevels;
-        });
-        showSchoolsOnMap(filteredSchools, schoolMap);
-        console.log('why do you hate me?')
-    });
-}
+function getFilteredSchools() {
+    let filteredSchools = schools;
 
-schoolNameInput.addEventListener('input',() => {
-    const text = schoolNameInput.value.toLowerCase();
-    const filteredSchools = schools.filter(function (schools) {
-        const name = schools["name"].toLowerCase();
+    // filter based on school name
+    const text = schoolNameFilter.value.toLowerCase();
+    filteredSchools = filteredSchools.filter(function (school) {
+        const name = school["name"].toLowerCase();
         const hasText = name.includes(text);
         return hasText;
     });
+
+    // filter based on school level
+    for (const checkbox of schoolGradeFilters) {
+        if (checkbox.checked) {
+            filteredSchools = filteredSchools.filter(function (school) {
+                const level = checkbox.value;
+                const hasLevel = school["School Level"].includes(level);
+                return hasLevel;
+            });
+        }
+    }
+
+    return filteredSchools;
+}
+
+for (const cb of schoolGradeFilters) {
+    cb.addEventListener('change', () => {
+        const filteredSchools = getFilteredSchools();
         showSchoolsOnMap(filteredSchools, schoolMap);
+    });
+}
+
+schoolNameFilter.addEventListener('input',() => {
+   const filteredSchools = getFilteredSchools()
+   showSchoolsOnMap(filteredSchools, schoolMap);
 });
+
 
 // Expose variables to the global scope
 window.schools = schools;
-window.schoolCheckboxes = schoolCheckboxes;
+window.schoolGradeFilters = schoolGradeFilters;
 window.schoolMap = schoolMap;
+window.schoolNameFilter = schoolNameFilter
