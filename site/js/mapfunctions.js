@@ -21,11 +21,12 @@ function makeSchoolFeature(school){
         },
         "geometry": school['geom'],
       };
-    //let coords = school.geom.coordinates;
-    //let swap = [coords[1], coords[0]];
 }
 
 function showSchoolsOnMap(SchoolsToShow, schoolMap) {
+  if (schoolMap.schoolLayers !== undefined) {
+    schoolMap.removeLayer(schoolMap.schoolLayers);
+  }
     const schoolFeatureCollection = {
       "type": "FeatureCollection",
       "features": SchoolsToShow.map(makeSchoolFeature),
@@ -43,11 +44,8 @@ function showSchoolsOnMap(SchoolsToShow, schoolMap) {
   }
 
 
-//layer => layer.feature.properties['school_name']
 
-window.makeSchoolFeature = makeSchoolFeature;
-window.showSchoolsOnMap = showSchoolsOnMap;
-
-export { initSchoolMap,
+export {
+    initSchoolMap,
     showSchoolsOnMap,
 };

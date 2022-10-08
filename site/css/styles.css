@@ -1,15 +1,27 @@
-#school-map {
-  height: 500px;
-}
-
 html {
   font-family: "Open Sans", sans-serif;
 }
 
-/* grid-template: 
+#school-map {
+  height: 300px;
+}
+
+.mapcontainer {
+  height: 300px;
+  width: 50%;
+}
+
+.listcontainer {
+  width: 50%;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
+
+/* grid-template:
     "title title" auto
     "filter map" auto
     "count map" auto
     "list map" lfr / 40% 60% */
-
-    
