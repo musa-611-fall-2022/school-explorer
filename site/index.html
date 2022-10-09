@@ -15,38 +15,51 @@
         <div>
             <h1> School Explorer</h1>
         </div>
+
         <div class="content">
             <div class='mapcontainer'>
                 <div id="school-map"></div>
+                <div>
+                    <input type="text" id="school-name-filter" placeholder="Enter school name...">
+                </div>
+                <div class = checkboxes>
+                    <div class = grade-cb>
+                        <ul class="checkbox-grid">
+                            Filter by Grade
+                            <li><label><input type="checkbox" class="grade-checkbox" value="K"> Kindergarten</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="1"> 1nd grade</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="2"> 2st grade</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="3"> 3rd grade</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="4"> 4th grade</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="5"> 5th grade</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="6"> 6th grade</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="7"> 7th grade</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="8"> 8th grade</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="9"> 9th grade</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="10"> 10th grade</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="11"> 11th grade</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="12"> 12th grade</label></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="checkbox-grid">
+                        Filter by Admission Type
+                        <li><label><input type="checkbox" class="admit-type-cb" value="Neighborhood"> Neighborhood</label></li>
+                        <li><label><input type="checkbox" class="admit-type-cb" value="Citywide"> Citywide</label></li>
+                        <li><label><input type="checkbox" class="admit-type-cb" value="Citywide With Criteria"> Citywide With Criteria</label></li>
+                        <li><label><input type="checkbox" class="admit-type-cb" value="Special Admit"> Special Admit</label></li>
+                        <li><label><input type="checkbox" class="admit-type-cb" value="Alternative"> Alternative</label></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="listcontainer">
-                <label><input type="checkbox" class="grade-checkbox" value="K"> Kindergarten</label>
-                <label><input type="checkbox" class="grade-checkbox" value="1"> 1st grade</label>
-                <label><input type="checkbox" class="grade-checkbox" value="2"> 2nd grade</label>
-                <label><input type="checkbox" class="grade-checkbox" value="3"> 3rd grade</label>
-                <label><input type="checkbox" class="grade-checkbox" value="4"> 4th grade</label>
-                <label><input type="checkbox" class="grade-checkbox" value="5"> 5th grade</label>
-                <label><input type="checkbox" class="grade-checkbox" value="6"> 6th grade</label>
-                <label><input type="checkbox" class="grade-checkbox" value="7"> 7th grade</label>
-                <label><input type="checkbox" class="grade-checkbox" value="8"> 8th grade</label>
-                <label><input type="checkbox" class="grade-checkbox" value="9"> 9th grade</label>
-                <label><input type="checkbox" class="grade-checkbox" value="10"> 10th grade</label>
-                <label><input type="checkbox" class="grade-checkbox" value="11"> 11th grade</label>
-                <label><input type="checkbox" class="grade-checkbox" value="12"> 12th grade</label>
-                <input type="text" id="school-name-filter" placeholder="Enter school name...">
+                
                 <ul id="school-list"></ul>
             </div>
         </div>
         
-        
 
-  
-                
-
- 
-        
-          
-       
         <!-- Leaflet JavaScript-->
         <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
         

@@ -3,14 +3,18 @@ import schools from '../data/schools.js';
 import { initSchoolMap, showSchoolsOnMap } from './mapfunctions.js';
 import { showSchoolsInList } from './schoollist.js';
 
-
+import { gradefun } from './schoollevels.js';
 
 let schoolMap = initSchoolMap();
 showSchoolsOnMap(schools, schoolMap);
 
+schools.map(gradefun);
 
 let schoollist = document.querySelector('#school-list');
-//showSchoolsInList(schools, schoollist);
+showSchoolsInList(schools, schoollist);
+
+
+
 
 // Expose variable to the global scope
 
@@ -34,7 +38,7 @@ function shouldShowSchool() {
     if (checkbox.checked) {
       filteredSchools = filteredSchools.filter(function (school) {
         const grade = checkbox.value;
-        const hasGrade = school['Grade 1'] === grade | school['Grade 2'] === grade;
+        const hasGrade = school[`Grade ${grade}`] === "1";
         return hasGrade;
       });
     }
@@ -42,6 +46,8 @@ function shouldShowSchool() {
 
   return filteredSchools;
 }
+
+
 
 for (const cb of gradeCheckboxes) {
   cb.addEventListener('change', () => {
@@ -60,14 +66,11 @@ schoolNameFilter.addEventListener('input', () => {
 });
 
 
-schoolNameFilter.addEventListener('input', () => {
-    console.log(schoolNameFilter.value);
-});
-
-
 
 
 
 window.schoolMap = schoolMap;
 window.schools = schools;
 window.gradeCheckboxes = gradeCheckboxes;
+window.schoolNameFilter = schoolNameFilter;
+window.schoollist = schoollist;
