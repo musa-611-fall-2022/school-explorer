@@ -9,7 +9,7 @@
   
   **An array of `input` elements should be available on the global `window` object as a variable named `window.schoolGradeFilters`.**
 
-- [ ] A marker should be present on the map for each school that meets the current filter criteria, and no markers should be present for schools that _do not_ meet the filter criteria.
+- [X] A marker should be present on the map for each school that meets the current filter criteria, and no markers should be present for schools that _do not_ meet the filter criteria.
 
   **The Leaflet Map object that represents the map on the page should be available on the global `window` objects as a variable named `window.schoolMap`.**
 
