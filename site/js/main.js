@@ -48,7 +48,7 @@ for (const cb of schoolGradeFilters) {
 }
 
 schoolNameFilter.addEventListener('input',() => {
-   const filteredSchools = getFilteredSchools()
+   const filteredSchools = getFilteredSchools();
    showSchoolsOnMap(filteredSchools, schoolMap);
    showSchoolsInList(filteredSchools, schoolList);
 });
