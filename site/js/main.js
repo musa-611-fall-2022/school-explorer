@@ -1,5 +1,5 @@
 import schools from "../data/schools.js";
-import { mapInitialize, showSchoolsOnMap, showSchoolsInList } from './myfunctions.js';
+import { mapInitialize, showSchoolsOnMap, showSchoolsInList } from './myfunction.js';
 
 //Initialize School Map
 let schoolmap = mapInitialize();
