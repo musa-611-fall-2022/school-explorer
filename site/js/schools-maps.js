@@ -3,14 +3,13 @@ import catchments from '../data/catchments.js';
 function initializeSchoolMap(){
     let schoolMap = L.map('school-map').setView([40.0, -75.11], 13);
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { 
-        maxZoom: 19, 
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
         attribution: '© OpenStreetMap',
     }).addTo(schoolMap);
- 
  //Add catchments as a geojson layer
     L.geoJSON(catchments, {
-       style: {fill: null, color: 'black'}
+       style: { fill: null, color: 'black' },
     }).addTo(schoolMap);
 
     return schoolMap;
@@ -38,8 +37,6 @@ function showSchoolsOnMap(SchoolsToShow, schoolMap) {
     if (schoolMap.schoolLayers !== undefined) {
         schoolMap.removeLayer(schoolMap.schoolLayers);
     }
-    
-
     const schoolFeatureCollection = {
         "type": "FeatureCollection",
         "features": SchoolsToShow.map(makeSchoolFeature),
@@ -50,7 +47,7 @@ function showSchoolsOnMap(SchoolsToShow, schoolMap) {
         style:{
             stroke: null,
             fillOpacity: 0.9,
-            radius: 3, 
+            radius: 3,
         },
     })
     .bindTooltip(layer => layer.feature.properties['school_name'])

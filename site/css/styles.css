@@ -27,3 +27,8 @@ body{
     width: 40%;
     overflow-y: scroll;  
 }
+
+.school-list-item{
+    background-color: lightblue; 
+    border-radius: 25px;
+}

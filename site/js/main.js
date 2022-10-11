@@ -1,9 +1,9 @@
 import schools from '../data/schools.js';
-import { initializeSchoolMap, showSchoolsOnMap} from './schools-maps.js';
-import { showSchoolsInList } from './schools-list.js'
+import { initializeSchoolMap, showSchoolsOnMap } from './schools-maps.js';
+import { showSchoolsInList } from './schools-list.js';
 
 let schoolMap = initializeSchoolMap();
-showSchoolsOnMap(schools, schoolMap)
+showSchoolsOnMap(schools, schoolMap);
 
 let schoolList = document.querySelector("#school-list");
 showSchoolsInList(schools, schoolList);
@@ -47,7 +47,7 @@ for (const cb of schoolGradeFilters) {
     });
 }
 
-schoolNameFilter.addEventListener('input',() => {
+schoolNameFilter.addEventListener('input', () => {
    const filteredSchools = getFilteredSchools();
    showSchoolsOnMap(filteredSchools, schoolMap);
    showSchoolsInList(filteredSchools, schoolList);
@@ -58,4 +58,4 @@ schoolNameFilter.addEventListener('input',() => {
 window.schools = schools;
 window.schoolGradeFilters = schoolGradeFilters;
 window.schoolMap = schoolMap;
-window.schoolNameFilter = schoolNameFilter
+window.schoolNameFilter = schoolNameFilter;

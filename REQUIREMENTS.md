@@ -13,7 +13,7 @@
 
   **The Leaflet Map object that represents the map on the page should be available on the global `window` objects as a variable named `window.schoolMap`.**
 
-- [ ] A list item should be present in the schools list for each school that meets the current filter criteria, and no list items should be present for schools that _do not_ meet the filter criteria. List items should contain at least:
+- [X] A list item should be present in the schools list for each school that meets the current filter criteria, and no list items should be present for schools that _do not_ meet the filter criteria. List items should contain at least:
   - School name
   - Grades served
 
