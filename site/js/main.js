@@ -1,7 +1,7 @@
 import schools from '../data/schools.js';
 
 import { initSchoolMap, showSchoolsOnMap } from './mapfunctions.js';
-import { showSchoolsInList } from './schoollist.js';
+import { showSchoolsInList } from './schoolList.js';
 
 import { gradefun } from './schoollevels.js';
 
@@ -10,8 +10,8 @@ showSchoolsOnMap(schools, schoolMap);
 
 schools.map(gradefun);
 
-let schoollist = document.querySelector('#school-list');
-showSchoolsInList(schools, schoollist);
+let schoolList = document.querySelector('#school-list');
+showSchoolsInList(schools, schoolList);
 
 
 
@@ -73,8 +73,8 @@ for (const cb of gradeCheckboxes) {
   cb.addEventListener('change', () => {
     const filteredSchools = shouldShowSchool();
     showSchoolsOnMap(filteredSchools, schoolMap);
-    schoollist.innerHTML = '';
-    showSchoolsInList(filteredSchools, schoollist);
+    schoolList.innerHTML = '';
+    showSchoolsInList(filteredSchools, schoolList);
   });
 }
 
@@ -82,8 +82,8 @@ for (const cb of gradeCheckboxes) {
     cb.addEventListener('change', () => {
       const filteredSchools = shouldShowSchool();
       showSchoolsOnMap(filteredSchools, schoolMap);
-      schoollist.innerHTML = '';
-      showSchoolsInList(filteredSchools, schoollist);
+      schoolList.innerHTML = '';
+      showSchoolsInList(filteredSchools, schoolList);
     });
   }
 
@@ -91,8 +91,8 @@ for (const cb of admitCheckboxes) {
     cb.addEventListener('change', () => {
       const filteredSchools = shouldShowSchool();
       showSchoolsOnMap(filteredSchools, schoolMap);
-      schoollist.innerHTML = '';
-      showSchoolsInList(filteredSchools, schoollist);
+      schoolList.innerHTML = '';
+      showSchoolsInList(filteredSchools, schoolList);
     });
   }
 
@@ -100,8 +100,8 @@ for (const cb of admitCheckboxes) {
 schoolNameFilter.addEventListener('input', () => {
     const filteredSchools = shouldShowSchool();
     showSchoolsOnMap(filteredSchools, schoolMap);
-    schoollist.innerHTML = '';
-    showSchoolsInList(filteredSchools, schoollist);
+    schoolList.innerHTML = '';
+    showSchoolsInList(filteredSchools, schoolList);
 });
 
 
@@ -112,5 +112,5 @@ window.schoolMap = schoolMap;
 window.schools = schools;
 window.gradeCheckboxes = gradeCheckboxes;
 window.schoolNameFilter = schoolNameFilter;
-window.schoollist = schoollist;
+window.schoolList = schoolList;
 window.selectOnlyThis = selectOnlyThis;
