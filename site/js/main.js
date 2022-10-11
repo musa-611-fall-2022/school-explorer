@@ -24,7 +24,7 @@ let schoolNameFilter = document.querySelector('#school-name-filter');
 let admitCheckboxes = document.querySelectorAll('.admit-type-cb');
 
 function selectOnlyThis(id) {
-    for (var i = 1;i <= 5; i++)
+    for (var i = 1; i <= 5; i++)
     {
         document.getElementById(i).checked = false;
     }
