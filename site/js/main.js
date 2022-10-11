@@ -18,9 +18,19 @@ showSchoolsInList(schools, schoollist);
 
 // Expose variable to the global scope
 
-// to copypasta
+//grab selectors
 let gradeCheckboxes = document.querySelectorAll('.grade-checkbox');
 let schoolNameFilter = document.querySelector('#school-name-filter');
+let admitCheckboxes = document.querySelectorAll('.admit-type-cb');
+
+function selectOnlyThis(id) {
+    for (var i = 1;i <= 5; i++)
+    {
+        document.getElementById(i).checked = false;
+    }
+    document.getElementById(id).checked = true;
+}
+
 
 function shouldShowSchool() {
   let filteredSchools = schools;
@@ -44,6 +54,16 @@ function shouldShowSchool() {
     }
   }
 
+  for (const checkbox of admitCheckboxes) {
+    if (checkbox.checked) {
+      filteredSchools = filteredSchools.filter(function (school) {
+        const admitType = checkbox.value;
+        const isAdmitType = school[`Admission Type`] === admitType;
+        return isAdmitType;
+      });
+    }
+  }
+
   return filteredSchools;
 }
 
@@ -57,6 +77,25 @@ for (const cb of gradeCheckboxes) {
     showSchoolsInList(filteredSchools, schoollist);
   });
 }
+
+for (const cb of gradeCheckboxes) {
+    cb.addEventListener('change', () => {
+      const filteredSchools = shouldShowSchool();
+      showSchoolsOnMap(filteredSchools, schoolMap);
+      schoollist.innerHTML = '';
+      showSchoolsInList(filteredSchools, schoollist);
+    });
+  }
+
+for (const cb of admitCheckboxes) {
+    cb.addEventListener('change', () => {
+      const filteredSchools = shouldShowSchool();
+      showSchoolsOnMap(filteredSchools, schoolMap);
+      schoollist.innerHTML = '';
+      showSchoolsInList(filteredSchools, schoollist);
+    });
+  }
+
 
 schoolNameFilter.addEventListener('input', () => {
     const filteredSchools = shouldShowSchool();
@@ -74,3 +113,4 @@ window.schools = schools;
 window.gradeCheckboxes = gradeCheckboxes;
 window.schoolNameFilter = schoolNameFilter;
 window.schoollist = schoollist;
+window.selectOnlyThis = selectOnlyThis;
