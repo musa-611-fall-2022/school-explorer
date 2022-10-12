@@ -10,6 +10,8 @@ let schoolNameFilter = document.querySelector('#school-name-filter'); //Add refe
 const grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]; //For listSchoolCheckboxes function
 //let selected = [];
 
+console.log(schoolMap);
+
 let schoolList = document.querySelector("#school-list");
 
 //Initial functions
@@ -27,6 +29,7 @@ for (let cb of schoolGradeFilters) {
         const filteredSchools = getFilteredSchools();
         listSchools(filteredSchools, schoolList);
         showSchoolsOnMap(filteredSchools, schoolMap);
+        console.log(schoolMap);
     });
 }
 
@@ -79,23 +82,9 @@ function getFilteredSchools() {
     return filteredSchools;
 }
 
-//Function: Assign click event to all schools in list
-let nameList = document.querySelectorAll(".school-list-item");
-
-for (let item of nameList) {
-    item.addEventListener('click', () => {
-        if (item.classList.contains("selected") == false) {
-            item.classList.add("selected");
-            //selected.append[item];
-            //console.log(selected);
-        } else {
-            item.classList.remove("selected");
-        }            
-    })
-}
-
 //Global variables
 window.schools = schools;
 window.schoolNameFilter = schoolNameFilter;
 window.schoolGradeFilters = schoolGradeFilters;
 window.schoolList = schoolList;
+window.schoolMap = schoolMap;

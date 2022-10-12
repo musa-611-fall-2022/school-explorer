@@ -37,8 +37,6 @@ function showSchoolsOnMap(schoolsToShow, schoolsMap) {
         "features": schoolsToShow.map(makeSchoolFeature),
     };
 
-    console.log(schoolFeatureCollection);
-
     schoolsMap.schoolLayer = L.geoJSON(schoolFeatureCollection, {
         pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
         style:{
@@ -48,7 +46,9 @@ function showSchoolsOnMap(schoolsToShow, schoolsMap) {
             color: 'red',
         },
         
-    }).addTo(schoolsMap);
+    })
+    .bindTooltip(layer => layer.feature.properties['school_name'])
+    .addTo(schoolsMap);
 
     //schoolsMap.selectedLayer = L.geoJSON
 }

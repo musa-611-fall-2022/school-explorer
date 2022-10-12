@@ -7,6 +7,21 @@ function listSchools(schoolsToShow, whereToList){
         const li = htmlToElement(html);
         whereToList.append(li);   
     }
+
+    //Function: Assign click event to all schools in list
+    let nameList = document.querySelectorAll(".school-list-item");
+
+    for (let item of nameList) {
+        item.addEventListener('click', () => {
+            if (item.classList.contains("selected") == false) {
+                item.classList.add("selected");
+                //selected.append[item];
+                //console.log(selected);
+            } else {
+                item.classList.remove("selected");
+            }            
+        })
+    }
 }
 
 export {
