@@ -56,6 +56,6 @@ schoolNameFilter.addEventListener('input', () => {
 
 // Expose variables to the global scope
 window.schools = schools;
-window.schoolGradeFilters = schoolGradeFilters;
+window.schoolLevelFilters = schoolGradeFilters;
 window.schoolMap = schoolMap;
 window.schoolNameFilter = schoolNameFilter;
