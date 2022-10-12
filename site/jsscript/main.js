@@ -1,7 +1,7 @@
 import schools from '../data/schools.js';
 
 import { initSchoolMap, showSchoolsOnMap } from './mapfunctions.js';
-import { showSchoolsInList } from './schoolList.js';
+import { showSchoolsInList } from './schoollist.js';
 
 import { gradefun } from './schoollevels.js';
 
