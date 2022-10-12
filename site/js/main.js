@@ -73,6 +73,7 @@ schoolNameFilter.addEventListener('input', () => {
 
 
 window.schools = schools;
+window.schoolMap = schoolMap;
 window.schoolList = schoolList;
 window.shouldShowSchools = shouldShowSchools;
 window.schoolNameFilter = schoolNameFilter;
