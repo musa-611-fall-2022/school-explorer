@@ -10,31 +10,31 @@ let schoolNameFilter = document.querySelector('#school-name-filter'); //Add refe
 const grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]; //For listSchoolCheckboxes function
 //let selected = [];
 
+let schoolList = document.querySelector("#school-list");
+
 //Initial functions
 showSchoolsOnMap(schools, schoolMap); //Load school locations on map
-listSchools(schools, "school-list"); //Load school names into console2 array
+listSchools(schools, schoolList); //Load school names into console2 array
 listSchoolCheckBoxes(grades, "checkboxList"); //Add checkboxes to page
 
 //Adding reference variable for checkboxes and school list after they are added to the document
 let schoolGradeFilters = document.querySelectorAll('.school-checkbox');
-let schoolList = document.querySelectorAll('.school-list-item');
+
 
 //Add event listeners to each checkbox grade filter
 for (let cb of schoolGradeFilters) {
     cb.addEventListener('change', () => {
         const filteredSchools = getFilteredSchools();
-        listSchools(filteredSchools, "school-list");
+        listSchools(filteredSchools, schoolList);
         showSchoolsOnMap(filteredSchools, schoolMap);
-        schoolList = document.getElementById('school-list');
     });
 }
 
 //Add event listeners to school name text boxfilter
 schoolNameFilter.addEventListener('input', () => {
     const filteredSchools = getFilteredSchools();
-    listSchools(filteredSchools, "school-list");
+    listSchools(filteredSchools, schoolList);
     showSchoolsOnMap(filteredSchools, schoolMap);
-    schoolList = document.getElementById('school-list');
 });
 
 //Clearing input on load
@@ -81,7 +81,7 @@ function getFilteredSchools() {
 
 //Function: Assign click event to all schools in list
 let nameList = document.querySelectorAll(".school-list-item");
-console.log(nameList);
+
 for (let item of nameList) {
     item.addEventListener('click', () => {
         if (item.classList.contains("selected") == false) {
