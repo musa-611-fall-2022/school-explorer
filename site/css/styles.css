@@ -12,14 +12,15 @@ body {
 
 .content-container {
   display: flex;
-  flex-direction:row-reverse;
-  overflow:hidden;
+  flex-direction: row-reverse;
+  overflow: hidden;
   height: 100%;
 }
 
 .map-container {
   width: 60%;
 }
+
 .list-container {
   width: 40%;
   overflow-y: scroll;
