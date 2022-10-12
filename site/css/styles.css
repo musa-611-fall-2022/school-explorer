@@ -49,9 +49,6 @@ p {
 } */
 
 .school-list-container {
-  height: 100vb;
+  /*height: 100vb;*/
   overflow-y: scroll;
 }
-
-
-
