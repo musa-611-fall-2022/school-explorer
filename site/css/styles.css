@@ -15,20 +15,18 @@ body{
     flex-direction:row-reverse;
     overflow:hidden;
     height: 100%;
-
 }
 
 .map-container{
     width: 60%;
-
 }
 
 .list-container{
     width: 40%;
-    overflow-y: scroll;  
+    overflow-y: scroll;
 }
 
 .school-list-item{
-    background-color: lightblue; 
+    background-color: lightblue;
     border-radius: 25px;
 }
