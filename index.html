@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width-device-width, initial-scale-1"/>
+        <!-- leaflet's default styles -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""></link>
+
+        <!-- My CSS files-->
+        <link rel="stylesheet" href="css/styles.css"></link>
+        
+        <title> School Explorer </title>
+    </head>
+   
+    <body>
+    <div>
+       <h1>School Explorer</h1>
+    </div>
+    
+    <div class="content-container">
+        <div class="map-container">
+    <div id="school-map"></div>
+    </div>
+    <div class="list-container">
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade K"> Kindergarten </label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 1"> 1st Grade </label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 2"> 2nd Grade </label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 3"> 3rd Grade </label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 4" > 4th Grade </label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 5" > 5th Grade </label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 6"> 6th Grade </label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 7"> 7th Grade</label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 8"> 8th Grade </label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 9"> 9th Grade </label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 10"> 10th Grade </label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 11"> 11th Grade </label>
+    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 12"> 12th Grade </label>
+    <input type = "text" id = "school-name-input" placeholder = "Enter School Name...">
+    
+    <ul id="school-list"></ul>
+    </div>
+</div>
+
+    <!-- Leaflet JavaScript --> 
+    <script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"
+    integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
+    crossorigin=""></script>
+
+    <!-- My Project JS modules-->
+    <script type="module" src="js/Main.js"></script>
+    </body>
+</html>
