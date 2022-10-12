@@ -1,5 +1,3 @@
-import schools from '../data/schools.js';
-
 function initializeSchoolMap() {
     let schoolMap = L.map('school-map').setView([39.995, -75.13], 12);
 
@@ -45,9 +43,8 @@ function showSchoolsOnMap(schoolsToShow, schoolsMap) {
             radius: 3,
             color: 'red',
         },
-        
     })
-    .bindTooltip(layer => layer.feature.properties['school_name'])
+    .bindTooltip(layer => layer.feature.properties['schoo_name'])
     .addTo(schoolsMap);
 
     //schoolsMap.selectedLayer = L.geoJSON

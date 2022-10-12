@@ -10,9 +10,24 @@ let schoolNameFilter = document.querySelector('#school-name-filter'); //Add refe
 const grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]; //For listSchoolCheckboxes function
 //let selected = [];
 
-console.log(schoolMap);
-
 let schoolList = document.querySelector("#school-list");
+
+//Function: Add checkboxes to page
+function listSchoolCheckBoxes(schoolsToList, locationID) {
+    const list = document.getElementById(locationID);
+    for (let names of schoolsToList) {
+        const html = `<label class="checkbox-label"><input type="checkbox" class="school-checkbox" value = "${names}">${names}</label>`;
+        const li = htmlToElement(html);
+        list.append(li);
+    }
+}
+
+//Function: Get the list of filtered schools based on shouldShowSchool()
+function getFilteredSchools() {
+    let filteredSchools = schools;
+    filteredSchools = schools.filter(x => shouldShowSchool(x));
+    return filteredSchools;
+}
 
 //Initial functions
 showSchoolsOnMap(schools, schoolMap); //Load school locations on map
@@ -46,17 +61,6 @@ document.addEventListener("DOMContentLoadeds", function() {
   });
 
 
-
-//Function: Add checkboxes to page
-function listSchoolCheckBoxes(schoolsToList, locationID) {
-    const list = document.getElementById(locationID);
-    for (let names of schoolsToList) {
-        const html = `<label class="checkbox-label"><input type="checkbox" class="school-checkbox" value = "${names}">${names}</label>`;
-        const li = htmlToElement(html);
-        list.append(li);
-    }
-}
-
 //Function: Determine whether to show a school or not based on filters
 function shouldShowSchool(name) {
     let text = schoolNameFilter.value.toLowerCase();
@@ -75,12 +79,6 @@ function shouldShowSchool(name) {
     return show;
 }
 
-//Function: Get the list of filtered schools based on shouldShowSchool()
-function getFilteredSchools() {
-    let filteredSchools = schools;
-    filteredSchools = schools.filter(x => shouldShowSchool(x));
-    return filteredSchools;
-}
 
 //Global variables
 window.schools = schools;

@@ -5,7 +5,7 @@ function listSchools(schoolsToShow, whereToList){
     for (let school of schoolsToShow) {
         const html = `<li class="school-list-item" value="${school["sdp_id"]}">${school['name']} <ul class="school-list-detail"><li class="grade">Grades Served: ${school["Current Grade Span Served"]}</li></ul></li>`;
         const li = htmlToElement(html);
-        whereToList.append(li);   
+        whereToList.append(li);
     }
 
     //Function: Assign click event to all schools in list
@@ -19,8 +19,8 @@ function listSchools(schoolsToShow, whereToList){
                 //console.log(selected);
             } else {
                 item.classList.remove("selected");
-            }            
-        })
+            }
+        });
     }
 }
 
