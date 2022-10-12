@@ -75,4 +75,6 @@ schoolNameFilter.addEventListener('input', () => {
 window.schools = schools;
 window.schoolList = schoolList;
 window.shouldShowSchools = shouldShowSchools;
+window.schoolNameFilter = schoolNameFilter;
+window.schoolGradeFilters = schoolGradeFilters;
 
