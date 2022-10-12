@@ -16,6 +16,13 @@ let schoolNameFilter = document.querySelector('#school-name-filter');
 // event listener for grade checkboxes
 let schoolGradeFilters = document.querySelectorAll('.grade-checkbox');
 
+// expose objects to global scope
+window.schools = schools;
+window.schoolNameFilter = schoolNameFilter;
+window.schoolGradeFilters = schoolGradeFilters;
+window.schoolList = schoolList;
+window.schoolMap = schoolMap;
+
 function getFilteredSchools() {
     let filteredSchools = schools;
 
@@ -60,9 +67,3 @@ for (const checkbox of schoolGradeFilters) {
 }
 
 
-// expose objects to global scope
-window.schools = schools;
-window.schoolNameFilter = schoolNameFilter;
-window.schoolGradeFilters = schoolGradeFilters;
-window.schoolList = schoolList;
-window.schoolMap = schoolMap;
