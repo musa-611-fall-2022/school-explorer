@@ -29,6 +29,24 @@ function getFilteredSchools() {
     return filteredSchools;
 }
 
+//Function: Determine whether to show a school or not based on filters
+function shouldShowSchool(name) {
+    let text = schoolNameFilter.value.toLowerCase();
+    let show = true;
+    for (const checkbox of schoolGradeFilters) {
+        if (checkbox.checked) {
+            const grades = name[`Grade ${checkbox.value}`];
+            if (grades != 1) {
+                show = false;
+            }
+        }
+    }
+    if (!name['name'].toLowerCase().includes(text)) {
+        show = false;
+    }
+    return show;
+}
+
 //Initial functions
 showSchoolsOnMap(schools, schoolMap); //Load school locations on map
 listSchools(schools, schoolList); //Load school names into console2 array
@@ -61,23 +79,7 @@ document.addEventListener("DOMContentLoadeds", function() {
   });
 
 
-//Function: Determine whether to show a school or not based on filters
-function shouldShowSchool(name) {
-    let text = schoolNameFilter.value.toLowerCase();
-    let show = true;
-    for (const checkbox of schoolGradeFilters) {
-        if (checkbox.checked) {
-            const grades = name[`Grade ${checkbox.value}`];
-            if (grades != 1) {
-                show = false;
-            }
-        }
-    }
-    if (!name['name'].toLowerCase().includes(text)) {
-        show = false;
-    }
-    return show;
-}
+
 
 
 //Global variables
