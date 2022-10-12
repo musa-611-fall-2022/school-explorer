@@ -25,7 +25,7 @@ let admitCheckboxes = document.querySelectorAll('.admit-type-cb');
 
 function selectOnlyThis(id) {
     console.log(id);
-      for (var i = 1; i <= 5; i++)
+      for (let i = 1; i <= 5; i++)
     {
         document.getElementById(i).checked = false;
     }
