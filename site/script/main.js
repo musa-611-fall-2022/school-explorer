@@ -11,6 +11,7 @@ const grades = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "1
 //let selected = [];
 
 let schoolList = document.querySelector("#school-list");
+let schoolGradeFilters;
 
 //Function: Add checkboxes to page
 function listSchoolCheckBoxes(schoolsToList, locationID) {
@@ -20,13 +21,6 @@ function listSchoolCheckBoxes(schoolsToList, locationID) {
         const li = htmlToElement(html);
         list.append(li);
     }
-}
-
-//Function: Get the list of filtered schools based on shouldShowSchool()
-function getFilteredSchools() {
-    let filteredSchools = schools;
-    filteredSchools = schools.filter(x => shouldShowSchool(x));
-    return filteredSchools;
 }
 
 //Function: Determine whether to show a school or not based on filters
@@ -47,13 +41,20 @@ function shouldShowSchool(name) {
     return show;
 }
 
+//Function: Get the list of filtered schools based on shouldShowSchool()
+function getFilteredSchools() {
+    let filteredSchools = schools;
+    filteredSchools = schools.filter(x => shouldShowSchool(x));
+    return filteredSchools;
+}
+
 //Initial functions
 showSchoolsOnMap(schools, schoolMap); //Load school locations on map
 listSchools(schools, schoolList); //Load school names into console2 array
 listSchoolCheckBoxes(grades, "checkboxList"); //Add checkboxes to page
 
 //Adding reference variable for checkboxes and school list after they are added to the document
-let schoolGradeFilters = document.querySelectorAll('.school-checkbox');
+schoolGradeFilters = document.querySelectorAll('.school-checkbox');
 
 
 //Add event listeners to each checkbox grade filter
