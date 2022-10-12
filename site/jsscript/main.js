@@ -1,7 +1,7 @@
 import schools from '../data/schools.js';
 
 import { initSchoolMap, showSchoolsOnMap } from './mapfunctions.js';
-import { showSchoolsInList } from './schoolList.js';
+import { showSchoolsInList } from './schoolList.js.js';
 
 import { gradefun } from './schoollevels.js';
 
@@ -24,7 +24,8 @@ let schoolNameFilter = document.querySelector('#school-name-filter');
 let admitCheckboxes = document.querySelectorAll('.admit-type-cb');
 
 function selectOnlyThis(id) {
-    for (var i = 1; i <= 5; i++)
+    console.log(id);
+      for (var i = 1; i <= 5; i++)
     {
         document.getElementById(i).checked = false;
     }
