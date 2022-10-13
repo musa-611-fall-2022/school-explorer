@@ -7,10 +7,10 @@
 .list-container {
   margin: 1em 0 0;
   display: flex;
-  max-height: 45vh;
+  max-height: 55vh;
   border: 0.6px solid #aaa;
-  overflow: auto;
   scrollbar-width: none;
+  overflow: auto;
 }
 
 .listbox {
@@ -22,4 +22,15 @@
   line-height: 1em;
   padding: 0.2em;
   font-size: 13px;
+}
+
+/* ---------------------------------------------- */
+
+/* Styles for the compare area */
+
+/* ---------------------------------------------- */
+
+.school-compare-scroll-box {
+  height: 65vh;
+  overflow-y: auto;
 }

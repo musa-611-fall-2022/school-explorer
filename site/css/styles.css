@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-  position: relative;
 }
 
 html {
@@ -18,7 +17,7 @@ html {
 }
 
 .viewport-70 {
-  height: 68vh;
+  height: 85vh;
   width: auto;
 }
 
@@ -33,21 +32,26 @@ html {
   height: 100%;
 }
 
+.flex-column-space-between {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* ---------------------------------------------- */
+
+/* Adding specific styles */
+
+/* ---------------------------------------------- */
+
 h1 {
   font-size: 36px;
   font-weight: 800;
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 15px;
   line-height: 1;
-}
-
-.grade-checkbox-text,
-.grade-checkbox {
-  font-size: 13px;
-  margin-top: 0.1em;
-  margin-bottom: 0.1em;
 }
 
 input[type="text"] {
@@ -56,9 +60,84 @@ input[type="text"] {
   font-size: 13px;
 }
 
-.grade-list {
-  font-size: 11px;
+/* ---------------------------------------------- */
+
+/* School list (school name and grades served) */
+
+/* ---------------------------------------------- */
+
+li.school-list-item {
+  border-bottom: 1px solid #bbb;
+  padding: 0.9em;
+}
+
+li.school-list-item-clicked {
+  background-color: #000;
+  color: #fff;
+  padding: 0.9em;
+  border-bottom: 1px solid #000;
+}
+
+li.school-list-item:hover {
+  background-color: #eee;
+}
+
+.school-list-item > .grade-list {
+  padding-top: 0.6em;
+  font-size: 12px;
   color: #aaa;
+}
+
+.school-list-item-clicked > .grade-list {
+  color: #fff;
+  padding-top: 0.6em;
+  font-size: 12px;
+}
+
+/* ---------------------------------------------- */
+
+/* School comparison */
+
+/* ---------------------------------------------- */
+
+.school-compare-item {
+  border: 2px solid #000;
+  margin: 1em 0.5em 1em 0;
+  padding: 0.5em 0.5em 0 1em;
+}
+
+.school-compare-item > .school-name {
+  font-size: 20px;
+  font-weight: 800;
+  margin: 1.2em 0 1em;
+}
+
+.school-compare-item > .content {
+  font-size: 13px;
+  margin: 0.5em 0;
+  display: flex;
+  align-items: center;
+}
+
+.school-compare-item > .content::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.school-compare-item > .content > .item-title {
+  width: 45%;
+  float: left;
+  background-color: #000;
+  color: #fff;
+  border-radius: 0.5em;
+  padding: 0.3em;
+}
+
+.school-compare-item > .content > .item-content {
+  width: 50%;
+  float: left;
+  padding: 0.3em 0.5em 0.5em 1em;
 }
 
 /* ---------------------------------------------- */
@@ -69,4 +148,26 @@ input[type="text"] {
 
 .leaflet-control-container {
   position: static;
+}
+
+/* ---------------------------------------------- */
+
+/* Styling for check boxes */
+
+/* ---------------------------------------------- */
+
+/* First the container */
+
+#grade-select-set::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.grade-checkbox-text {
+  width: 30%;
+  float: left;
+  font-size: 13px;
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
 }

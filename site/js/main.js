@@ -5,10 +5,17 @@
 // Import school data
 import schools from '../data/schools.js';
 
+// This variable determines which school is shown on the map
+// Initially, it is all schools
+export let schoolsShownOnMap = schools;
+
 // Import functions related to showing the school map
 import { showSchoolsOnMap } from './school-map.js';
 
 import { showSchoolsInList } from './school-list.js';
+
+// Funtion to add event listeners to prepare for highlighting schools in the list
+import { prepareHighlight } from './school-compare.js';
 
 // Import useful functions from template-tools
 import { htmlToElement } from "./template-tools.js";
@@ -29,7 +36,7 @@ export const gradeArr = Object.keys(schools[0]).filter(key => {
 
 // First initialize the base map
 let schoolMap = document.querySelector("#school-map");
-let baseMap = L.map(schoolMap).setView([39.95, -75.15], 11.5);
+export let baseMap = L.map(schoolMap).setView([40, -75.15], 11);
 // For other map tile styles, see this website:https://leaflet-extras.github.io/leaflet-providers/preview/
 
 L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=029695db-b34b-4602-a119-bcf44d2d87d6', {
@@ -62,7 +69,10 @@ for(const grade of gradeArr) {
 //-----------------------------------------------//
 
 let schoolList = document.querySelector('#school-list');
+
 showSchoolsInList(schools, schoolList);
+// Add event listener to prepare for highlight
+prepareHighlight();
 
 //-----------------------------------------------//
 // CHANGE WHAT'S SHOWING ACCORDING TO EVENT LISTENER
@@ -98,19 +108,25 @@ function filterByGrade(schoolsList) {
 
 
 // On each one of them, add an event listener
+// Everytime a new change is happening, put schoollist through the two filters
+// Also, add event listener to the newly created HTMLs
+
 for(const checkbox of schoolGradeFilters){
     checkbox.addEventListener('change', ( ) => {
-        const filteredSchools = filterByGrade(filterByName(schools));
-        showSchoolsOnMap(filteredSchools, baseMap);
-        showSchoolsInList(filteredSchools, schoolList);
+        schoolsShownOnMap = filterByGrade(filterByName(schools));
+        showSchoolsOnMap(schoolsShownOnMap, baseMap);
+        showSchoolsInList(schoolsShownOnMap, schoolList);
+        prepareHighlight();
     });
 }
 
 // Add event listener to the input box
+// Everytime a new change is happening, put schoollist through the two filters
 schoolNameFilter.addEventListener('input', ( ) => {
-    const filteredSchools = filterByGrade(filterByName(schools));
-    showSchoolsOnMap(filteredSchools, baseMap);
-    showSchoolsInList(filteredSchools, schoolList);
+    schoolsShownOnMap = filterByGrade(filterByName(schools));
+    showSchoolsOnMap(schoolsShownOnMap, baseMap);
+    showSchoolsInList(schoolsShownOnMap, schoolList);
+    prepareHighlight();
 });
 
 window.schools = schools;
@@ -118,3 +134,4 @@ window.gradeArr = gradeArr;
 window.schoolList = schoolList;
 window.schoolNameFilter = schoolNameFilter;
 window.schoolGradeFilters = schoolGradeFilters;
+window.schoolsShownOnMap = schoolsShownOnMap;

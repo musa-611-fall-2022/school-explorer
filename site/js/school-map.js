@@ -45,7 +45,7 @@ function showSchoolsOnMap(schoolsToShow, baseMap) {
         // in this case, use L.circleMarker
         pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
         // Style is also an option to be called inside geoJSON.
-        style:{
+        style: {
             radius: 5,
             color: "#353795",
             fillOpacity: 0.5,
@@ -58,6 +58,7 @@ function showSchoolsOnMap(schoolsToShow, baseMap) {
 }
 
 export{
+    makeSchoolFeature,
     showSchoolsOnMap,
 };
 
