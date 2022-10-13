@@ -21,13 +21,13 @@
 
 ## Stretch 1: Selecting Schools
 
-- [ ] When you click on a school in the list or map, the school should be highlighted. The corresponding school in the map or list should also be highlighted.
+- [X] When you click on a school in the list or map, the school should be highlighted. The corresponding school in the map or list should also be highlighted.
 
-- [ ] When a school is highlighted, that school's catchment area should be shown on the map. If the school is not a neighborhood school (i.e., doesn't have a catchment), then the outline of the city should be shown.
+- [X] When a school is highlighted, that school's catchment area should be shown on the map. If the school is not a neighborhood school (i.e., doesn't have a catchment), then the outline of the city should be shown.
 
 ## Stretch 2: Comparing Schools
 
-- [ ] When a school is highlighted, it should be added to a table where multiple schools can be campared side-by-side.
+- [X] When a school is highlighted, it should be added to a table where multiple schools can be campared side-by-side.
 
 ## Stretch 3: Sharing School Selections
 
