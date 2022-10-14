@@ -14,9 +14,6 @@ function showSchoolsInList(schoolsToShow, schoolList) {
         const html = `
             <li class="school-list-item" role="option" title="${school['name']}" value=0>
                 <div>${school['name']}</div>
-                <div class="grade-list">${
-                    "Grade ".concat(thisGradeArr.join(", "))
-                }</div>
             </li>
         `;
         const li = htmlToElement(html);

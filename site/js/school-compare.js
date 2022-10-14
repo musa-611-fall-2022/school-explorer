@@ -6,6 +6,13 @@ import catchments from "../data/catchments.js";
 import cityLimit from "../data/City_Limits.js";
 import { htmlToElement } from "./template-tools.js";
 import { gradeArr } from './main.js';
+import { saveStateToUrl } from './url-hash.js';
+
+//-----------------------------------------------//
+// A SET OF FUNCTIONS
+// ALL THESE FUNCTIONS ARE SUPPOSED TO BE USED
+// ON CLICK
+//-----------------------------------------------//
 
 //-----------------------------------------------//
 // FUNCTION TO GET ALL SCHOOLS CURRENTLY HIGHLIGHTED
@@ -35,7 +42,7 @@ function getSchoolsToCompare() {
 }
 
 //-----------------------------------------------//
-// SHOW SCHOOLS TO COMPARE
+// SHOW SCHOOLS TO COMPARE IN RIGHT COLUMN
 //-----------------------------------------------//
 
 const schoolsCompareContainer = document.querySelector("#school-compare-container");
@@ -50,33 +57,28 @@ function showSchoolsCompare(schoolsToCompare) {
   for(let school of schoolsToHighlight) {
 
     // Get what grades this schools serves
-
     let thisGradeArr = [];
     for(let grade of gradeArr) {
         if(school[grade] === "1") {
             thisGradeArr.push(grade.substring(6));
         }
     }
-
+    // Get major interventions
+    let majorIntervention;
+    if(school["Major Intervention"] != "N/A") {
+      majorIntervention = school["Major Intervention"];
+    } else {
+      majorIntervention = "No major intervention";
+    }
+    // Create content for schools for comparison
     const html = `
       <div class="school-compare-item">
         <div class="school-name">${school["name"]}</div>
         <div class="content">
-          <div class="item-title">Admission</div>
-          <div class="item-content">${school["Admission Type"]}</div>
-        </div>
-        <div class="content">
-          <div class="item-title">Grades</div>
-          <div class="item-content">${thisGradeArr.join(", ")}</div>
-        </div>
-        <div class="content">
-          <div class="item-title">Network</div>
-          <div class="item-content">${school["Learning Network"]}</div>
-
-        </div>
-        <div class="content">
-          <div class="item-title">Intervention</div>
-          <div class="item-content">${school["Major Intervention"]} (${school["Major Intervention Year"]})</div>
+          <div class="item-title">${school["Admission Type"]}</div>
+          <div class="item-title">Grade ${thisGradeArr.join(", ")}</div>
+          <div class="item-title">${school["Learning Network"]}</div>
+          <div class="item-title">${majorIntervention}</div>
         </div>
       </div>
     `;
@@ -87,7 +89,7 @@ function showSchoolsCompare(schoolsToCompare) {
 }
 
 //-----------------------------------------------//
-// HIGHLIGHT SCHOOLS ON THE MAP
+// FUNCTION TO HIGHLIGHT SCHOOLS ON THE MAP
 //-----------------------------------------------//
 
 // Enlarge the schools that are highlighted
@@ -125,10 +127,13 @@ function highlightSchoolsOnMap(schoolsToCompare) {
   .addTo(baseMap);
 }
 
-// Show catchment areas of schools
+//-----------------------------------------------//
+// FUNCTION TO SHOW SCHOOL CATCHMENT AREAS
+//-----------------------------------------------//
+
 function showCatchments(schoolsToCompare) {
 
-  // schoolsToCompare is just a list of names
+  // SchoolsToCompare is just a list of names
   // Get the full info of the highlighted schools
   const schoolsToHighlight = schoolsShownOnMap.filter(school =>
     schoolsToCompare.includes(school["name"]));
@@ -166,7 +171,7 @@ function showCatchments(schoolsToCompare) {
         catchmentIds.push(catchment["id"]);
       }
     }
-
+    // For the tooltip, add a phrase that says: x, y, and z are not neighborhood schools
     // Find which one is missing or which ones are missing
     const missedSchools = [];
 
@@ -203,6 +208,7 @@ function showCatchments(schoolsToCompare) {
     .addTo(baseMap);
   }
 
+  // Add catchment layers
   baseMap.catchmentLayers = L.geoJSON(filteredCatchments, {
     style: {
       color: "#353795",
@@ -263,11 +269,19 @@ function prepareHighlight() {
 
       // Show comparing school
       showSchoolsCompare(schoolsToCompare);
+
+      // Save current state to URL
+      saveStateToUrl(schoolsToCompare);
     });
   }
 }
 
-export{ prepareHighlight };
+export{
+  prepareHighlight,
+  showCatchments,
+  highlightSchoolsOnMap,
+  showSchoolsCompare,
+};
 
 window.catchments = catchments;
 window.cityLimit = cityLimit;
