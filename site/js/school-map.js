@@ -3,9 +3,9 @@ import schools from '../data/schools.js';
 function initializeSchoolMap() {
   let schoolMap = L.map('schoolMap').setView([39.99873171497979, -75.1321119604354], 11);
 
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
     maxZoom: 19,
-    attribution: '© OpenStreetMap'
+    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
 }).addTo(schoolMap);
 
   L.geoJSON(schools, {
@@ -15,17 +15,20 @@ function initializeSchoolMap() {
   return schoolMap;
 }
 
-function makeSchoolFeature(school) {
-  return {
+function makeSchoolFeature(schools) {
+  const schoolInfo = {
     "type": "Feature",
-    "id": school['sdp_id'],
+    "id": schools['sdp_id'],
     "properties": {
-      "school_name": school['name'],
-      "school_type": school['School Level'],
-      "school_id": school['sdp_id']
+      "school_name": schools["name"],
+      "school_type": schools['School Level'],
+      "school_id": schools['sdp_id'],
+      "address": schools['Street Address']
     },
-    "geometry": school['geom'],
+    "geometry": schools['geom'],
   };
+
+  return schoolInfo;
 }
 
 function showSchoolsOnMap(schoolsToShow, schoolMap) {
@@ -43,7 +46,7 @@ function showSchoolsOnMap(schoolsToShow, schoolMap) {
     style: {
       stroke: null,
       fillOpacity: 0.9,
-      radius: 3,
+      radius: 4,
     },
   })
   .bindTooltip(layer => {return layer.feature.properties['school_name']})

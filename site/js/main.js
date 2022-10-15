@@ -7,53 +7,47 @@ showSchoolsOnMap(schools, schoolMap);
 
 let schoolList = document.querySelector('#school-list');
 showSchoolsInList(schools, schoolList);
+
 let typeCheckboxes = document.querySelectorAll('.school-checkbox');
-let schoolNameInput = document.querySelector('#school-name-input')
+let schoolNameInput = document.querySelector('#schoolNameInput')
 
 function getFilteredSchools() {
+  let filteredSchools = schools;
+  
+  //Filter based on school name
   const text = schoolNameInput.value;
-  let filteredSchools = schools.filter(function(school){
-    const name = school['school_name'].toLowerCase();
+  filteredSchools = schools.filter(function (school) {
+    const name = school['name'].toLowerCase();
     const hasText = name.includes(text);
     return hasText;
   });
 
+  //Filter based on school type checkboxes
   for (const checkbox of typeCheckboxes) {
     if (checkbox.checked){
-      filteredSchools = filteredSchools.filter(function(school){
+      filteredSchools = filteredSchools.filter(function(school) {
         const type = checkbox.value;
-        const hasType = type['school_type'].includes(school);
+        const hasType = school['School Level'].includes(type);
         return hasType;
       });
     }
   }
+  
   return filteredSchools;
 }
 
 for (const cb of typeCheckboxes) {
-  cb.addEventListener('change', (evt) => {
-    const checkbox = evt.target;
-    const t = checkbox.value;
-    const isChecked = checkbox.checked;
-    if (isChecked){
-      const filteredSchools = schools.filter(function(school){
-        const types = school['school_type'];
-        const hasType = types.includes(t);
-        return hasType;
-      });
-      showSchoolsOnMap(filteredSchools, schoolMap);
-      showSchoolsInList(filteredSchools, schoolMap);
-    } else {
-      showSchoolsOnMap(schools, schoolMap);
-    }
-    console.log('you clicked on a checkbox');
-    console.log(evt.target);
+  cb.addEventListener('change', () => {
+    const filteredSchools = getFilteredSchools();
+    showSchoolsOnMap(filteredSchools, schoolMap);
+    showSchoolsInList(filteredSchools, schoolMap);
   });
 }
 
 schoolNameInput.addEventListener('input', () => {
   const filteredSchools = getFilteredSchools();
   showSchoolsOnMap(filteredSchools, schoolMap);
+  showSchoolsInList(filteredSchools, schoolMap);
 });
 
 
