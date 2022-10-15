@@ -40,14 +40,14 @@ for (const cb of typeCheckboxes) {
   cb.addEventListener('change', () => {
     const filteredSchools = getFilteredSchools();
     showSchoolsOnMap(filteredSchools, schoolMap);
-    showSchoolsInList(filteredSchools, schoolMap);
+    showSchoolsInList(filteredSchools, schoolList);
   });
 }
 
 schoolNameInput.addEventListener('input', () => {
   const filteredSchools = getFilteredSchools();
   showSchoolsOnMap(filteredSchools, schoolMap);
-  showSchoolsInList(filteredSchools, schoolMap);
+  showSchoolsInList(filteredSchools, schoolList);
 });
 
 
