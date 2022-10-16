@@ -35,16 +35,18 @@ function makeSchoolFeature(x) {
 }
 
 /*
-1)Schools.js 에서 geoJSON 만들고 지도에 넣는것까지 하나의함수로 만듦 : showStopsOnMap 
+1)Schools.js 에서 geoJSON 만들고 지도에 넣는것까지 하나의함수로 만듦 : showSchoolsOnMap 
 */
 
 
 function showSchoolsOnMap(x, schoolMap) {
  
+      
     const stopFeatureColletion = {
         "type": "FeatureCollection",
-        "features": schools.map(makeSchoolFeature),
+        "features": x.map(makeSchoolFeature),
     };
+
 
     if (schoolMap.schoolLayer !== undefined) {
         schoolMap.removeLayer(schoolMap.schoolLayer);
@@ -66,6 +68,8 @@ function showSchoolsOnMap(x, schoolMap) {
     .bindTooltip(x => x.feature.properties['name'])
     .addTo(schoolMap);
 }
+
+
 
 export{
     initializeSchoolMap,
