@@ -9,7 +9,7 @@ let schoolList = document.querySelector('#school-list');
 showSchoolsInList(schools, schoolList);
 
 let typeCheckboxes = document.querySelectorAll('.school-checkbox');
-let schoolNameInput = document.querySelector('#schoolNameInput');
+let schoolNameInput = document.querySelector('#school-name-filter');
 
 function getFilteredSchools() {
   let filteredSchools = schools;
