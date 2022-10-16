@@ -53,5 +53,5 @@ schoolNameInput.addEventListener('input', () => {
 
 window.schools = schools;
 window.schoolList = schoolList;
-window.schoolMap=schoolMap;
+window.schoolMap = schoolMap;
 window.typeCheckboxes = typeCheckboxes;
