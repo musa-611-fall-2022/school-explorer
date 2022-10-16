@@ -4,7 +4,7 @@ function initializeSchoolMap() {
   let schoolMap = L.map('schoolMap').setView([39.99873171497979, -75.1321119604354], 11);
 
   L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-    maxZoom: 19,
+    maxZoom: 16,
     attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
 }).addTo(schoolMap);
 
