@@ -32,7 +32,7 @@ function getFilteredSchools() {
       });
     }
   }
- 
+
   return filteredSchools;
 }
 
@@ -55,3 +55,5 @@ window.schools = schools;
 window.schoolList = schoolList;
 window.schoolMap = schoolMap;
 window.typeCheckboxes = typeCheckboxes;
+window.schoolNameFilter = schoolNameInput;
+window.schoolLevelFilters = typeCheckboxes;
