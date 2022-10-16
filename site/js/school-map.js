@@ -3,7 +3,7 @@ import schools from '../data/schools.js';
 function initializeSchoolMap() {
   let schoolMap = L.map('schoolMap').setView([39.99873171497979, -75.1321119604354], 11);
 
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=11e1c51b-39cf-48d8-8040-78dd255f1183', {
     maxZoom: 19,
     attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
 }).addTo(schoolMap);
