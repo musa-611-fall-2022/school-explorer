@@ -5,7 +5,7 @@ function initializeSchoolMap() {
 
   L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
     maxZoom: 19,
-    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+    attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
 }).addTo(schoolMap);
 
   L.geoJSON(schools, {
@@ -23,7 +23,7 @@ function makeSchoolFeature(schools) {
       "school_name": schools["name"],
       "school_type": schools['School Level'],
       "school_id": schools['sdp_id'],
-      "address": schools['Street Address']
+      "address": schools['Street Address'],
     },
     "geometry": schools['geom'],
   };
@@ -35,7 +35,7 @@ function showSchoolsOnMap(schoolsToShow, schoolMap) {
   if (schoolMap.stopLayers !== undefined){
     schoolMap.removeLayer(schoolMap.stopLayers);
   }
-  
+
   const stopFeatureCollection = {
     "type": "FeatureCollection",
     "features": schoolsToShow.map(makeSchoolFeature),
