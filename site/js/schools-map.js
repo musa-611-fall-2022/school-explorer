@@ -3,7 +3,7 @@ import catchments from '../data/catchments.js';
 
 function initializeSchoolsMap () {
     //initial zoom and center
-    let schoolsMap = L.map('schools-map').setView([39.95764876954889, -75.1629638671875], 11);
+    let schoolsMap = L.map('schools-map').setView([39.95764876954889, -75.1629638671875], 12);
 
     //add basemap
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
