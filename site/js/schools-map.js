@@ -25,12 +25,47 @@ function initializeSchoolsMap () {
 function makeSchoolsFeature(schools){
     return{
         'type': 'Feature',
-        /*'properties': {
-            'routes_ids':schools['routes_ids'],
-            'schools_id':schools['schools_id'],
-            'schools_name':schools['schools_name'],
-            'wheelchair_boarding':schools['wheelchar_boarding'],
-        },*/
+        'properties': {
+            'name':schools['name'],
+            'School Level':schools['School Level'],
+            'Year Opened':schools['Year Opened'],
+            'Admission Type':schools['Admission Type'],
+            'Current Grade Span Served':schools['Current Grade Span Served'],
+            'Phasing-In':schools['Phasing-In'],
+            'Phasing-Out':schools['Phasing-Out'],
+            'Governance':schools['Governance'],
+            'Management Organization':schools['Management Organization'],
+            'School Reporting Category':schools['School Reporting Category'],
+            'Major Intervention':schools['Major Intervention'],
+            'Major Intervention Year':schools['Major Intervention Year'],
+            'Title I Designation':schools['Title I Designation'],
+            'City Council District':schools['City Council District'],
+            'Street Address':schools['Street Address'],
+            'City':schools['City'],
+            'State':schools['State'],
+            'Zip Code':schools['Zip Code'],
+            'Phone Number':schools['Phone Number'],
+            'Fax Number':schools['Fax Number'],
+            'Website':schools['Website'],
+            'School Leader Name':schools['School Leader Name'],
+            'Learning Network':schools['Learning Network'],
+            'FACE Liaison Name':schools['FACE Liaison Name'],
+            'FACE Liaison Email':schools['FACE Liaison Email'],
+            'FACE Liaison Phone Number':schools['FACE Liaison Phone Number'],
+            'Grade K':schools['Grade K'],
+            'Grade 1':schools['Grade 1'],
+            'Grade 2':schools['Grade 2'],
+            'Grade 3':schools['Grade 3'],
+            'Grade 4':schools['Grade 4'],
+            'Grade 5':schools['Grade 5'],
+            'Grade 6':schools['Grade 6'],
+            'Grade 7':schools['Grade 7'],
+            'Grade 8':schools['Grade 8'],
+            'Grade 9':schools['Grade 9'],
+            'Grade 10':schools['Grade 10'],
+            'Grade 11':schools['Grade 11'],
+            'Grade 12':schools['Grade 12']
+        },
         'geometry': schools['geom'],
     };
 }
@@ -55,7 +90,7 @@ function showSchoolsOnMap (schoolsToShow, schoolsMap) {
             radius: 5,
         },
     })
-    /*.bindTooltip(layer => layer.feature.properties['stop_name'])*/
+    .bindTooltip(layer => layer.feature.properties['name'])
     .addTo(schoolsMap);
 }
 
