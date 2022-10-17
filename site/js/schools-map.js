@@ -21,7 +21,7 @@ function initializeSchoolsMap () {
 
 }
 
-    //function that converts .js into GeoJSON format - need to set properties
+//function that converts .js into GeoJSON format - need to set properties
 function makeSchoolsFeature(schools){
     return{
         'type': 'Feature',
