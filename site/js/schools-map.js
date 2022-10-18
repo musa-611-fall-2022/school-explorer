@@ -3,7 +3,7 @@ import catchments from '../data/catchments.js';
 
 function initializeSchoolsMap () {
     //initial zoom and center
-    let schoolsMap = L.map('schools-map').setView([39.95764876954889, -75.1629638671875], 11);
+    let schoolsMap = L.map('schools-map').setView([39.95764876954889, -75.1629638671875], 13);
 
     //add basemap
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -28,17 +28,6 @@ function makeSchoolsFeature(schools){
         'properties': {
             'name':schools['name'],
             'School Level':schools['School Level'],
-            'Year Opened':schools['Year Opened'],
-            'Admission Type':schools['Admission Type'],
-            'Current Grade Span Served':schools['Current Grade Span Served'],
-            'Phasing-In':schools['Phasing-In'],
-            'Phasing-Out':schools['Phasing-Out'],
-            'Governance':schools['Governance'],
-            'Management Organization':schools['Management Organization'],
-            'School Reporting Category':schools['School Reporting Category'],
-            'Major Intervention':schools['Major Intervention'],
-            'Major Intervention Year':schools['Major Intervention Year'],
-            'Title I Designation':schools['Title I Designation'],
             'City Council District':schools['City Council District'],
             'Street Address':schools['Street Address'],
             'City':schools['City'],
@@ -47,11 +36,6 @@ function makeSchoolsFeature(schools){
             'Phone Number':schools['Phone Number'],
             'Fax Number':schools['Fax Number'],
             'Website':schools['Website'],
-            'School Leader Name':schools['School Leader Name'],
-            'Learning Network':schools['Learning Network'],
-            'FACE Liaison Name':schools['FACE Liaison Name'],
-            'FACE Liaison Email':schools['FACE Liaison Email'],
-            'FACE Liaison Phone Number':schools['FACE Liaison Phone Number'],
             'Grade K':schools['Grade K'],
             'Grade 1':schools['Grade 1'],
             'Grade 2':schools['Grade 2'],
