@@ -1,0 +1,48 @@
+html {
+  font-family: Lato, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+h1 {
+  font-weight: bold;
+  padding: 1rem;
+}
+
+p {
+  font-weight: bold;
+}
+
+#school-map {
+  height: 100%;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: row-reverse;
+  overflow: hidden;
+  height: 100%;
+}
+
+.map-container {
+  width: 50%;
+}
+
+.list-container {
+  width: 50%;
+  padding: 1rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.school-list-container {
+  overflow-y: scroll;
+}
