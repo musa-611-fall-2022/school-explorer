@@ -58,6 +58,7 @@ function showSchoolsOnMap (schoolsToShow, schoolsMap) {
     if (schoolsMap.schoolsLayers !== undefined) {
         schoolsMap.removeLayer(schoolsMap.schoolsLayers);
       }
+
     /*creates a new Feature Collection from those converted GeoJSON objects.
     Use "const" b/c no intent to change later on.*/
     const schoolsFeatureCollection ={
