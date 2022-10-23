@@ -72,7 +72,7 @@ label {
 }
 
 input {
-  border-width: ;
+  border-width: 1px;
 }
 
 .list-container {
@@ -83,6 +83,7 @@ input {
 
 .checkbox-list {
   display: flex;
+
   align-items: flex-start;
   align-content: flex-start;
   flex-flow: row nowrap;
