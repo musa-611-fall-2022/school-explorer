@@ -65,26 +65,34 @@ function updateMap (){
     console.log('text filter returns',textFilter.length,'results');
     
 
+    function hasAllGrades (s){
+        return checkedArr.every(g => {
+            if (g == "0" && s["Grade K"] == 1 ||
+                g == "1" && s["Grade 1"] == 1 ||
+                g == "2" && s["Grade 2"] == 1 ||
+                g == "3" && s["Grade 3"] == 1 ||
+                g == "4" && s["Grade 4"] == 1 ||
+                g == "5" && s["Grade 5"] == 1 ||
+                g == "6" && s["Grade 6"] == 1 ||
+                g == "7" && s["Grade 7"] == 1 ||
+                g == "8" && s["Grade 8"] == 1 ||
+                g == "9" && s["Grade 9"] == 1 ||
+                g == "10" && s["Grade 10"] == 1 ||
+                g == "11" && s["Grade 11"] == 1 ||
+                g == "12" && s["Grade 12"] == 1){
+                return true;
+                }
+            else {
+                return false;
+            }
+        })
+    }
+
     let finalFilter = textFilter.filter(function(school){
         if (checkedArr.length == 0) {
             return true;
-        } else if (
-            school["Grade K"] == 1 && checkedArr.includes("0") || 
-            school["Grade 1"] == 1 && checkedArr.includes("1") || 
-            school["Grade 2"] == 1 && checkedArr.includes("2") || 
-            school["Grade 3"] == 1 && checkedArr.includes("3") || 
-            school["Grade 4"] == 1 && checkedArr.includes("4") || 
-            school["Grade 5"] == 1 && checkedArr.includes("5") || 
-            school["Grade 6"] == 1 && checkedArr.includes("6") || 
-            school["Grade 7"] == 1 && checkedArr.includes("7") || 
-            school["Grade 8"] == 1 && checkedArr.includes("8") || 
-            school["Grade 9"] == 1 && checkedArr.includes("9") || 
-            school["Grade 10"] == 1 && checkedArr.includes("10") || 
-            school["Grade 11"] == 1 && checkedArr.includes("11") || 
-            school["Grade 12"] == 1 && checkedArr.includes("12")
-            ){
-            return true;
-        } 
+        }
+        return hasAllGrades(school);
     });
     //console.log(gradeFilter);
     //gradeFilter = gradeFilter.map(s => s["sdp_id"]);
