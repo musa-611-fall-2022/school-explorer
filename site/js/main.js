@@ -8,7 +8,7 @@ showSchoolsOnMap(schools, schoolMap);
 let schoolList = document.querySelector('#school-list');
 showSchoolsInList(schools, schoolList);
 
-let schoolGradeFilters = document.querySelectorAll('.grade-checkbox');
+let schoolLevelFilters = document.querySelectorAll('.grade-checkbox');
 let schoolNameFilter = document.querySelector('#school-name-filter');
 
 function getFilteredSchools() {
@@ -23,7 +23,7 @@ function getFilteredSchools() {
     });
 
     //Filter based on grade level checkboxes
-    for (const checkbox of schoolGradeFilters) {
+    for (const checkbox of schoolLevelFilters) {
         if (checkbox.checked) {
             filteredSchools = filteredSchools.filter(function (school) {
                 const grades = checkbox.value;
@@ -36,7 +36,7 @@ function getFilteredSchools() {
     return filteredSchools;
 }
 
-for (const cb of schoolGradeFilters) {
+for (const cb of schoolLevelFilters) {
     cb.addEventListener( 'change', () => {
         const filteredSchools = getFilteredSchools();
         showSchoolsOnMap(filteredSchools, schoolMap);
@@ -52,7 +52,7 @@ schoolNameFilter.addEventListener('input', () => {
 
 window.schools = schools;
 window.schoolMap = schoolMap;
-window.schoolGradeFilters = schoolGradeFilters;
+window.schoolLevelFilters = schoolLevelFilters;
 
 
 

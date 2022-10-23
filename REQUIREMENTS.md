@@ -7,7 +7,7 @@
 
 - [x] A set of checkboxes that can be used to filter based on the grades (K-12) served at a school. When a box is checked, only schools that serve the corresponding grade should be shown on the map. (_You can alternatively choose to include filters for grade levels. If you do, only include options for Elementary, Middle, High, and Transition/Overage -- not, for example, `Elementary-Middle`_).
   
-  **An array of `input` elements should be available on the global `window` object as a variable named `window.schoolGradeFilters` (or `window.schoolLevelFilters` if using school levels instead of grades).**
+  **An array of `input` elements should be available on the global `window` object as a variable named `window.schoolLevelFilters` (or `window.schoolLevelFilters` if using school levels instead of grades).**
 
 - [x] A marker should be present on the map for each school that meets the current filter criteria, and no markers should be present for schools that _do not_ meet the filter criteria.
 
