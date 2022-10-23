@@ -1,10 +1,8 @@
-import schools from '../data/schools.js';
 import catchments from '../data/catchments.js';
 
 const mapboxAccount = 'mapbox';
 const mapboxStyle = 'light-v10';
-const mapboxToken = 'pk.eyJ1IjoiY29udHJhaWwtZW50aHVzaWFzdCIsImEiOiJjbDlsbTRteXEwMWh0M3VwZjBqc2JrbWZ4In0.MCAs44cMD-2XioBijyx_Iw'
-
+const mapboxToken = 'pk.eyJ1IjoiY29udHJhaWwtZW50aHVzaWFzdCIsImEiOiJjbDlsbTRteXEwMWh0M3VwZjBqc2JrbWZ4In0.MCAs44cMD-2XioBijyx_Iw';
 
 function initializeSchoolsMap () {
     //initial zoom and center
@@ -18,7 +16,7 @@ function initializeSchoolsMap () {
 
     //including catchments polygon and restyling
     L.geoJSON(catchments, {
-        style: { fill: null, weight:0.5 , color: '#000' },
+        style: { fill: null, weight:0.5, color: '#000' },
     })
     .addTo(schoolsMap);
 
@@ -53,7 +51,7 @@ function makeSchoolsFeature(schools){
             'Grade 9':schools['Grade 9'],
             'Grade 10':schools['Grade 10'],
             'Grade 11':schools['Grade 11'],
-            'Grade 12':schools['Grade 12']
+            'Grade 12':schools['Grade 12'],
         },
         'geometry': schools['geom'],
     };
