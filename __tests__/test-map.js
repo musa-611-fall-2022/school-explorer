@@ -12,7 +12,7 @@ describe('The schoolMap', () => {
 
   it('should start with about 325 feature layers', async () => {
     const initialLength = await page.evaluate(() => {
-      const initialLength = Object.values(window.schoolMap._layers).filter(l => 'feature' in l).length;
+      const initialLength = Object.values(window.schoolMap._layers).filter(l => 'feature' in l && l.feature.geometry.type === 'Point').length;
       return initialLength;
     });
     expect(initialLength).toBeCloseTo(325, -1);
