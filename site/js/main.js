@@ -1,4 +1,4 @@
-import schools from '../data/schools.js';
+// import schools from '../data/schools.js';
 import { initializeSchoolMap, showSchoolsOnMap } from './school-map.js';
 import { showSchoolsInList } from './schools-list.js';
 
@@ -37,7 +37,7 @@ function getFilteredSchools() {
 }
 
 for (const cb of gradeCheckboxes) {
-    cb.addEventListener( 'change', (evt) => {
+    cb.addEventListener( 'change', () => {
         const filteredSchools = getFilteredSchools();
         showSchoolsOnMap(filteredSchools, schoolMap);
         showSchoolsInList(filteredSchools, schoolList);
