@@ -130,3 +130,10 @@ input{
     height: 800px; 
     width: 100%;
 }
+
+li {
+    font-family: 'Inconsolata', monospace;
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
