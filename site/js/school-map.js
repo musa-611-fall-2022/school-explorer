@@ -1,4 +1,4 @@
-import schools from '../data/schools.js';
+// import schools from '../data/schools.js';
 import catchments from '../data/catchments.js';
 
 function initializeSchoolMap() {
