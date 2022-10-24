@@ -15,12 +15,15 @@ function getFilteredSchools() {
     let filteredSchools = schools;
 
     //Filter based on school name checkboxes
-    const text = schoolNameFilter.value;
-    filteredSchools = filteredSchools.filter(function (school) {
-        const name = school['name'].toLowerCase();
-        const hasText = name.includes(text);
-        return hasText;
-    });
+    for (const text = schoolNameFilter.value) {
+        if (checkbox.checked) {
+            filteredSchools = filteredSchools.filter(function (school) {
+                const name = school['name'].toLowerCase();
+                const hasText = name.includes(text);
+                return hasText;
+            });
+        }
+    }
 
     //Filter based on grade level checkboxes
     for (const checkbox of schoolLevelFilters) {
