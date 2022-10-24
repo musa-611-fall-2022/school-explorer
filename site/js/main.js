@@ -15,7 +15,7 @@ function getFilteredSchools() {
     let filteredSchools = schools;
 
     //Filter based on school name checkboxes
-    for (const text = schoolNameFilter.value) {
+    for (const text of schoolNameFilter.value) {
         if (checkbox.checked) {
             filteredSchools = filteredSchools.filter(function (school) {
                 const name = school['name'].toLowerCase();
@@ -56,6 +56,5 @@ schoolNameFilter.addEventListener('input', () => {
 window.schools = schools;
 window.schoolMap = schoolMap;
 window.schoolLevelFilters = schoolLevelFilters;
-
-
+window.schoolNameFilter = schoolNameFilter;
 
