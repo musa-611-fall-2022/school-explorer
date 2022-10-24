@@ -5,7 +5,7 @@ let isGradeFilterDefined = false;
 let isLevelFilterDefined = false;
 
 await page.goto('http://localhost:8080/site/');
-isGradeFilterDefined = await page.evaluate(() => window.schoolLevelFilters);
+isGradeFilterDefined = await page.evaluate(() => window.schoolGradeFilters);
 isLevelFilterDefined = await page.evaluate(() => window.schoolLevelFilters);
 
 

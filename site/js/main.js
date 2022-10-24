@@ -41,6 +41,8 @@ for (const cb of schoolLevelFilters) {
         const filteredSchools = getFilteredSchools();
         showSchoolsOnMap(filteredSchools, schoolMap);
         showSchoolsInList(filteredSchools, schoolList);
+        window.schools = filteredSchools;
+
     });
 }
 
