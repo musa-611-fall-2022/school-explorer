@@ -8,8 +8,8 @@ showSchoolsOnMap(schools, schoolMap);
 let schoolList = document.querySelector('#school-list');
 showSchoolsInList(schools, schoolList);
 
-let schoolLevelFilters = document.querySelectorAll('.grade-checkbox');
 let schoolNameFilter = document.querySelector('#school-name-filter');
+let schoolLevelFilters = document.querySelectorAll('.grade-checkbox');
 
 function getFilteredSchools() {
     let filteredSchools = schools;
