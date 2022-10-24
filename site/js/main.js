@@ -2,15 +2,15 @@
 
 //1) data 추출하기 : map, filter, reduce
 //2) map : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
-//3) function 만들고 map 하기 
+//3) function 만들고 map 하기
 
-//1) ../ go one folder up 
+//1) ../ go one folder up
 //2) import <name> from <address> : name 은 아무거나 상관없음
 
 
 import schools from '../data/schools.js';
-import {initializeSchoolMap, showSchoolsOnMap} from './schoolsToMap.js';
-import {showSchoolsInList} from './schoolList.js';
+import { initializeSchoolMap, showSchoolsOnMap } from './schoolsToMap.js';
+import { showSchoolsInList } from './schoolList.js';
 
 
 let schoolMap = initializeSchoolMap();
@@ -50,12 +50,12 @@ function getfilteredSchools() {
                         return true;
                     } else {
                         return false;
-                    }                           
-                })
+                    }
+                });
             }
 
         }
-        
+
     return filteredSchools;
 }
 
@@ -66,7 +66,7 @@ for (const cb of schoolGradeFilters) {
     const filteredSchools = getfilteredSchools();
     showSchoolsOnMap(filteredSchools, schoolMap);
     showSchoolsInList(filteredSchools, schoolList);
-})};
+});}
 
 schoolNameFilter.addEventListener('input', () =>{
     const filteredSchools = getfilteredSchools();

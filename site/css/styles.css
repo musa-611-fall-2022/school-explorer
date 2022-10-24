@@ -3,35 +3,31 @@
 body {
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
     height : 100vh;
-}
-
-#school-map {
-    height: 100vh;
 }
 
 .content-container{
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    height: 100v;
 }
 
-.map-container{
- height: 100vh;
- width: 70% ;
+#school-map {
+    height: 80vh;
+    width: 66vw 
 }
+
 
 .list-container{
     flex-grow: 1;
     flex-direction: column;
-    max-width: 5%;
+    width: 200px;
     overflow: hidden;
     height: 100%;
 }
 
 .school-list {
-    display: flex;
     overflow-y:scroll ;
 }

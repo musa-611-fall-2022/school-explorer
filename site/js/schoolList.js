@@ -1,4 +1,4 @@
-import {htmlToElement} from './template-tools.js';
+import { htmlToElement } from './template-tools.js';
 
 function showSchoolsInList(schoolsToShow, schoolList) {
     schoolList.innerHTML = '';

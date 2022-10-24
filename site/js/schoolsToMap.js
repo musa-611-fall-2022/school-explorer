@@ -1,11 +1,10 @@
 //맵만드는걸 하나의 펑션(initializeSchoolMap)으로 묶어버릴거임//
-import schools from '../data/schools.js';
 
 function initializeSchoolMap() {
     /*
     1) Import map (https://leafletjs.com/examples/quick-start/)
     */
-    let schoolMap = L.map('school-map', {zoomSnap: 0.25}).setView([39.95522712709254, -75.19864425285742], 13);
+    let schoolMap = L.map('school-map', { zoomSnap: 0.25 }).setView([39.95522712709254, -75.19864425285742], 13);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
@@ -21,7 +20,7 @@ function initializeSchoolMap() {
 1) geoJSON feature 작업을 해야함
 2) schools  >  feature
 3) creat function makeSchoolFeature
-*/ 
+*/
 
 function makeSchoolFeature(x) {
     return {
@@ -30,18 +29,18 @@ function makeSchoolFeature(x) {
         "properties":{
             "name": x['name'],
         },
-        "geometry": x['geom'], 
-    }
+        "geometry": x['geom'],
+    };
 }
 
 /*
-1)Schools.js 에서 geoJSON 만들고 지도에 넣는것까지 하나의함수로 만듦 : showSchoolsOnMap 
+1)Schools.js 에서 geoJSON 만들고 지도에 넣는것까지 하나의함수로 만듦 : showSchoolsOnMap
 */
 
 
 function showSchoolsOnMap(x, schoolMap) {
- 
-      
+
+
     const stopFeatureColletion = {
         "type": "FeatureCollection",
         "features": x.map(makeSchoolFeature),
@@ -57,7 +56,7 @@ function showSchoolsOnMap(x, schoolMap) {
     3)bindTooltip 마커에 정보 띄우기 (x는 pointToLayer에서 만드는 하나의 레이어를 의미함. 즉 하나의 포인트)
     */
 
-    schoolMap.schoolLayer = L.geoJSON(stopFeatureColletion,{
+    schoolMap.schoolLayer = L.geoJSON(stopFeatureColletion, {
         pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
         style:{
             stroke: null,
