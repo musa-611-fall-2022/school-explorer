@@ -1,29 +1,27 @@
-import schools from '../data/schools.js';
+import allSchools from '../data/schools.js';
 import { initializeSchoolMap, showSchoolsOnMap } from './school-map.js';
 import { showSchoolsInList } from './schools-list.js';
 
 let schoolMap = initializeSchoolMap();
-showSchoolsOnMap(schools, schoolMap);
+showSchoolsOnMap(allSchools, schoolMap);
 
 let schoolList = document.querySelector('#school-list');
-showSchoolsInList(schools, schoolList);
+showSchoolsInList(allSchools, schoolList);
 
 let schoolNameFilter = document.querySelector('#school-name-filter');
 let schoolLevelFilters = document.querySelectorAll('.grade-checkbox');
+var schools = allSchools
 
 function getFilteredSchools() {
-    let filteredSchools = schools;
-
+    let filteredSchools = allSchools.filter(function (school){
+        return school["name"].toLowerCase().includes(schoolNameFilter.value.toLowerCase())
+    })
     //Filter based on school name checkboxes
-    for (const text of schoolNameFilter.value) {
-        if (checkbox.checked) {
-            filteredSchools = filteredSchools.filter(function (school) {
-                const name = school['name'].toLowerCase();
-                const hasText = name.includes(text);
-                return hasText;
-            });
-        }
-    }
+    // for (const text of schoolNameFilter.value) {
+    //     filteredSchools = filteredSchools.filter(function (school) {
+    //         return school['name'].toLowerCase().includes(text);
+    //     });
+    // }
 
     //Filter based on grade level checkboxes
     for (const checkbox of schoolLevelFilters) {
@@ -48,12 +46,14 @@ for (const cb of schoolLevelFilters) {
     }
 
 schoolNameFilter.addEventListener('input', () => {
-  const filteredSchools = getFilteredSchools();
-    showSchoolsOnMap(filteredSchools, schoolMap);
-    showSchoolsInList(filteredSchools, schoolList);
+    schools = getFilteredSchools();
+    showSchoolsOnMap(schools, schoolMap);
+    showSchoolsInList(schools, schoolList);
+    window.schools = schools;
+
+    console.log(`WINDOW SCHOOLS ${window.schools.length}`)
 });
 
-window.schools = schools;
 window.schoolMap = schoolMap;
 window.schoolLevelFilters = schoolLevelFilters;
 window.schoolNameFilter = schoolNameFilter;
