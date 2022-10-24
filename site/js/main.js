@@ -13,8 +13,8 @@ let schoolLevelFilters = document.querySelectorAll('.grade-checkbox');
 
 function getFilteredSchools() {
     let filteredSchools = allSchools.filter(function (school) {
-        return school["name"].toLowerCase().includes(schoolNameFilter.value.toLowerCase())
-    })
+        return school["name"].toLowerCase().includes(schoolNameFilter.value.toLowerCase());
+    });
     //Filter based on school name checkboxes
     // for (const text of schoolNameFilter.value) {
     //     filteredSchools = filteredSchools.filter(function (school) {
@@ -56,4 +56,4 @@ schoolNameFilter.addEventListener('input', () => {
 window.schoolMap = schoolMap;
 window.schoolLevelFilters = schoolLevelFilters;
 window.schoolNameFilter = schoolNameFilter;
-window.schoolList = schoolList
+window.schoolList = schoolList;
