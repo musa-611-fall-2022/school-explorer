@@ -1,81 +1,65 @@
-import schools from "../data/schools.js";
-import { showSchoolsOnMap } from './school-map.js';
+import schools from '../data/schools.js';
+import { initializeSchoolMap, showSchoolsOnMap } from './school-map.js';
 import { showSchoolsInList } from './school-list.js';
 
-let schoolMap = L.map('school-map').setView([40.0055537, -75.120751], 11.5);
 
-const mapboxAccount = 'mapbox';
-const mapboxStyle = 'light-v10';
-const mapboxToken = 'pk.eyJ1IjoieWVzZW5pYW8iLCJhIjoiY2tlZjAyM3p5MDNnMjJycW85bmpjenFkOCJ9.TDYe7XRNP8CnAto0kLA5zA';
-L.tileLayer(`https://api.mapbox.com/styles/v1/${mapboxAccount}/${mapboxStyle}/tiles/256/{z}/{x}/{y}@2x?access_token=${mapboxToken}`, {
-    maxZoom: 19,
-    attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
-}).addTo(schoolMap);
-
-// L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-//       maxZoom: 19,
-//       attribution: '© OpenStreetMap',
-// }).addTo(schoolMap);
+let schoolMap = initializeSchoolMap();
 
 showSchoolsOnMap(schools, schoolMap);
 
 let schoolList = document.querySelector('#school-list');
+
 showSchoolsInList(schools, schoolList);
 
-let schoolGradeFilters = document.querySelectorAll(".grade-checkbox");
+let schoolGradeFilters = document.querySelectorAll('.Grade-checkbox');
+let schoolNameFilter = document.querySelector('#school-name-input');
 
-let schoolNameFilter = document.querySelector("#school-name-input");
 
-function shouldShowSchools (){
+function getFilteredSchools(){
     let filteredSchools = schools;
 
-    // Filter schools by name
-
+    //Filter through school name
     const text = schoolNameFilter.value;
-    filteredSchools = filteredSchools.filter(function (school) {
-        const name = school['name'];
-          const hasText = name.includes(text);
-          return hasText;
+    filteredSchools = schools.filter(function (school) {
+        const name = school['name'].toLowerCase ();
+        const hasText = name.includes(text);
+        return hasText;
     });
 
-    // Filter schools by grade
-
+    //Filter through grade
     for (const checkbox of schoolGradeFilters) {
         if (checkbox.checked) {
             filteredSchools = filteredSchools.filter(function (school) {
-                if (school[checkbox.value] == '1') {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
-        }
-
-      }
-
-    return filteredSchools;
-
+            const grade = checkbox.value;
+            if (school[grade] === "1") {
+                return true;
+            } else {
+                return false;
+            }
+        });
+    }
 }
 
-for (const cb of schoolGradeFilters) {
-  cb.addEventListener('change', () => {
-      const filteredSchools = shouldShowSchools();
-      showSchoolsOnMap(filteredSchools, schoolMap);
-      showSchoolsInList(filteredSchools, schoolList);
-  });
+return filteredSchools;
+}
+
+for (const cb of schoolGradeFilters){
+    cb.addEventListener('change', () => {
+        const filteredSchools = getFilteredSchools();
+        showSchoolsOnMap(filteredSchools, schoolMap);
+        showSchoolsInList(filteredSchools, schoolList);
+    });
 }
 
 schoolNameFilter.addEventListener('input', () => {
-  const filteredSchools = shouldShowSchools();
-  showSchoolsOnMap(filteredSchools, schoolMap);
-  showSchoolsInList(filteredSchools, schoolList);
+    const filteredSchools = getFilteredSchools();
+     showSchoolsOnMap(filteredSchools, schoolMap);
+     showSchoolsInList(filteredSchools, schoolList);
 });
-
 
 window.schools = schools;
 window.schoolMap = schoolMap;
-window.schoolList = schoolList;
-window.shouldShowSchools = shouldShowSchools;
-window.schoolNameFilter = schoolNameFilter;
 window.schoolGradeFilters = schoolGradeFilters;
+window.schoolNameFilter = schoolNameFilter;
+window.schoolList = schoolList;
 
