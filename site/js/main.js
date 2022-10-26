@@ -11,9 +11,8 @@ let schoolList = document.querySelector('#school-list');
 
 showSchoolsInList(schools, schoolList);
 
-let schoolGradeFilters = document.querySelectorAll('.Grade-checkbox');
 let schoolNameFilter = document.querySelector('#school-name-input');
-
+let schoolGradeFilters = document.querySelectorAll('.Grade-checkbox');
 
 function getFilteredSchools(){
     let filteredSchools = schools;
@@ -53,11 +52,11 @@ for (const cb of schoolGradeFilters){
 
 schoolNameFilter.addEventListener('input', () => {
     const filteredSchools = getFilteredSchools();
-     showSchoolsOnMap(filteredSchools, schoolMap);
-     showSchoolsInList(filteredSchools, schoolList);
+    showSchoolsOnMap(filteredSchools, schoolMap);
+    showSchoolsInList(filteredSchools, schoolList);
+    window.schools = filteredSchools;
 });
 
-window.schools = schools;
 window.schoolMap = schoolMap;
 window.schoolGradeFilters = schoolGradeFilters;
 window.schoolNameFilter = schoolNameFilter;
