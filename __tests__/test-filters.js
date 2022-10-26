@@ -118,16 +118,16 @@ describe('The schoolNameFilter', () => {
 
 
 describe('The school grade level filters', () => {
-  it('should be defined either by schoolGradeFilters or schoolLevelFilters', async () => {
-    await expect(page).toHaveSomeVariableInGlobalScope(['schoolGradeFilters', 'schoolLevelFilters']);
+  it('should be defined either by schoolLevelFilters or schoolLevelFilters', async () => {
+    await expect(page).toHaveSomeVariableInGlobalScope(['schoolLevelFilters', 'schoolLevelFilters']);
   });
 });
 
 
-(isGradeFilterDefined ? describe : describe.skip)('The schoolGradeFilters', () => {
+(isGradeFilterDefined ? describe : describe.skip)('The schoolLevelFilters', () => {
   afterEach(async () => {
     await page.evaluate(() => {
-      for (const filter of window.schoolGradeFilters || []) {
+      for (const filter of window.schoolLevelFilters || []) {
         filter.checked = false;
         filter.dispatchEvent(new Event('change'));
       }
@@ -136,7 +136,7 @@ describe('The school grade level filters', () => {
 
   it('should start unchecked', async () => {
     const initiallyChecked = await page.evaluate(() => {
-      const initiallyChecked = Array.from(window.schoolGradeFilters).some(cb => cb.checked);
+      const initiallyChecked = Array.from(window.schoolLevelFilters).some(cb => cb.checked);
       return initiallyChecked;
     });
     expect(initiallyChecked).toBe(false);
@@ -144,7 +144,7 @@ describe('The school grade level filters', () => {
 
   it('should filter the list to around 210 elements when 4th grade is checked', async () => {
     const filteredLength = await page.evaluate(() => {
-      const grade4 = Array.from(window.schoolGradeFilters).find(cb => cb.value.includes('4'));
+      const grade4 = Array.from(window.schoolLevelFilters).find(cb => cb.value.includes('4'));
       grade4.checked = true;
       grade4.dispatchEvent(new Event('change'));
       const filteredLength = window.schoolList.childElementCount;
@@ -155,8 +155,8 @@ describe('The school grade level filters', () => {
 
   it('should filter the list to around 19 elements when 4th and 9th grades are checked', async () => {
     const filteredLength = await page.evaluate(() => {
-      const grade4 = Array.from(window.schoolGradeFilters).find(cb => cb.value.includes('4'));
-      const grade9 = Array.from(window.schoolGradeFilters).find(cb => cb.value.includes('9'));
+      const grade4 = Array.from(window.schoolLevelFilters).find(cb => cb.value.includes('4'));
+      const grade9 = Array.from(window.schoolLevelFilters).find(cb => cb.value.includes('9'));
       grade4.checked = true;
       grade4.dispatchEvent(new Event('change'));
       grade9.checked = true;
@@ -169,7 +169,7 @@ describe('The school grade level filters', () => {
 
   it('should return the list to its full length when unchecked', async () => {
     const finalLength = await page.evaluate(() => {
-      const grade4 = Array.from(window.schoolGradeFilters).find(cb => cb.value.includes('4'));
+      const grade4 = Array.from(window.schoolLevelFilters).find(cb => cb.value.includes('4'));
       grade4.checked = true;
       grade4.dispatchEvent(new Event('change'));
 
@@ -185,7 +185,7 @@ describe('The school grade level filters', () => {
 
   it('should filter the map to around 210 features when 4th grade is checked', async () => {
     const filteredLength = await page.evaluate(() => {
-      const grade4 = Array.from(window.schoolGradeFilters).find(cb => cb.value.includes('4'));
+      const grade4 = Array.from(window.schoolLevelFilters).find(cb => cb.value.includes('4'));
       grade4.checked = true;
       grade4.dispatchEvent(new Event('change'));
       const filteredLength = Object.values(window.schoolMap._layers).filter(l => 'feature' in l && l.feature.geometry.type === 'Point').length;
@@ -196,8 +196,8 @@ describe('The school grade level filters', () => {
 
   it('should filter the map to around 19 features when 4th and 9th grades are checked', async () => {
     const filteredLength = await page.evaluate(() => {
-      const grade4 = Array.from(window.schoolGradeFilters).find(cb => cb.value.includes('4'));
-      const grade9 = Array.from(window.schoolGradeFilters).find(cb => cb.value.includes('9'));
+      const grade4 = Array.from(window.schoolLevelFilters).find(cb => cb.value.includes('4'));
+      const grade9 = Array.from(window.schoolLevelFilters).find(cb => cb.value.includes('9'));
       grade4.checked = true;
       grade4.dispatchEvent(new Event('change'));
       grade9.checked = true;
@@ -210,7 +210,7 @@ describe('The school grade level filters', () => {
 
   it('should return the map to its full number of features when unchecked', async () => {
     const finalLength = await page.evaluate(() => {
-      const grade4 = Array.from(window.schoolGradeFilters).find(cb => cb.value.includes('4'));
+      const grade4 = Array.from(window.schoolLevelFilters).find(cb => cb.value.includes('4'));
       grade4.checked = true;
       grade4.dispatchEvent(new Event('change'));
 
