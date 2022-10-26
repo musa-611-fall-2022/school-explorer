@@ -61,4 +61,3 @@ window.schoolMap = schoolMap;
 window.schoolGradeFilters = schoolGradeFilters;
 window.schoolNameFilter = schoolNameFilter;
 window.schoolList = schoolList;
-
