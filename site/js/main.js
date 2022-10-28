@@ -50,7 +50,7 @@ for (const cb of schoolGradeFilters) {
 schoolNameFilter.addEventListener('input', () => {
     const filteredSchools = getFilteredSchools();
     showSchoolOnMap(filteredSchools, schoolMap);
-    showSchoolsInList(filteredSchools, schoolList);
+    showSchoolsInList(filteredSchools, schoolList)
 })
 
 

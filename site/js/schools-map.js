@@ -3,8 +3,9 @@ function initializeSchoolMap() {
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '© OpenStreetMap',
-  }).addTo(schoolMap);
-return schoolMap;
+}).addTo(schoolMap);
+
+    return schoolMap;
 }
 
 
@@ -31,7 +32,7 @@ function makeSchoolfeature(school) {
             "Grade 12": school['Grade 12'],
             "Grade K": school['Grade K']
         },
-        'geometry' : school.geom,
+        "geometry" : school['geom'],
     };
 }
 
