@@ -23,37 +23,44 @@ let schoolGradeFilters = document.querySelectorAll(".Grade-checkbox");
 
 let schoolNameFilter = document.querySelector("#school-name-input");
 
-function getFilteredSchools(){
-    let filteredSchools = schools;
-
-    //Filter by name
-    const inputtext = schoolNameFilter.value;
-    filteredSchools = schools.filter(school =>school["name"].toLowerCase().includes(inputtext));
-    //Filter by grade
+//Filter by grade
+function filterByGrade(schoolsList) {
+    let filteredSchools = schoolsList;
     for (const checkbox of schoolGradeFilters) {
         if (checkbox.checked) {
             filteredSchools = filteredSchools.filter(school =>
                 school[checkbox.value] == '1',
             );
+        }
     }
+    return filteredSchools;
 }
 
-return filteredSchools;
+//Filter by name
+function filterByName(schoolsList) {
+    let filteredSchools = schoolsList;
+    const inputText = schoolNameFilter.value.toLowerCase();
+    filteredSchools = filteredSchools.filter(school =>
+       school["name"].toLowerCase().includes(inputText));
+    return filteredSchools;
 }
 
-for (const cb of schoolGradeFilters){
-    cb.addEventListener('change', () => {
-        const filteredSchools = getFilteredSchools();
-        showSchoolsOnMap(filteredSchools, schoolMap);
-        showSchoolsInList(filteredSchools, schoolList);
+
+
+for(const checkbox of schoolGradeFilters){
+    checkbox.addEventListener('change', ( ) => {
+        schoolsShownOnMap = filterByGrade(filterByName(schools));
+        showSchoolsOnMap(schoolsShownOnMap, schoolMap);
+        showSchoolsInList(schoolsShownOnMap, schoolList);
     });
 }
 
-schoolNameFilter.addEventListener('input', () => {
-    const filteredSchools = getFilteredSchools();
-     showSchoolsOnMap(filteredSchools, schoolMap);
-     showSchoolsInList(filteredSchools, schoolList);
+schoolNameFilter.addEventListener('input', ( ) => {
+    schoolsShownOnMap = filterByGrade(filterByName(schools));
+    showSchoolsOnMap(schoolsShownOnMap, schoolMap);
+    showSchoolsInList(schoolsShownOnMap, schoolList);
 });
+
 
 window.schools = schools;
 window.schoolGradeFilters = schoolGradeFilters;
