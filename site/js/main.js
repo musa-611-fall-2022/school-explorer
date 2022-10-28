@@ -13,9 +13,9 @@ showSchoolsInList(schools, schoolList);
 let schoolGradeFilters = document.querySelectorAll('.Grade-Checkbox');
 let schoolNameFilter = document.querySelector('#school-name-input')
 
+
 function getFilteredSchools() {
     let filteredSchools = schools;
-
     const text = schoolNameFilter.value;
     filteredSchools = schools.filter(function (school) {
         const name = school['sort_name'].toLowerCase();
@@ -50,6 +50,7 @@ for (const cb of schoolGradeFilters) {
 schoolNameFilter.addEventListener('input', () => {
     const filteredSchools = getFilteredSchools();
     showSchoolOnMap(filteredSchools, schoolMap);
+    showSchoolsInList(filteredSchools, schoolList);
 })
 
 
