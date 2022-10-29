@@ -23,13 +23,23 @@ let schoolGradeFilters = document.querySelectorAll('.grade-checkbox');
 let schoolNameFilter = document.querySelector('#school-name-filter');
 let admitCheckboxes = document.querySelectorAll('.admit-type-cb');
 
-function selectOnlyThis(id) {
-    console.log(id);
-      for (let i = 1; i <= 5; i++)
-    {
-        document.getElementById(i).checked = false;
+function selectOnlyThis(id) { 
+    if (document.getElementById(id).checked == true){
+      console.log(id);
+        for (let i = 1; i <= 5; i++)
+      {
+          document.getElementById(i).checked = false;
+      }
+      document.getElementById(id).checked = true;
     }
-    document.getElementById(id).checked = true;
+
+    if (document.getElementById(id).checked == false) {
+      console.log(id);
+        for (let i = 1; i <= 5; i++)
+      {
+          document.getElementById(i).checked = false;
+      }
+    }
 }
 
 

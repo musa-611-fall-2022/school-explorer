@@ -1,14 +1,18 @@
 
+
 function initSchoolMap(){
     let schoolMap = L.map('school-map').setView([39.95, -75.16], 10);
 
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    const mapboxAccount = 'mapbox';
+    const mapboxStyle = 'satellite-v9';
+    const mapboxToken = 'pk.eyJ1IjoiY2h1ZW1idWNrZXQiLCJhIjoiY2w5dTl6M3V1MG0xejN1bGVqbzQyZTZjbiJ9.VfiDkqAOIvCv1KdQdrgnSQ';
+    L.tileLayer(`https://api.mapbox.com/styles/v1/${mapboxAccount}/${mapboxStyle}/tiles/256/{z}/{x}/{y}@2x?access_token=${mapboxToken}`, {
         maxZoom: 19,
-        attribution: '© OpenStreetMap',
-    }).addTo(schoolMap);
+        attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
+}).addTo(schoolMap);
+
     return schoolMap;
 }
-
 
 function makeSchoolFeature(school){
     return {
@@ -16,7 +20,7 @@ function makeSchoolFeature(school){
         "id": school['sdp_id'],
         "properties": {
           "school_name": school['name'],
-          "admission_type": school['Admission_Type'],
+          "admission_type": school['Admission Type'],
           "year_open": school['Year Opened'],
         },
         "geometry": school['geom'],
@@ -33,12 +37,18 @@ function showSchoolsOnMap(SchoolsToShow, schoolMap) {
     };
     schoolMap.schoolLayers = L.geoJSON(schoolFeatureCollection, {
       pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
-      style: {
-        stroke: null,
-        fillOpacity: 0.9,
-        radius: 3,
+      style: function(Feature) {
+        switch (Feature.properties['admission_type']) {
+            case "Neighborhood":   return { color: "orange" };
+            case "Citywide":   return { color: "blue" };
+            case "Citywide With Criteria":   return { color: "#1ca0d9" };
+            case "Special Admit":   return { color: "green" };
+            case "Alternative":   return { color: "yellow" };
+        }
+
       },
-    })
+      },
+    )
     .bindTooltip(layer => layer.feature.properties['school_name'])
     .addTo(schoolMap);
   }
