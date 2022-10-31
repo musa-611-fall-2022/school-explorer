@@ -19,7 +19,7 @@ showSchoolsInList(schools, schoolList);
 // Expose variable to the global scope
 
 //grab selectors
-let schoolGradeFilters = document.querySelectorAll('.grade-checkbox');
+let schoolLevelFilters = document.querySelectorAll('.grade-checkbox');
 let schoolNameFilter = document.querySelector('#school-name-filter');
 let admitCheckboxes = document.querySelectorAll('.admit-type-cb');
 
@@ -53,7 +53,7 @@ function shouldShowSchool() {
   });
 
   // Filter based on grade checkboxes
-  for (const checkbox of schoolGradeFilters) {
+  for (const checkbox of schoolLevelFilters) {
     if (checkbox.checked) {
       filteredSchools = filteredSchools.filter(function (school) {
         const schoollevel = checkbox.value;
@@ -79,7 +79,7 @@ function shouldShowSchool() {
 
 
 
-for (const cb of schoolGradeFilters) {
+for (const cb of schoolLevelFilters) {
   cb.addEventListener('change', () => {
     const filteredSchools = shouldShowSchool();
     showSchoolsOnMap(filteredSchools, schoolMap);
@@ -113,7 +113,7 @@ schoolNameFilter.addEventListener('input', () => {
 
 window.schoolMap = schoolMap;
 window.schools = schools;
-window.schoolGradeFilters = schoolGradeFilters;
+window.schoolLevelFilters = schoolLevelFilters;
 window.schoolNameFilter = schoolNameFilter;
 window.schoolList = schoolList;
 window.selectOnlyThis = selectOnlyThis;
