@@ -2,7 +2,7 @@
 
 function initSchoolMap(){
     const southWest = L.latLng(39.88, -75.27),
-    northEast = L.latLng(40.2, -74.98),
+    northEast = L.latLng(40.195, -74.98),
     bounds = L.latLngBounds(southWest, northEast);
 
     let schoolMap = L.map('school-map', { maxBounds: bounds, maxZoom: 19, minZoom: 10.5 }).setView([39.95, -75.16], 11);

@@ -56,13 +56,14 @@ function shouldShowSchool() {
   for (const checkbox of schoolGradeFilters) {
     if (checkbox.checked) {
       filteredSchools = filteredSchools.filter(function (school) {
-        const grade = checkbox.value;
-        const hasGrade = school[`Grade ${grade}`] === "1";
+        const schoollevel = checkbox.value;
+        const hasGrade = school[`School Level`].includes(schoollevel);
         return hasGrade;
       });
     }
   }
 
+  // Filter based on admission type checkboxes
   for (const checkbox of admitCheckboxes) {
     if (checkbox.checked) {
       filteredSchools = filteredSchools.filter(function (school) {
