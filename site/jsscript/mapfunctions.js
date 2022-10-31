@@ -1,7 +1,11 @@
 
 
 function initSchoolMap(){
-    let schoolMap = L.map('school-map').setView([39.95, -75.16], 10);
+    const southWest = L.latLng(39.88, -75.27),
+    northEast = L.latLng(40.2, -74.98),
+    bounds = L.latLngBounds(southWest, northEast);
+
+    let schoolMap = L.map('school-map', { maxBounds: bounds, maxZoom: 19, minZoom: 10.5 }).setView([39.95, -75.16], 11);
 
     const mapboxAccount = 'mapbox';
     const mapboxStyle = 'satellite-v9';
@@ -10,7 +14,6 @@ function initSchoolMap(){
         maxZoom: 19,
         attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
 }).addTo(schoolMap);
-
     return schoolMap;
 }
 

@@ -4,17 +4,20 @@ html {
 }
 
 #school-map {
-  height: 50%;
+  height: 100%;
 }
 
 .mapcontainer {
-  height: 70vh;
+  height: 80vh;
   width: 50%;
 }
 
-.filtercontainer {
+fda#filtercontainer {
   width: 50%;
   height: 80%;
+  border-color: coral;
+  border-style: solid;
+  border: 3px;
 }
 
 #school-list {
@@ -35,4 +38,12 @@ html {
 
 .checkbox-grid {
   marker: none;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  border: 3px;
+  border-style: solid;
+  border-color: coral;
 }
