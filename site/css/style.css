@@ -1,0 +1,18 @@
+#school-map {
+  width: 60%;
+  height: 800px;
+}
+
+#check-box {
+  display: left;
+}
+
+#school-list {
+  height: 100px;
+  overflow-y: scroll;
+  float: right;
+}
+
+#school-name-input {
+  float: right;
+}
