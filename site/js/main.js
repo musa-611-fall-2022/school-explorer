@@ -51,7 +51,7 @@ schoolNameFilter.addEventListener('input', () => {
     const filteredSchools = getFilteredSchools();
     showSchoolOnMap(filteredSchools, schoolMap);
     showSchoolsInList(filteredSchools, schoolList);
-})
+});
 
 
 
