@@ -43,6 +43,8 @@ for (const cb of schoolGradeFilters) {
     cb.addEventListener('change', () => {
         const filteredSchools = getFilteredSchools();
         showSchoolOnMap(filteredSchools, schoolMap);
+        showSchoolsInList(filteredSchools, schoolList);
+        console.log("check");
     });
 }
 
