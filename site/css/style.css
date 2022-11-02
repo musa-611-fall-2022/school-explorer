@@ -1,8 +1,7 @@
-
 #school-map {
-    width: 60%; 
+    width: 60%;
     height: 800px;
- }
+}
 
 #check-box {
     display: left;
@@ -16,8 +15,6 @@
     float: right;
 }
 
-#school-name-input { 
+#school-name-input {
     float: right;
 }
-
-
