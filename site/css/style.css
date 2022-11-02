@@ -1,20 +1,20 @@
 #school-map {
-    width: 60%;
-    height: 800px;
+  width: 60%;
+  height: 800px;
 }
 
 #check-box {
-    display: left;
+  display: left;
 }
 
 #school-list {
-    height: 100px;
-    overflow-y: scroll;
-    float: right;
+  height: 100px;
+  overflow-y: scroll;
+  float: right;
 }
 
 #school-name-input {
-    float: right;
+  float: right;
 }
 
 \n
