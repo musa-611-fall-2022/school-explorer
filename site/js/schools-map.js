@@ -32,7 +32,7 @@ function makeSchoolfeature(school) {
             "Grade 12": school['Grade 12'],
             "Grade K": school['Grade K']
         },
-        "geometry" : school['geom'],
+        "geometry" : school['geom']
     };
 }
 
@@ -62,6 +62,6 @@ function showSchoolOnMap(schoolToShow, schoolMap) {
 export {
     initializeSchoolMap,
     showSchoolOnMap,
-}
+};
 
 
