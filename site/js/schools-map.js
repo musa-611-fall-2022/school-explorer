@@ -31,7 +31,7 @@ function makeSchoolfeature(school) {
             "Grade 11": school['Grade 11'],
             "Grade 12": school['Grade 12'],
             "Grade K": school['Grade K'],
-        },
+    },
         "geometry" : school['geom'],
     };
 }
