@@ -121,5 +121,6 @@ window.schoolNameList = schoolNameList;
 window.schoolGradeFilters = checkedArr;
 window.schools = schools;
 window.schoolMap = schoolsMap;
+window.schoolNameFilter = schoolNameFilter;
 
 
