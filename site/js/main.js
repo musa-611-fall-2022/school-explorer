@@ -4,7 +4,7 @@ import { initializeSchoolsMap, showSchoolsOnMap } from './schools-map.js';
 
 
 let checkedArr = [];
-let schoolNameFilter;
+let schoolNameList;
 
 let schoolsMap = initializeSchoolsMap();
 showSchoolsOnMap(schools, schoolsMap);
@@ -36,15 +36,15 @@ function makeSchoolList(array) {
 
 //inside updateMap, apply checked grades filter and apply text filter
 function updateMap (){
-    const textFilter = schools.filter(function(school){
-        if (!schoolNameFilter){
+    const schoolNameFilter = schools.filter(function(school){
+        if (!schoolNameList){
             return true;
         }
         const name = school['name'].toLowerCase();
-        const hasText = name.includes(schoolNameFilter);
+        const hasText = name.includes(schoolNameList);
         return hasText;
     });
-    console.log('text filter returns', textFilter.length, 'results');
+    console.log('text filter returns', schoolNameFilter.length, 'results');
 
 
     function hasAllGrades (s){
@@ -70,7 +70,7 @@ function updateMap (){
         });
     }
 
-    let finalFilter = textFilter.filter(function(school){
+    let finalFilter = schoolNameFilter.filter(function(school){
         if (checkedArr.length == 0) {
             return true;
         }
@@ -111,13 +111,13 @@ for (const cb of gradeCheckboxes){
 
 //event listener and then updates map
 schoolNameInput.addEventListener('input', () => {
-    schoolNameFilter = schoolNameInput.value;
-    console.log('the text box contains: ' +  schoolNameFilter);
+    schoolNameList = schoolNameInput.value;
+    console.log('the text box contains: ' +  schoolNameList);
     updateMap();
 });
 
 
-window.schoolNameFilter = schoolNameFilter;
+window.schoolNameList = schoolNameList;
 window.schoolGradeFilters = checkedArr;
 window.schools = schools;
 window.schoolMap = schoolsMap;
