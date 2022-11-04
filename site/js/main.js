@@ -9,7 +9,7 @@ let schoolNameList;
 let schoolsMap = initializeSchoolsMap();
 showSchoolsOnMap(schools, schoolsMap);
 
-let gradeCheckboxes = document.querySelectorAll( '.grade-checkbox');
+let schoolGradeFilters = document.querySelectorAll( '.grade-checkbox');
 let schoolNameFilter = document.querySelector('#school-name-input');
 
 
@@ -83,7 +83,7 @@ function updateMap (){
     makeSchoolList (finalFilter);
 }
 
-for (const cb of gradeCheckboxes){
+for (const cb of schoolGradeFilters){
     cb.addEventListener('change', (evt)=> {
         const checkbox = evt.target;
         const grade = checkbox.value;
@@ -92,7 +92,6 @@ for (const cb of gradeCheckboxes){
             console.log(grade);
             checkedArr.push(grade);
             console.log('the boxes that are checked are:', checkedArr);
-            window.schoolGradeFilters = checkedArr;
             /*
         const filteredSchools = schools.filter(function(school){
             const grades = school['routes_ids'];
@@ -118,7 +117,7 @@ schoolNameFilter.addEventListener('input', () => {
 
 
 window.schoolNameList = schoolNameList;
-window.schoolGradeFilters = checkedArr;
+window.schoolGradeFilters = schoolGradeFilters;
 window.schools = schools;
 window.schoolMap = schoolsMap;
 window.schoolNameFilter = schoolNameFilter;
