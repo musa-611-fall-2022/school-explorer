@@ -83,7 +83,6 @@ input {
 
 .checkbox-list {
   display: flex;
-
   align-items: flex-start;
   align-content: flex-start;
   flex-flow: row nowrap;
