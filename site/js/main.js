@@ -20,9 +20,7 @@ function makeSchoolList(array) {
      for(let i = 0; i < array.length; i++) {
          // Create the list item:
          const school = array[i];
-
          let item = document.createElement('li');
-
          // Set its contents:
          item.appendChild(document.createTextNode(school["name"]));
          item.appendChild(document.createElement("br"));
@@ -32,6 +30,7 @@ function makeSchoolList(array) {
      }
 }
 
+makeSchoolList (schools);
 
 //inside updateMap, apply checked grades filter and apply text filter
 function updateMap (){
