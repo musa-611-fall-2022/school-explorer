@@ -10,7 +10,7 @@ let schoolsMap = initializeSchoolsMap();
 showSchoolsOnMap(schools, schoolsMap);
 
 let gradeCheckboxes = document.querySelectorAll( '.grade-checkbox');
-let schoolNameInput = document.querySelector('#school-name-input');
+let schoolNameFilter = document.querySelector('#school-name-input');
 
 
 function makeSchoolList(array) {
@@ -36,7 +36,7 @@ function makeSchoolList(array) {
 
 //inside updateMap, apply checked grades filter and apply text filter
 function updateMap (){
-    const schoolNameFilter = schools.filter(function(school){
+    const textFilter = schools.filter(function(school){
         if (!schoolNameList){
             return true;
         }
@@ -44,7 +44,7 @@ function updateMap (){
         const hasText = name.includes(schoolNameList);
         return hasText;
     });
-    console.log('text filter returns', schoolNameFilter.length, 'results');
+    console.log('text filter returns', textFilter.length, 'results');
 
 
     function hasAllGrades (s){
@@ -70,7 +70,7 @@ function updateMap (){
         });
     }
 
-    let finalFilter = schoolNameFilter.filter(function(school){
+    let finalFilter = textFilter.filter(function(school){
         if (checkedArr.length == 0) {
             return true;
         }
@@ -110,8 +110,8 @@ for (const cb of gradeCheckboxes){
 
 
 //event listener and then updates map
-schoolNameInput.addEventListener('input', () => {
-    schoolNameList = schoolNameInput.value;
+schoolNameFilter.addEventListener('input', () => {
+    schoolNameList = schoolNameFilter.value;
     console.log('the text box contains: ' +  schoolNameList);
     updateMap();
 });
