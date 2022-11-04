@@ -12,11 +12,10 @@ showSchoolsOnMap(schools, schoolsMap);
 let schoolGradeFilters = document.querySelectorAll( '.grade-checkbox');
 let schoolNameFilter = document.querySelector('#school-name-input');
 
+const schoolList = document.getElementById('school-list');
 
 function makeSchoolList(array) {
-    const list = document.getElementById('school-list');
-    window.schoolList = list;
-    list.innerHTML = "";
+    schoolList.innerHTML = "";
 
      for(let i = 0; i < array.length; i++) {
          // Create the list item:
@@ -29,7 +28,7 @@ function makeSchoolList(array) {
          item.appendChild(document.createElement("br"));
          item.appendChild(document.createTextNode("Grade Span Served: " + school["Current Grade Span Served"]));
          // Add it to the list:
-         list.appendChild(item);
+         schoolList.appendChild(item);
      }
 }
 
@@ -118,6 +117,7 @@ schoolNameFilter.addEventListener('input', () => {
 
 window.schoolNameList = schoolNameList;
 window.schoolGradeFilters = schoolGradeFilters;
+window.schoolList = schoolList;
 window.schools = schools;
 window.schoolMap = schoolsMap;
 window.schoolNameFilter = schoolNameFilter;
