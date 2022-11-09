@@ -1,36 +1,62 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
-        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-        crossorigin=""/>
-        <link rel="stylesheet" href="css/styles.css">
-    </head>
 
-    <body>
-        <div>
-            <h1>School Explorer: Philadelphia Version</h1>
-        </div>
+<head>
+    <style>
+        body {
+            background-color: #FBF8F3;
+        }
 
-        <div class="content-container">
-            <div class="map-container">
-                <div id="school-map"></div>
+        h1 {
+            color: FDE19D;
+        }
+
+        p {
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div>
+        <h1>School Explorer for Philadelphia</h1>
+        <h2>Philadelphia has 325 schools. Use this application to explore the schools in this city.
+            <br>
+            We have options to filter by school level and name.
+        </h2>
+        <br>
+    </div>
+
+    <div class="content-container">
+        <div class="map-container">
+            <div id="school-map"></div>
         </div>
         <div class="list-container">
-            <label><input type="checkbox" class="grade-checkbox" value ="Elementary">Elementary School</label>
-            <label><input type="checkbox" class="grade-checkbox" value ="Middle">Middle School</label>
-            <label><input type="checkbox" class="grade-checkbox" value ="High">High School</label>
-            <label><input type="checkbox" class="grade-checkbox" value ="Transition/Overage School">Transition/Overage School</label>
+            <h3><b>School Levels</b></h3>
+            <b><label><input type="checkbox" class="grade-checkbox" value="Elementary">Elementary School</label></b>
+            <b><label><input type="checkbox" class="grade-checkbox" value="Middle">Middle School</label></b>
+            <br>
+            <b><label><input type="checkbox" class="grade-checkbox" value="High">High School</label></b>
+            <b><label><input type="checkbox" class="grade-checkbox" value="Transition/Overage School">Transition/Overage
+                    School</label></b>
+            <br>
+            <p1><b>...Or search by name</b></p1>
+            <br>
             <input type="text" id="school-name-filter" placeholder="Enter School Name...">
+            <h3><b>Schools in Philadelphia</b></h3>
 
-        <ul id = 'school-list'></ul>
-            </div> 
+
+            <ul id='school-list'></ul>
         </div>
-    </body>
+    </div>
+</body>
 
-        <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
-        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
-        crossorigin=""></script>
-        <script src="js/main.js" type="module"></script>
+<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+<script src="js/main.js" type="module"></script>
+
 </html>
