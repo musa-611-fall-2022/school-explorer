@@ -51,7 +51,7 @@ function initializeschoolMap() {
         radius: 3,
       },
     })
-    .bindTooltip(layer => layer.feature.properties['school_name'])
+    .bindTooltip(layer => layer.feature.properties['name'])
     .addTo(schoolMap);
   }
 
