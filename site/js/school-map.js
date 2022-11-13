@@ -27,7 +27,7 @@ function initializeschoolMap() {
         "governance": school['Governance'],
         "organization": school['Management Organization'],
         "category": school['School Reporting Category'],
-  
+
       },
       "geometry": school['geom'],
     };
