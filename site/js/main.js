@@ -13,7 +13,7 @@ let schoolNameInput = document.querySelector('#school-name-input');
 
 function getFilteredschool() {
     let filteredschool = schools;
-  
+
     // Filter based on school name
     const text = schoolNameInput.value;
     filteredschool = filteredschool.filter(function (school) {
@@ -45,7 +45,7 @@ for (const cb of gradeCheckboxes) {
       showschoolInList(filteredschool, schoolList);
     });
   }
-  
+
 window.school = schools;
 window.schoolMap = schoolMap;
 window.gradeCheckboxes = gradeCheckboxes;

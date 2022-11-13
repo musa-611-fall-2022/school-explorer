@@ -6,13 +6,13 @@ function initializeschoolMap() {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(schoolMap);
-  
+
     const phil = L.geoJSON(philamap, {
       style: { fill: null, color: '#000' },
     }).addTo(schoolMap);
-  
+
     schoolMap.fitBounds(phil.getBounds());
-  
+
     return schoolMap;
   }
 
@@ -27,7 +27,7 @@ function initializeschoolMap() {
         "governance": school['Governance'],
         "organization": school['Management Organization'],
         "category": school['School Reporting Category'],
-        
+  
       },
       "geometry": school['geom'],
     };
@@ -37,12 +37,12 @@ function initializeschoolMap() {
     if (schoolMap.schoolLayers !== undefined) {
       schoolMap.removeLayer(schoolMap.schoolLayers);
     }
-  
+
     const schoolFeatureCollection = {
       "type": "FeatureCollection",
       "features": schoolToShow.map(makeschoolFeature),
     };
-  
+
     schoolMap.schoolLayers = L.geoJSON(schoolFeatureCollection, {
       pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
       style: {
@@ -54,9 +54,8 @@ function initializeschoolMap() {
     .bindTooltip(layer => layer.feature.properties['school_name'])
     .addTo(schoolMap);
   }
-  
+
   export {
     initializeschoolMap,
     showschoolOnMap,
   };
-  

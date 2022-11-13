@@ -2,7 +2,7 @@ import { htmlToElement } from './template-tools.js';
 
 function showschoolInList(schoolToShow, schoolList) {
     schoolList.innerHTML = '';
-  
+
     for (const school of schoolToShow) {
       const html = `
       <li class="list-group-item">${school['name']} </li>
@@ -11,7 +11,7 @@ function showschoolInList(schoolToShow, schoolList) {
       schoolList.append(li);
     }
   }
-  
+
   export {
     showschoolInList,
   };
