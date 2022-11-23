@@ -8,7 +8,7 @@ function makeSchoolFeature(school){
     "type": "Feature",
     "id": school['sdp_id'],
     "properties": {
-      "school_name": school['name'],
+      "school_name": school['name'], // I might want to include different features?
       "school_id": school['sdp_id'],
       "school_sortname": school['sort_name'],
     },
@@ -16,10 +16,10 @@ function makeSchoolFeature(school){
   };
 }
 
-const schoolFeatureCollection = {
-    "type": "FeatureCollection",
-    "features": schools.map(makeSchoolFeature), // schools.map runs the function makeSchoolFeature through each school data item
-  };
+//const schoolFeatureCollection = { //creates geoJSON feature collection
+//    "type": "FeatureCollection",
+//    "features": schools.map(makeSchoolFeature),
+//  };
 
 function initMap(){
     let schoolMap = L.map('school-map').setView([40,-75.2],10);
@@ -28,21 +28,38 @@ function initMap(){
       attribution: '© OpenStreetMap',
   }).addTo(schoolMap);
 
-  L.geoJSON(schoolFeatureCollection, {
-    pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
-    style: {
-      stroke: false,
-      fillOpacity: 1,
-      radius: 3,
-      color: "#ff7800"
-    }
-  }).addTo(schoolMap);
+  //L.geoJSON(schoolFeatureCollection, { //could create a separate function called showSchools
+  //  pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
+  //  style: {
+  //    stroke: false,
+  //    fillOpacity: 1,
+  //    radius: 3,
+  //    color: "#ff7800"
+  //  }
+  //}).addTo(schoolMap);
 
-  return schoolMap;
   }
+
+function showSchoolsOnMap(schoolsToShow, schoolMap){
+    const schoolFeatureCollection = { //creates geoJSON feature collection
+        "type": "FeatureCollection",
+        "features": schoolsToShow.map(makeSchoolFeature),
+      };
+
+    L.geoJSON(schoolFeatureCollection, { //could create a separate function called showSchools
+        pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
+        style: {
+          stroke: false,
+          fillOpacity: 1,
+          radius: 3,
+          color: "#ff7800"
+        }
+      }).addTo(schoolMap);
+}
 
 
 export {
     initMap,
-    makeSchoolFeature
+    makeSchoolFeature,
+    showSchoolsOnMap,
 };

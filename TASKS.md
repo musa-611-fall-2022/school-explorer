@@ -13,7 +13,7 @@ Check the app in the browser.
 - [X] Import the data from _site/data/schools.js_ into your JavaScript file.
 - [X] Create a function called `makeSchoolFeature` to transform one of the school elements into a GeoJSON-like feature. **This function should be made available globally (on the window object)**.
 - [X] Use the function to display all the `schools` data on the map.
-- [ ] Create a function to show an array of schools on the map.
+- [ ] Create a function to show an array of schools on the map. Call the function 'showSchoolsOnMap'
 
 ----------
 

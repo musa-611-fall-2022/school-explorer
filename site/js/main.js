@@ -1,9 +1,10 @@
 import schools from '../data/schools.js'
-import {initMap,makeSchoolFeature} from '../js/map.js'
+import {initMap,makeSchoolFeature,showSchoolsOnMap} from '../js/map.js'
 
 //Phila outline? do we need that?
 
 const schoolMap = initMap();
+showSchoolsOnMap(schools, schoolMap);
 
 // Expose variables to the global scope
 window.schools = schools;
