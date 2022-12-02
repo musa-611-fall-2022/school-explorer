@@ -1,0 +1,134 @@
+body {
+  margin: 0;
+}
+
+h1 {
+  font-family: Inconsolata, monospace;
+  font-weight: 500;
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+
+h2 {
+  display: flex;
+  font-family: Inconsolata, monospace;
+  font-weight: 500;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+  margin-left: 2rem;
+}
+
+label {
+  font-family: Inconsolata, monospace;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.all {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.content {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: stretch;
+  border-bottom: 2px solid black;
+  max-height: 800px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid black;
+}
+
+.filter-pane {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  flex-grow: 1;
+  width: 10rem;
+  border-right: 2px solid black;
+}
+
+.search-container {
+  border-bottom: 2px solid black;
+  padding-bottom: 2rem;
+  padding-right: 2rem;
+}
+
+#school-name-input {
+  width: 80%;
+  margin-left: 2rem;
+  border: 1px solid black;
+  border-radius: 2rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  font-family: Inconsolata, monospace;
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+input {
+  border-width: 1px;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+}
+
+.checkbox-list {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex-flow: row nowrap;
+  padding-right: 4rem;
+  padding-left: 2rem;
+  border-bottom: 2px solid black;
+  padding-bottom: 2rem;
+}
+
+.elementary {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1.5rem;
+}
+
+.middle {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1.5rem;
+}
+
+.high {
+  display: flex;
+  flex-direction: column;
+}
+
+.results-list {
+  display: flex;
+  padding-left: 2rem;
+  overflow: scroll;
+  border-top: 1px solid rgb(81 81 81);
+}
+
+.map-pane {
+  display: flex;
+  flex-grow: 2;
+}
+
+#schools-map {
+  height: 800px;
+  width: 100%;
+}
+
+li {
+  font-family: Inconsolata, monospace;
+  font-weight: 400;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
