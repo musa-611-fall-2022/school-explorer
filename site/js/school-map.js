@@ -4,7 +4,7 @@ function initializeschoolMap() {
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(schoolMap);
 
     return schoolMap;
@@ -18,10 +18,10 @@ function makeSchoolFeature(schoolgeo) {
         "properties": {
             "grade_span": schoolgeo['Current Grade Span Served'],
             "school_name": schoolgeo['name'],
-            "website": schoolgeo['Website']
+            "website": schoolgeo['Website'],
         },
         "geometry": schoolgeo['geom'],
-    }
+    };
 }
 
 function showSchoolOnMap(schoolToShow, schoolMap) {

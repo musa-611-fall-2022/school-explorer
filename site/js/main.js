@@ -1,5 +1,5 @@
 import schools from '../data/schools.js';
-import { initializeschoolMap, showSchoolOnMap, } from '../js/school-map.js';
+import { initializeschoolMap, showSchoolOnMap } from '../js/school-map.js';
 import { showSchoolInList } from './school-list.js';
 
 
