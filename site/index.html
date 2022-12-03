@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+    <div>
+        <h1 style="background-color: black; color:orange;border: 1px;padding: 1%;">
+            <center>School-Explorer Exercise</center>
+        </h1>
+        <h2 style="color: orange;">Hanzhi Zhang</h1>
+    </div>
+
+    <div class="content-container">
+        <div class="map-container">
+            <div id="school-map"></div>
+        </div>
+        <div class="list-container">
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="1">Grade 1</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="2">Grade 2</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="3">Grade 3</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="4">Grade 4</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="5">Grade 5</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="6">Grade 6</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="7">Grade 7</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="8">Grade 8</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="9">Grade 9</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="10">Grade 10</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="11">Grade 11</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="12">Grade 12</label>
+            <label><input type="checkbox" class="schoolgrade-checkbox" value="00">Grade K</label>
+            <input type="text" id="school-name-input" placeholder="Enter school name...">
+
+            <ul id="school-list"></ul>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+    <script src="js/main.js" type="module"></script>
+
+</body>
+
+</html>
