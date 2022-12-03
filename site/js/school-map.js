@@ -1,13 +1,13 @@
 
-function initializeSchoolMap() {
-    let schoolmap = L.map('school-map').setView([39.953286167172955, -75.19832424115529], 13);
+function initializeschoolMap() {
+    let schoolMap = L.map('school-map').setView([39.953286167172955, -75.19832424115529], 13);
 
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(schoolmap);
+    }).addTo(schoolMap);
 
-    return schoolmap;
+    return schoolMap;
 }
 
 
@@ -24,16 +24,16 @@ function makeSchoolFeature(schoolgeo) {
     }
 }
 
-function showSchoolOnMap(schoolToShow, schoolmap) {
-    if (schoolmap.schoolLayers !== undefined) {
-        schoolmap.removeLayer(schoolmap.schoolLayers);
+function showSchoolOnMap(schoolToShow, schoolMap) {
+    if (schoolMap.schoolLayers !== undefined) {
+        schoolMap.removeLayer(schoolMap.schoolLayers);
     }
     const schoolFeatureCollection = {
         "type": "FeatureCollection",
         "features": schoolToShow.map(makeSchoolFeature),
     };
 
-    schoolmap.schoolLayers = L.geoJSON(schoolFeatureCollection, {
+    schoolMap.schoolLayers = L.geoJSON(schoolFeatureCollection, {
         pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
         style: {
             color: "#FFA500",
@@ -45,10 +45,10 @@ function showSchoolOnMap(schoolToShow, schoolmap) {
         .bindTooltip(layer => {
             return layer.feature.properties['school_name'];
         })
-        .addTo(schoolmap);
+        .addTo(schoolMap);
 }
 
 export {
-    initializeSchoolMap,
+    initializeschoolMap,
     showSchoolOnMap,
 };
