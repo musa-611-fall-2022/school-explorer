@@ -1,10 +1,13 @@
 import stops from '../data/stops.js';
-
 import { initializeStopMap, showStopsOnMap } from './stops-maps.js';
+import { showStopsInList } from './stop-list.js';
 
 
 let stopMap = initializeStopMap();
 showStopsOnMap(stops, stopMap);
+
+let stopList = document.querySelector('#stop-List');
+showStopsInList(stops, stopList);
 
 let routeCheckboxes = document.querySelectorAll('.route-checkbox');
 let stopNameInput = document.querySelector('#stop-name-input');
@@ -42,6 +45,7 @@ for (const cb of routeCheckboxes) {
     cb.addEventListener('change', () => {
         const filteredStops = getFilteredStops();
         showStopsOnMap(filteredStops, stopMap);
+        showStopsInList(filteredStops, stopMap);
 
 
 
