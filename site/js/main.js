@@ -10,26 +10,48 @@ let routeCheckboxes = document.querySelectorAll('.route-checkbox');
 let stopNameInput = document.querySelector('#stop-name-input');
 
 
-for (const cb of routeCheckboxes) {
-    cb.addEventListener('change', (evt) => {
-        console.log('you clicked on a checkbox');
-        console.log(evt.target);
+//filter based on route name
+function getFilteredStops() {
+    let filteredStops = stops;
 
-    });
-}
-
-stopNmaeInput.addEventListener('change', () => {
-    console.log('text changed: ' + stopNameInput.value);
-});
-
-stopNmaeInput.addEventListener('input', () => {
     const text = stopNameInput.value;
-    const filteredStops = stops.filter(function (stop) {
+    filteredStops = stops.filter(function (stop) {
         const name = stop['stop_name'].toLowerCase();
         const hasText = name.includes(text);
         return hasText;
 
     });
+    
+
+    // Filter based on route checkboxes
+    for (const checkbox of routeCheckboxes) {
+        if (checkbox.checked) {
+            filteredStops = filteredStops.filter(function (stop) {
+                const route = checkbox.value;
+                const hasRoute = stop['routes_ids'].includes(route);
+                return hasRoute;
+            })
+        }
+    }
+
+    return filteredStops;
+    
+}
+
+for (const cb of routeCheckboxes) {
+    cb.addEventListener('change', () => {
+        const filteredStops = getFilteredStops();
+        showStopsOnMap(filteredStops, stopMap);
+
+
+
+    });
+}
+
+
+
+stopNameInput.addEventListener('input', () => {
+    const filteredStops = getFilteredStops();
     showStopsOnMap(filteredStops, stopMap);
 });
 

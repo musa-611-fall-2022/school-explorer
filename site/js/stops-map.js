@@ -43,7 +43,7 @@ function showStopsOnMap(stopsToShow, stopMap) {
         pointToLayer: (geoJsonPoint, latlng) => L.circlemMarker(latlng),
         style: {
             stoke: null, 
-            fillOpacity: 0.2,
+            fillOpacity: 0.9,
             radius: 3,
 
         },
