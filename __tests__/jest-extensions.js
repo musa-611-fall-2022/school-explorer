@@ -36,4 +36,21 @@ expect.extend({
     const relativeDir = relative('.', received);
     return { pass, message: () => `expected folder "./${relativeDir}${relativeDir ? '/' : ''}" ${pass ? 'not ' : ''}to contain file "${filename}"; found [${files.map(f => `"${f}"`)}]` };
   },
+
+  // toHaveVariableInGlobalScope
+  // ---------------------------
+  // Verify that the variable with the given `varname` is defined on the
+  // `window` object of the `received` page. The `received` arguments should
+  // be a Puppeteer page object.
+  async toHaveVariableInGlobalScope(received, varname) {
+    const page = received;
+    const pass = await page.evaluate((varname) => window[varname] !== undefined, varname);
+    return { pass, message: () => `expected variable \`${varname}\` ${pass ? 'not ' : ''}to be defined in the window global scope.` };
+  },
+
+  async toHaveSomeVariableInGlobalScope(received, varnames) {
+    const page = received;
+    const pass = await page.evaluate((varnames) => varnames.some(varname => window[varname] !== undefined), varnames);
+    return { pass, message: () => `expected ${pass ? 'none' : 'one'} of the following variables to be defined in the window global scope: ${varnames}.` };
+  },
 });
