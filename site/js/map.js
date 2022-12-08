@@ -11,6 +11,7 @@ function makeSchoolFeature(school){
       "school_name": school['name'], // I might want to include different features?
       "school_id": school['sdp_id'],
       "school_sortname": school['sort_name'],
+      "school_level": school['School Level'],
     },
     "geometry": school['geom'],
   };
@@ -41,12 +42,37 @@ function showSchoolsOnMap(schoolsToShow, schoolMap){
           radius: 3,
           color: "#ff7800"
         }
-      }).addTo(schoolMap);
+      })
+      .bindTooltip(layer => {
+        return layer.feature.properties['school_name']
+      })
+      .addTo(schoolMap);
 }
 
+function showSchoolsOnMap3(schoolsToShow, schoolMap){
+  const schoolFeatureCollection = { //creates geoJSON feature collection
+      "type": "FeatureCollection",
+      "features": schoolsToShow.map(makeSchoolFeature),
+    };
+
+  L.geoJSON(schoolFeatureCollection, { //could create a separate function called showSchools
+      pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
+      style: {
+        stroke: false,
+        fillOpacity: 1,
+        radius: 3,
+        color: "#000000"
+      }
+    })
+    .bindTooltip(layer => {
+      return layer.feature.properties['school_name']
+    })
+    .addTo(schoolMap);
+}
 
 export {
     initMap,
     makeSchoolFeature,
     showSchoolsOnMap,
+    showSchoolsOnMap3,
 };
