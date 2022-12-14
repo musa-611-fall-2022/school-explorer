@@ -1,0 +1,47 @@
+html,
+body {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+.container-fluid {
+  height: 100%;
+  width: 100%;
+}
+
+.row {
+  float: left;
+  width: 50%;
+  height: 100%;
+  margin-left: 0;
+}
+
+.school-name {
+  height: 50%;
+  overflow: auto;
+}
+
+.input-box {
+  padding-bottom: 10px;
+}
+
+#school-map {
+  position: relative;
+  float: right;
+  height: 100%;
+  width: 50%;
+}
+
+ul {
+  padding: 0;
+  flex: auto;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+ul,
+li {
+  font-size: 13px;
+  text-align: center;
+}
+
