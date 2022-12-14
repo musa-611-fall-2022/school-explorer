@@ -28,19 +28,23 @@ function initMap(){
   return schoolMap
   }
 
-function showSchoolsOnMap(schoolsToShow, schoolMap){
+function showSchoolsOnMap(schoolsToShow, schoolMap, colorCode){
+  if (schoolMap.schoolLayers !== undefined){
+    schoolMap.removeLayer(schoolMap.schoolLayers);
+  };
+
     const schoolFeatureCollection = { //creates geoJSON feature collection
         "type": "FeatureCollection",
         "features": schoolsToShow.map(makeSchoolFeature),
       };
 
-    L.geoJSON(schoolFeatureCollection, { //could create a separate function called showSchools
+    schoolMap.schoolLayers = L.geoJSON(schoolFeatureCollection, { //could create a separate function called showSchools
         pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
         style: {
           stroke: false,
           fillOpacity: 1,
           radius: 3,
-          color: "#ff7800"
+          color: colorCode,
         }
       })
       .bindTooltip(layer => {
@@ -49,30 +53,9 @@ function showSchoolsOnMap(schoolsToShow, schoolMap){
       .addTo(schoolMap);
 }
 
-function showSchoolsOnMap3(schoolsToShow, schoolMap){
-  const schoolFeatureCollection = { //creates geoJSON feature collection
-      "type": "FeatureCollection",
-      "features": schoolsToShow.map(makeSchoolFeature),
-    };
-
-  L.geoJSON(schoolFeatureCollection, { //could create a separate function called showSchools
-      pointToLayer: (geoJsonPoint, latlng) => L.circleMarker(latlng),
-      style: {
-        stroke: false,
-        fillOpacity: 1,
-        radius: 3,
-        color: "#000000"
-      }
-    })
-    .bindTooltip(layer => {
-      return layer.feature.properties['school_name']
-    })
-    .addTo(schoolMap);
-}
 
 export {
     initMap,
     makeSchoolFeature,
     showSchoolsOnMap,
-    showSchoolsOnMap3,
 };

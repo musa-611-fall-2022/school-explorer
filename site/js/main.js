@@ -4,7 +4,8 @@ import {initMap,makeSchoolFeature,showSchoolsOnMap} from '../js/map.js'
 //Phila outline? do we need that?
 
 const schoolMap = initMap();
-showSchoolsOnMap(schools, schoolMap);
+const orange = "#ff7800"
+showSchoolsOnMap(schools, schoolMap, orange);
 
 const schoolCheckboxes = document.querySelectorAll('.school-checkbox');
 
@@ -15,9 +16,10 @@ for (const checkbox of schoolCheckboxes){
         if (evt.target.checked){
             console.log('you clicked on the checkbox ' + checkbox.value);
             const filteredSchools = schools.filter(
-                    school => (school['School Level']==checkbox.value)
+                    school => (school['School Level']==checkbox.value) //this excludes all the transition schools except Transition/Overage
             );
-            showSchoolsOnMap3(filteredSchools,schoolMap);
+            const black = "#000000";
+            showSchoolsOnMap(filteredSchools,schoolMap, black);
             console.log(evt.target);
         } else {
             console.log('you unclicked the checkbox ' + checkbox.value)
