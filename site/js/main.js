@@ -38,6 +38,8 @@ function getFilteredschool() {
   return filteredschool;
 }
 
+
+
 for (const cb of gradeCheckboxes) {
     cb.addEventListener('change', () => {
       const filteredschool = getFilteredschool();
@@ -46,8 +48,15 @@ for (const cb of gradeCheckboxes) {
     });
   }
 
+  // eslint-disable-next-line no-undef
+  schoolNameInput.addEventListener('input', () => {
+    const filteredSchools = getFilteredschool();
+    showschoolOnMap(filteredSchools, schoolMap);
+    showschoolInList(filteredSchools, schoolList);
+});
+
 window.school = schools;
 window.schoolMap = schoolMap;
-window.gradeCheckboxes = gradeCheckboxes;
-window.schoolNameInput = schoolNameInput;
+window.schoolGradeFilters = gradeCheckboxes;
+window.schoolNameFilter = schoolNameInput;
 window.schoolList = schoolList;
