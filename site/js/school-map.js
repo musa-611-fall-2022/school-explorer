@@ -31,7 +31,7 @@ function makeSchoolFeature(schoolgeo) {
             'Grade9': schoolgeo['Grade 9'],
             'Grade10': schoolgeo['Grade 10'],
             'Grade11': schoolgeo['Grade 11'],
-            'Grade12': schoolgeo['Grade 12']
+            'Grade12': schoolgeo['Grade 12'],
         },
         "geometry": schoolgeo['geom'],
     };
@@ -64,5 +64,5 @@ function showSchoolOnMap(schoolToShow, schoolMap) {
 export {
     initializeschoolMap,
     showSchoolOnMap,
-    makeSchoolFeature
+    makeSchoolFeature,
 };
