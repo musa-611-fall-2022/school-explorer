@@ -9,8 +9,8 @@
 
 
 import schools from '../data/schools.js';
-import { initializeSchoolMap, showSchoolsOnMap } from './schoolsToMap.js';
-import { showSchoolsInList } from './schoolList.js';
+import { initializeSchoolMap, showSchoolsOnMap } from './school-map.js';
+import { showSchoolsInList } from './school-list.js';
 
 
 let schoolMap = initializeSchoolMap();
