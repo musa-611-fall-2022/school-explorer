@@ -19,6 +19,19 @@ function makeSchoolFeature(schoolgeo) {
             "grade_span": schoolgeo['Current Grade Span Served'],
             "school_name": schoolgeo['name'],
             "website": schoolgeo['Website'],
+            'Gradek': schoolgeo['Grade k'],
+            'Grade1': schoolgeo['Grade 1'],
+            'Grade2': schoolgeo['Grade 2'],
+            'Grade3': schoolgeo['Grade 3'],
+            'Grade4': schoolgeo['Grade 4'],
+            'Grade5': schoolgeo['Grade 5'],
+            'Grade6': schoolgeo['Grade 6'],
+            'Grade7': schoolgeo['Grade 7'],
+            'Grade8': schoolgeo['Grade 8'],
+            'Grade9': schoolgeo['Grade 9'],
+            'Grade10': schoolgeo['Grade 10'],
+            'Grade11': schoolgeo['Grade 11'],
+            'Grade12': schoolgeo['Grade 12']
         },
         "geometry": schoolgeo['geom'],
     };
@@ -51,4 +64,5 @@ function showSchoolOnMap(schoolToShow, schoolMap) {
 export {
     initializeschoolMap,
     showSchoolOnMap,
+    makeSchoolFeature
 };
