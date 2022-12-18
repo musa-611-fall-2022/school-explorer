@@ -27,10 +27,13 @@ function htmlToElements(html) {
   return template.content.childNodes;
 }
 
-window.htmlToElement = htmlToElement;
-window.htmlToElements = htmlToElements;
+
 
 export {
   htmlToElement,
   htmlToElements,
 };
+
+
+window.htmlToElement = htmlToElement;
+window.htmlToElements = htmlToElements;

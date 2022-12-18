@@ -1,0 +1,63 @@
+/*
+
+1. "selector"{}, selector could be multiple
+2. By using inspector on the google page you can figure out almost everything about style factors
+3. googling : "css units mdn", 1px = 1/96th of 1in 'absolute unit' > not using, 'relative unit'
+   https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units
+   em > font-based relative unit
+   vh > percent of veiwport's height
+4. 3types of selector : 1) TAG{ } >> 2) Class{.} >> 3) ID{#}
+5. google 개발자도구에서 style 에서 이것저것 실험가능
+6. googling : "css specificity" https://css-tricks.com/specifics-on-css-specificity/
+   스타일링 문제는 보통 이 우선숭위 지정이
+7. display attributes https://css-tricks.com/almanac/properties/d/display/
+8. 저번주 비디오 flex box 체크 https://flexboxfroggy.com/
+9. mapbox style https://www.mapbox.com/gallery/
+https://github.com/musa-611-fall-2022/course-info/blob/main/resources/webmap-tiles.md
+10. leflet style https://leaflet-extras.github.io/leaflet-providers/preview/
+
+*/
+
+html {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* grid-templete : 기본적으로 격자를 만드는거임 아래는 총 8개의 칸이 생기고 그 그리드를 각각요소로 채운형태 */
+
+body {
+  margin: 0;
+  padding: grid;
+  display: grid;
+  grid-template:
+    "title title" auto
+    "filters map" auto
+    "count map" auto
+    "list map" 1fr / 40% 60%;
+  height: 100vh;
+  overflow-y: hidden;
+}
+
+[name="school-filter-name"] {
+  display: block;
+  column-span: all;
+  box-sizing: border-box;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.school-name {
+  display: block;
+}
+
+.highlighted {
+  background-color: #e2df7b;
+}
+
+#school-map {
+  height: 100%;
+}
+
+#school-list {
+  list-style: none;
+}
