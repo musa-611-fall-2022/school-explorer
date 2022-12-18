@@ -11,7 +11,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    height: 100v;
+    height: 100vh;
 }
 
 #school-map {

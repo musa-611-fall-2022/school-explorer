@@ -40,7 +40,6 @@ function makeSchoolFeature(x) {
 
 function showSchoolsOnMap(x, schoolMap) {
 
-
     const stopFeatureColletion = {
         "type": "FeatureCollection",
         "features": x.map(makeSchoolFeature),

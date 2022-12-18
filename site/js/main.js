@@ -17,8 +17,6 @@ let schoolMap = initializeSchoolMap();
 showSchoolsOnMap(schools, schoolMap);
 
 
-
-
 //1) 체크박스 쿼리하기 (All > 여러 체크박스가 있기 때문에, text box는 하나만 있어서 단수로 씀.)
 //2) 검색기 'change' 는 엔터 눌르면 작동
 //3) 검색기 'input' 은 한글자씩 추가됨
