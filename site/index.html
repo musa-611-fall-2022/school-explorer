@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schools in the Philadelphia</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+   crossorigin=""/>
+    <!--Introduce Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <link href="css/styles.css" rel="stylesheet" type="text/css"/>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <div id="school-map"></div>
+
+        <div class="row">
+            <h1>This is a map of schools in Philadelphia</h1>
+            <div class="school-name">
+
+                <h2>Filter by Name</h2>
+
+                <div class="input-box">
+                    <input type="text" class="text-input" id="school-name-input" placeholder="Enter School Name">
+                </div>
+                <div class="list-container">
+                    <ul id="school-list" class="list-group"></ul>
+                </div>
+
+            </div>
+
+            <div class="Grade">
+                <h2>Filter by Grade</h2>
+                <div id="grade-select">
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade K"> Kindergarten </label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 1"> 1st Grade </label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 2"> 2nd Grade </label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 3"> 3rd Grade </label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 4" > 4th Grade </label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 5" > 5th Grade </label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 6"> 6th Grade </label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 7"> 7th Grade</label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 8"> 8th Grade </label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 9"> 9th Grade </label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 10"> 10th Grade </label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 11"> 11th Grade </label>
+                    <label><input type = "checkbox" class ="Grade-checkbox" value="Grade 12"> 12th Grade </label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+<!-- Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"  integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="  crossorigin=""></script>
+
+<!-- My Project JS modules-->
+<script type="module" src="js/main.js"></script>
+
+</html>
+
