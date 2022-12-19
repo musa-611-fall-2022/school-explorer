@@ -15,11 +15,19 @@ for (const checkbox of schoolCheckboxes){
     checkbox.addEventListener('change', (evt) => {
         if (evt.target.checked){
             console.log('you clicked on the checkbox ' + checkbox.value);
-            const filteredSchools = schools.filter(
-                    school => (school['School Level']==checkbox.value) //this excludes all the transition schools except Transition/Overage
-            );
-            const black = "#000000";
-            showSchoolsOnMap(filteredSchools,schoolMap, black);
+            if (checkbox.value == "Transition/Overage School"){
+                const filteredSchools = schools.filter(
+                    school => (school['School Level']!="High" && school['School Level']!="Middle" && school['School Level']!="Elementary")
+                );
+                const black = "#000000";
+                showSchoolsOnMap(filteredSchools,schoolMap, black);
+            } else {
+                const filteredSchools = schools.filter(
+                        school => (school['School Level']==checkbox.value) //this excludes all the transition schools except Transition/Overage
+                );
+                const black = "#000000";
+                showSchoolsOnMap(filteredSchools,schoolMap, black);
+            }
             console.log(evt.target);
         } else {
             console.log('you unclicked the checkbox ' + checkbox.value)
