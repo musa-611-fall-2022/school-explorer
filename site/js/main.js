@@ -1,73 +1,69 @@
 /*
  * @Author: miaomiao612 dddoctorr612@gmail.com
- * @Date: 2022-10-15 22:51:33
+ * @Date: 2022-12-20 10:23:00
  * @LastEditors: miaomiao612 dddoctorr612@gmail.com
- * @LastEditTime: 2022-12-20 10:51:37
- * @FilePath: \school-explorer\site\js\index.js
+ * @LastEditTime: 2022-12-20 11:08:45
+ * @FilePath: \school-explorer\site\js\main.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
-
 import schools from '../data/schools.js';
-import { basemap,showSchoolsOnMap } from './schools-map.js';
-import { ShowShoolsList } from './schools-list.js';
+import { initializeSchoolMap, showSchoolsOnMap } from './schools-map.js';
+import { showSchoolsInList } from './schools-list.js';
 
-let schoolMap = basemap();
+let schoolMap = initializeSchoolMap();
 showSchoolsOnMap(schools, schoolMap);
 
+let schoolList = document.querySelector('#school-list');
 
-let schoolList = document.querySelector("#school-list");
-ShowShoolsList(schools, schoolList)
+showSchoolsInList(schools, schoolList);
 
-
-//Add a checkbox for each grade K-12 to the page.
-//Add a text box to filter schools that contain a given string. The text box should have an id of `school-name-filter`.
-let schoolGradeFilters = document.querySelectorAll('.Grade-checkbox');
 let schoolNameFilter = document.querySelector('#school-name-input');
-
-function FilterSchools(){
+let schoolGradeFilters = document.querySelectorAll('.Grade-checkbox');
+function getFilteredSchools(){
     let filteredSchools = schools;
 
-     //Filter by name
+    //Filter through school name
     const text = schoolNameFilter.value;
     filteredSchools = schools.filter(function (school) {
-    const name = school['name'].toLowerCase ();
-    const hasText = name.includes(text);
-    return hasText;
+        const name = school['name'].toLowerCase ();
+        const hasText = name.includes(text);
+        return hasText;
     });
 
-    //Filter by grade
+    //Filter through grade
     for (const checkbox of schoolGradeFilters) {
-    if (checkbox.checked) {
-    filteredSchools = filteredSchools.filter(function (school) {
-        const grade = checkbox.value;
-        if (school[grade] === "1") {
-        return true;
-        } else {
-        return false;
-        }
-    });
+        if (checkbox.checked) {
+            filteredSchools = filteredSchools.filter(function (school) {
+            const grade = checkbox.value;
+            if (school[grade] === "1") {
+                return true;
+            } else {
+                return false;
+            }
+        });
     }
 }
+
 return filteredSchools;
 }
 
-for (const checkbox of schoolGradeFilters){
-    checkbox.addEventListener('change', () => {
-    const filteredSchools = FilterSchools();
-    showSchoolsOnMap(filteredSchools, schoolMap);
-    ShowShoolsList(filteredSchools, schoolList);
+for (const cb of schoolGradeFilters){
+    cb.addEventListener('change', () => {
+        const filteredSchools = getFilteredSchools();
+        showSchoolsOnMap(filteredSchools, schoolMap);
+        showSchoolsInList(filteredSchools, schoolList);
     });
 }
 
 schoolNameFilter.addEventListener('input', () => {
-    const filteredSchools = FilterSchools();
+    const filteredSchools = getFilteredSchools();
     showSchoolsOnMap(filteredSchools, schoolMap);
-    ShowShoolsList(filteredSchools, schoolList);
+    showSchoolsInList(filteredSchools, schoolList);
+    window.schools = filteredSchools;
 });
 
-
-window.schools = schools;
 window.schoolMap = schoolMap;
 window.schoolGradeFilters = schoolGradeFilters;
 window.schoolNameFilter = schoolNameFilter;
 window.schoolList = schoolList;
+
