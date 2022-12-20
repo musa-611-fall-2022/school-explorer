@@ -2,7 +2,7 @@
  * @Author: miaomiao612 dddoctorr612@gmail.com
  * @Date: 2022-10-15 22:51:33
  * @LastEditors: miaomiao612 dddoctorr612@gmail.com
- * @LastEditTime: 2022-10-20 00:03:07
+ * @LastEditTime: 2022-12-20 10:24:03
  * @FilePath: \school-explorer\site\js\index.js
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -21,7 +21,7 @@ ShowShoolsList(schools, schoolList)
 
 //Add a checkbox for each grade K-12 to the page.
 //Add a text box to filter schools that contain a given string. The text box should have an id of `school-name-filter`.
-let schoolGradeFilters = document.querySelectorAll('.Grade-checkbox');
+let schoolGradeFilters = document.querySelectorAll('.grade-checkbox');
 let schoolNameFilter = document.querySelector('#school-name-input');
 
 function FilterSchools(){
