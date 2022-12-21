@@ -27,7 +27,7 @@ function getFilteredSchools(){
         return hasText;
     });
 
-    // Filter based on school checkboxed
+    // Filter based on school checkboxes
     for (const checkbox of gradeCheckboxes){
         const text = checkbox.value;
         if (checkbox.checked) {
