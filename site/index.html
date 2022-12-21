@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Charlie's School Explorer</title>
+
+        <!-- Leaflet's default styles-->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+        
+        <!-- My CSS files-->
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+
+    <body>
+        <div class="title">
+            <h1 style="font-family: 'Comic Sans MS'">Charlie's School Explorer</h1>
+        </div>
+
+        <div class="content">
+            <div class='filtercontainer'>
+                <div class = 'textinput'>
+                    <input type="text" id="school-name-filter" placeholder="Enter school name...">
+                </div>
+
+                <div class = checkboxes>
+                    <div class = grade-cb>
+                        <ul class="checkbox-grid">
+                            Filter by School Level
+                            <li><label><input type="checkbox" class="grade-checkbox" value="Elementary"> Elementary</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="Middle"> Middle</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="High"> High</label></li>
+                            <li><label><input type="checkbox" class="grade-checkbox" value="Transition"> Transition</label></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="checkbox-grid">
+                        Filter by Admission Type
+                        <li><label><input type="checkbox" id="1" class="admit-type-cb" value="Neighborhood" onclick="selectOnlyThis(this.id)"> Neighborhood</label></li>
+                        <li><label><input type="checkbox" id="2" class="admit-type-cb" value="Citywide" onclick="selectOnlyThis(this.id)"> Citywide</label></li>
+                        <li><label><input type="checkbox" id="3" class="admit-type-cb" value="Citywide With Criteria" onclick="selectOnlyThis(this.id)"> Citywide With Criteria</label></li>
+                        <li><label><input type="checkbox" id="4" class="admit-type-cb" value="Special Admit" onclick="selectOnlyThis(this.id)"> Special Admit</label></li>
+                        <li><label><input type="checkbox" id="5" class="admit-type-cb" value="Alternative" onclick="selectOnlyThis(this.id)"> Alternative</label></li>
+                        </ul>
+                    </div>
+                </div> 
+                <div>  
+                    School List:   
+                    <ul id="school-list"></ul>
+                </div>
+            </div>
+            <div class="mapcontainer">
+                <div id="school-map"></div>
+            </div>
+        </div>
+        
+
+        <!-- Leaflet JavaScript-->
+        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+        
+        <!-- My project JS modules-->
+        <script type="module" src="jsscript/main.js"></script>
+    </body>
+</html>
