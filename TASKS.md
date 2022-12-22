@@ -21,4 +21,4 @@ Check the app in the browser.
 - [ ] Write a function that fills in the list with list item (`li`) elements for each school in an array
 - [X] Add a checkbox for each grade K-12 to the page.
 - [X] Add a text box to filter schools that contain a given string. The text box should have an id of `school-name-filter`.
-- [ ] Write a predicate function called `shouldShowSchool` that will return `true` if a given school should be shown according to the currently selected filters, and will return `false` if a given school should not be shown. For now, ignore the filters and always return `true`.
+- [X] Write a predicate function called `shouldShowSchool` that will return `true` if a given school should be shown according to the currently selected filters, and will return `false` if a given school should not be shown. For now, ignore the filters and always return `true`.

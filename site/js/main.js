@@ -13,7 +13,7 @@ const schoolList = document.getElementById('#school-list');
 
 // these are all the unique school types ['High', 'Middle', 'Elementary-Middle', 'Elementary', 'Middle-High', 'Transition/Overage School', 'Elementary-Middle-High', 'Elementary-High']
 
-function getFilteredSchools(){
+function shouldShowSchool(){
     let filteredSchools = schools;
     //filter based on school name
     const text = schoolNameFilter.value;
@@ -40,7 +40,7 @@ function getFilteredSchools(){
 
 for (const checkbox of schoolCheckboxes){
     checkbox.addEventListener('change', (evt) => {
-        const filteredSchools = getFilteredSchools();
+        const filteredSchools = shouldShowSchool();
         const black = "#000000";
         showSchoolsOnMap(filteredSchools,schoolMap, black);
     });
@@ -49,7 +49,7 @@ for (const checkbox of schoolCheckboxes){
 
 
 schoolNameFilter.addEventListener('input',() =>{
-    const filteredSchools = getFilteredSchools();
+    const filteredSchools = shouldShowSchool();
     const black = "#000000";
     showSchoolsOnMap(filteredSchools,schoolMap, black);
 });
@@ -57,29 +57,9 @@ schoolNameFilter.addEventListener('input',() =>{
 
 
 // Expose variables to the global scope
-window.schools = schools; // was just being used to check the data properties
-window.mapview = schoolMap;
+window.schools = schools;
+window.schoolMap = schoolMap;
 // might add a window.phila = phila; for an outline map
 window.makeSchoolFeature = makeSchoolFeature;
-
-//checkbox.addEventListener('change', (evt) => {
-//    if (evt.target.checked){ //evt.target is same as checkbox
-//        console.log('you clicked on the checkbox ' + checkbox.value);
-//        if (checkbox.value == "Transition/Overage School"){
-//            const filteredSchools = schools.filter(
-//                school => (school['School Level']!="High" && school['School Level']!="Middle" && school['School Level']!="Elementary")
-//            );
-//            const black = "#000000";
-//            showSchoolsOnMap(filteredSchools,schoolMap, black);
-//        } else {
-//            const filteredSchools = schools.filter(
-//                    school => (school['School Level']==checkbox.value) //this excludes all the transition schools except Transition/Overage
-//            );
-//            const black = "#000000";
-//            showSchoolsOnMap(filteredSchools,schoolMap, black);
-//        }
-//        console.log(evt.target);
-//    } else {
-//        showSchoolsOnMap(schools,schoolMap, orange);
-//        console.log('you unclicked the checkbox ' + checkbox.value)
-//    })
+window.schoolNameFilter = schoolNameFilter;
+window.schoolGradeFilters = schoolCheckboxes;
