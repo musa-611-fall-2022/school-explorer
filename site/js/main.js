@@ -1,5 +1,6 @@
 import schools from '../data/schools.js'
 import {initMap,makeSchoolFeature,showSchoolsOnMap} from '../js/map.js'
+import { showSchoolsInList } from './school-list.js';
 
 //Phila outline? do we need that?
 
@@ -9,7 +10,7 @@ showSchoolsOnMap(schools, schoolMap, orange);
 
 const schoolCheckboxes = document.querySelectorAll('.school-checkbox');
 const schoolNameFilter = document.querySelector('.school-name-filter');
-const schoolList = document.getElementById('#school-list');
+const schoolList = document.querySelector('#school-list');
 
 // these are all the unique school types ['High', 'Middle', 'Elementary-Middle', 'Elementary', 'Middle-High', 'Transition/Overage School', 'Elementary-Middle-High', 'Elementary-High']
 
@@ -43,6 +44,7 @@ for (const checkbox of schoolCheckboxes){
         const filteredSchools = shouldShowSchool();
         const black = "#000000";
         showSchoolsOnMap(filteredSchools,schoolMap, black);
+        showSchoolsInList(filteredSchools,schoolList);
     });
 }
 
@@ -52,6 +54,7 @@ schoolNameFilter.addEventListener('input',() =>{
     const filteredSchools = shouldShowSchool();
     const black = "#000000";
     showSchoolsOnMap(filteredSchools,schoolMap, black);
+    showSchoolsInList(filteredSchools,schoolList);
 });
 
 
