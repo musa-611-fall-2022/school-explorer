@@ -66,3 +66,4 @@ window.schoolMap = schoolMap;
 window.makeSchoolFeature = makeSchoolFeature;
 window.schoolNameFilter = schoolNameFilter;
 window.schoolGradeFilters = schoolCheckboxes;
+window.schoolList = schoolList;
