@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="data/school.png" type="image/icon type">
+
+        <title>School Explorer Tool</title>
+        
+        <!-- Leaflet styles --> 
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin=""/>
+        <!-- My CSS styles --> 
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body> 
+
+
+
+
+    <div>
+        <h1>School Explorer Tool</h1>
+    </div>
+    <div class = "content-container">
+        <div class = "map-container">
+            <div id="schoolMap"></div>
+        </div>
+        <div class = "list-container">
+            <label><input type="checkbox" class="school-checkbox" value="Elementary"> Elementary School</label>
+            <label><input type="checkbox" class="school-checkbox" value="Middle"> Middle School</label>
+            <label><input type="checkbox" class="school-checkbox" value="High"> High School</label>
+            <label><input type="checkbox" class="school-checkbox" value="Transition/Overage"> Transition/Overage School</label>
+
+            <input type="text" id="school-name-filter" placeholder="Enter school name..."></input>
+            <ul id = "school-list"></ul>
+        </div>
+    </div>
+
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" 
+        integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+        <!-- my project JS modules-->
+        <script src="js/main.js" type="module"></script>
+    </body>
+</html>
