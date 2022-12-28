@@ -1,19 +1,19 @@
 # Requirements
 
 ## Core
-- [ ] An text box on the page that can be used to filter based on the name of a school. When the value of this text box changes, only schools that have the value as a substring of their name should be shown on the map and in the list.
+- [X] An text box on the page that can be used to filter based on the name of a school. When the value of this text box changes, only schools that have the value as a substring of their name should be shown on the map and in the list.
   
   **The `input` element should be available on the global `window` object as a variable named `window.schoolNameFilter`.**
 
-- [ ] A set of checkboxes that can be used to filter based on the grades (K-12) served at a school. When a box is checked, only schools that serve the corresponding grade should be shown on the map. (_You can alternatively choose to include filters for grade levels. If you do, only include options for Elementary, Middle, High, and Transition/Overage -- not, for example, `Elementary-Middle`_).
+- [X] A set of checkboxes that can be used to filter based on the grades (K-12) served at a school. When a box is checked, only schools that serve the corresponding grade should be shown on the map. (_You can alternatively choose to include filters for grade levels. If you do, only include options for Elementary, Middle, High, and Transition/Overage -- not, for example, `Elementary-Middle`_).
   
   **An array of `input` elements should be available on the global `window` object as a variable named `window.schoolGradeFilters` (or `window.schoolLevelFilters` if using school levels instead of grades).**
 
-- [ ] A marker should be present on the map for each school that meets the current filter criteria, and no markers should be present for schools that _do not_ meet the filter criteria.
+- [X] A marker should be present on the map for each school that meets the current filter criteria, and no markers should be present for schools that _do not_ meet the filter criteria.
 
   **The Leaflet Map object that represents the map on the page should be available on the global `window` objects as a variable named `window.schoolMap`.**
 
-- [ ] A list item should be present in the schools list for each school that meets the current filter criteria, and no list items should be present for schools that _do not_ meet the filter criteria. List items should contain at least:
+- [X] A list item should be present in the schools list for each school that meets the current filter criteria, and no list items should be present for schools that _do not_ meet the filter criteria. List items should contain at least:
   - School name
   - Grades served
 
