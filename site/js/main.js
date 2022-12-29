@@ -58,5 +58,7 @@ schoolNameInput.addEventListener('input', () => {
 // Expose variables to the global scope
 window.school = schools;
 window.schoolMap = schoolMap;
-window.gradeCheckboxes = gradeCheckboxes;
+window.schoolGradeFilters = gradeCheckboxes;
+window.schoolNameFilter = schoolNameInput;
+window.schoolList = schoollist;
 //window.makeSchoolFeature = makeSchoolFeature;
