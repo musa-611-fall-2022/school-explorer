@@ -12,10 +12,13 @@ const schoolCheckboxes = document.querySelectorAll('.school-checkbox');
 const schoolNameFilter = document.querySelector('.school-name-filter');
 const schoolList = document.querySelector('#school-list');
 
+let filteredSchools = schools;
+showSchoolsInList(filteredSchools, schoolList);
+
 // these are all the unique school types ['High', 'Middle', 'Elementary-Middle', 'Elementary', 'Middle-High', 'Transition/Overage School', 'Elementary-Middle-High', 'Elementary-High']
 
 function shouldShowSchool(){
-    let filteredSchools = schools;
+    filteredSchools = schools;
     //filter based on school name
     const text = schoolNameFilter.value;
     filteredSchools = filteredSchools.filter(function (school){
@@ -83,7 +86,7 @@ function shouldShowSchool(){
                                             }
                                         }
                                     }
-                                }
+                               }
                             }
                         }
                     } 
