@@ -10,27 +10,27 @@ for more information: https://stackoverflow.com/a/35385518/123776
  * @param {String} HTML representing a single element
  * @return {Element}
  */
- function htmlToElement(html) {
-  const template = document.createElement('template');
-  const trimmedHtml = html.trim(); // Never return a text node of whitespace as the result
-  template.innerHTML = trimmedHtml;
-  return template.content.firstChild;
-}
+function htmlToElement(html) {
+    const template = document.createElement('template');
+    const trimmedHtml = html.trim(); // Never return a text node of whitespace as the result
+    template.innerHTML = trimmedHtml;
+    return template.content.firstChild;
+  }
 
-/**
- * @param {String} HTML representing any number of sibling elements
- * @return {NodeList}
- */
-function htmlToElements(html) {
-  const template = document.createElement('template');
-  template.innerHTML = html;
-  return template.content.childNodes;
-}
+  /**
+   * @param {String} HTML representing any number of sibling elements
+   * @return {NodeList}
+   */
+  function htmlToElements(html) {
+    const template = document.createElement('template');
+    template.innerHTML = html;
+    return template.content.childNodes;
+  }
 
-window.htmlToElement = htmlToElement;
-window.htmlToElements = htmlToElements;
+  window.htmlToElement = htmlToElement;
+  window.htmlToElements = htmlToElements;
 
-export {
-  htmlToElement,
-  htmlToElements,
-};
+  export {
+    htmlToElement,
+    htmlToElements,
+  };
