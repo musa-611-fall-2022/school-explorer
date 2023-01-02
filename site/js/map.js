@@ -1,8 +1,3 @@
-import schools from '../data/schools.js'
-
-
-//Phila outline? do we need that?
-
 function makeSchoolFeature(school){
     return {
     "type": "Feature",
@@ -19,19 +14,19 @@ function makeSchoolFeature(school){
 
 
 function initMap(){
-    let schoolMap = L.map('school-map').setView([40,-75.15],11);
+    let schoolMap = L.map('school-map').setView([40, -75.15], 11);
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19,
       attribution: '© OpenStreetMap',
   }).addTo(schoolMap);
 
-  return schoolMap
+  return schoolMap;
   }
 
 function showSchoolsOnMap(schoolsToShow, schoolMap, colorCode){
   if (schoolMap.schoolLayers !== undefined){
     schoolMap.removeLayer(schoolMap.schoolLayers);
-  };
+  }
 
     const schoolFeatureCollection = { //creates geoJSON feature collection
         "type": "FeatureCollection",
@@ -45,10 +40,10 @@ function showSchoolsOnMap(schoolsToShow, schoolMap, colorCode){
           fillOpacity: 1,
           radius: 3,
           color: colorCode,
-        }
+        },
       })
       .bindTooltip(layer => {
-        return layer.feature.properties['school_name']
+        return layer.feature.properties['school_name'];
       })
       .addTo(schoolMap);
 }
