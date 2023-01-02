@@ -89,8 +89,8 @@ function shouldShowSchool(){
                                }
                             }
                         }
-                    } 
-                } 
+                    }
+                }
             } else {
                 if (checkbox.value == "Transition/Overage School"){
                     filteredSchools = filteredSchools.filter(
@@ -98,7 +98,7 @@ function shouldShowSchool(){
                  } else {
                     filteredSchools = filteredSchools.filter(
                     school => (school['School Level']==checkbox.value)); //this excludes all the transition schools except Transition/Overage
-                } 
+                }
             }
         }
     }
